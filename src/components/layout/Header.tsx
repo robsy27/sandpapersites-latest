@@ -182,7 +182,7 @@ export function Header() {
                 size="lg"
                 icon="calendar"
               >
-                Book a call
+                {booking.label}
               </ButtonLink>
             </div>
           </nav>

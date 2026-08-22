@@ -32,7 +32,7 @@ export const site = {
    * rather than pointing at a URL that 404s. Setting it also switches the
    * buttons to open in a new tab and relabels them "Book a 15-min call".
    */
-  bookingUrl: null as string | null,
+  bookingUrl: "https://calendar.app.google/MAJrVk7QHEqhukmcA" as string | null,
   social: {
     linkedin: "https://www.linkedin.com/company/sandpapersites",
     instagram: "https://www.instagram.com/sandpapersites",
