@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
+import { SitePreview, previewThemes } from "@/components/ui/SitePreview";
 
 const proofPoints = [
   { icon: "clock" as const, label: "Live in 2–3 weeks" },
@@ -78,42 +79,20 @@ export function Hero() {
             </Reveal>
           </div>
 
-          {/* Decorative browser mock — communicates the product visually */}
+          {/* A finished-looking example site, not a wireframe — this is the
+              first proof of what actually gets built. */}
           <Reveal delay={200} className="lg:col-span-5">
-            <div
-              aria-hidden="true"
-              className="relative rounded-2xl border border-navy-700 bg-navy-800/70 p-2.5 shadow-2xl shadow-navy-950/60 backdrop-blur-sm"
-            >
-              <div className="flex items-center gap-2 px-2.5 py-2">
-                <span className="size-2.5 rounded-full bg-red-400/50" />
-                <span className="size-2.5 rounded-full bg-amber-400/50" />
-                <span className="size-2.5 rounded-full bg-accent/60" />
-                <div className="ml-3 h-5 flex-1 rounded-md bg-navy-900/80" />
-              </div>
-
-              <div className="space-y-4 rounded-xl bg-navy-950/80 p-6">
-                <div className="h-2.5 w-1/3 rounded-full bg-accent/70" />
-                <div className="space-y-2.5">
-                  <div className="h-4 w-11/12 rounded-md bg-mist-200/25" />
-                  <div className="h-4 w-3/4 rounded-md bg-mist-200/15" />
-                </div>
-                <div className="flex gap-2.5 pt-1">
-                  <div className="h-8 w-28 rounded-full bg-accent/80" />
-                  <div className="h-8 w-24 rounded-full border border-mist-400/25" />
-                </div>
-                <div className="grid grid-cols-3 gap-3 pt-3">
-                  {[0, 1, 2].map((index) => (
-                    <div
-                      key={index}
-                      className="space-y-2 rounded-lg border border-navy-700 bg-navy-800/60 p-3"
-                    >
-                      <div className="size-6 rounded-md bg-accent/25" />
-                      <div className="h-2 w-full rounded-full bg-mist-200/20" />
-                      <div className="h-2 w-2/3 rounded-full bg-mist-200/10" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="relative">
+              <SitePreview
+                theme={previewThemes.cafe}
+                className="relative z-10 rotate-[0.6deg] transition-transform duration-500 ease-out hover:rotate-0"
+              />
+              {/* a second site peeking behind, to imply a body of work */}
+              <SitePreview
+                theme={previewThemes.trades}
+                compact
+                className="absolute -right-5 -bottom-8 z-0 w-2/3 -rotate-[2.5deg] opacity-70 blur-[0.4px]"
+              />
             </div>
           </Reveal>
         </div>
