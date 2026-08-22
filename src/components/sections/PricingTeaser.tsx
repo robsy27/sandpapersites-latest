@@ -71,17 +71,33 @@ export function PricingTeaser() {
       tone="light"
       className="relative overflow-hidden"
       containerClassName="relative"
+      decoration={
+        <>
+          {/* Full-bleed, so the tint starts at the section's real top edge.
+              Inside the Container it began below the vertical padding, which
+              left an untinted near-white strip against the navy above. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-accent-ink/[0.07] to-transparent"
+          />
+          {/* Carries the navy edge a few pixels into the light panel so the
+              two sections meet deliberately rather than as a hard line. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-navy-900/12 to-transparent"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-32 left-1/2 size-[42rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]"
+          />
+          {/* Matching fade on the way back out to the dark section below */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-navy-900/12 to-transparent"
+          />
+        </>
+      }
     >
-      {/* Soft tint behind the cards so the light band has depth of its own */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-accent-ink/[0.07] to-transparent"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-24 left-1/2 size-[42rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]"
-      />
-
       <SectionHeading
         tone="light"
         align="center"

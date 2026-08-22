@@ -21,11 +21,18 @@ export function Section({
   className,
   containerClassName,
   children,
+  decoration,
 }: {
   id?: string;
   tone?: Tone;
   className?: string;
   containerClassName?: string;
+  /**
+   * Full-bleed decoration rendered inside the <section> but outside the
+   * padded Container, so `absolute top-0` means the section's real top
+   * rather than the top of the content box.
+   */
+  decoration?: React.ReactNode;
   children: React.ReactNode;
 }) {
   /* Light sections keep a clean flat surface — the ambient motion is a
@@ -42,6 +49,7 @@ export function Section({
         className,
       )}
     >
+      {decoration}
       {ambient && <AmbientBackground intensity="subtle" />}
       {/* Feathers the seam where a dark section meets its neighbour, instead
           of a hard horizontal line between two flat tones. */}
