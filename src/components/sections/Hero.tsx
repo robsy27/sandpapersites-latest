@@ -42,7 +42,7 @@ export function Hero() {
               <h1 className="mt-7 font-display text-[2.6rem] leading-[1.06] font-bold text-white sm:text-5xl lg:text-[3.4rem] xl:text-[3.75rem]">
                 The website your business{" "}
                 <span className="text-gradient-accent">deserves</span>, without
-                the agency price <span className="text-highlight">tag</span>.
+                the agency price tag.
               </h1>
             </Reveal>
 
