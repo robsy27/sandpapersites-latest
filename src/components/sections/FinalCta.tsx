@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
+import { AmbientBackground } from "@/components/ui/AmbientBackground";
 
 export function FinalCta({
   title = "Ready for a website that pulls its weight?",
@@ -13,11 +14,7 @@ export function FinalCta({
 }) {
   return (
     <section className="relative overflow-hidden bg-navy-900 py-20 sm:py-24 lg:py-28">
-      <div className="bg-grid pointer-events-none absolute inset-0 opacity-50" />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 left-1/2 size-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[130px]"
-      />
+      <AmbientBackground intensity="full" />
 
       <Container className="relative">
         <Reveal className="mx-auto max-w-2xl text-center">

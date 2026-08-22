@@ -1,5 +1,6 @@
 import { cn } from "@/lib/cn";
 import { Container } from "./Container";
+import { AmbientBackground } from "./AmbientBackground";
 
 type Tone = "navy" | "deep" | "light" | "raised";
 
@@ -27,12 +28,24 @@ export function Section({
   containerClassName?: string;
   children: React.ReactNode;
 }) {
+  /* Light sections keep a clean flat surface — the ambient motion is a
+     dark-mode effect and would only muddy them. */
+  const ambient = tone !== "light";
+
   return (
     <section
       id={id}
-      className={cn("py-20 sm:py-24 lg:py-32", tones[tone], className)}
+      className={cn(
+        "py-20 sm:py-24 lg:py-32",
+        tones[tone],
+        ambient && "relative overflow-hidden",
+        className,
+      )}
     >
-      <Container className={containerClassName}>{children}</Container>
+      {ambient && <AmbientBackground intensity="subtle" />}
+      <Container className={cn("relative", containerClassName)}>
+        {children}
+      </Container>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { AmbientBackground } from "@/components/ui/AmbientBackground";
 
 /** Shared hero band for inner pages. */
 export function PageHeader({
@@ -13,11 +14,7 @@ export function PageHeader({
 }) {
   return (
     <section className="relative overflow-hidden bg-navy-900 pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28">
-      <div className="bg-grid pointer-events-none absolute inset-0 opacity-50" />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-40 right-0 size-[32rem] rounded-full bg-accent/10 blur-[120px]"
-      />
+      <AmbientBackground intensity="soft" />
 
       <Container className="relative">
         <Reveal className="max-w-3xl">

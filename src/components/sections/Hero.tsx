@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
+import { AmbientBackground } from "@/components/ui/AmbientBackground";
 
 const proofPoints = [
   { icon: "clock" as const, label: "Live in 2–3 weeks" },
@@ -13,16 +14,7 @@ const proofPoints = [
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-navy-900">
-      {/* Decorative background: grid texture + accent glow */}
-      <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-40 -right-32 size-[38rem] rounded-full bg-accent/12 blur-[110px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-56 -left-40 size-[34rem] rounded-full bg-sky-500/10 blur-[120px]"
-      />
+      <AmbientBackground intensity="full" />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-navy-900"

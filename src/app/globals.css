@@ -37,6 +37,46 @@
   /* --- Motion ------------------------------------------------------------- */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* --- Ambient background motion -------------------------------------------
+     Registered as --animate-* theme tokens, which is how Tailwind v4 emits
+     custom animations and their keyframes. Everything animates transform or
+     opacity only, so it stays on the compositor and never causes layout.
+     The prefers-reduced-motion block at the end of this file freezes it. */
+  --animate-drift-a: drift-a 28s ease-in-out infinite;
+  --animate-drift-b: drift-b 34s ease-in-out infinite;
+  --animate-drift-c: drift-c 24s ease-in-out infinite;
+  --animate-grid-pan: grid-pan 40s linear infinite;
+  --animate-sheen: sheen 14s ease-in-out infinite;
+
+  @keyframes drift-a {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    33%      { transform: translate3d(7%, -5%, 0) scale(1.14); }
+    66%      { transform: translate3d(-5%, 6%, 0) scale(0.94); }
+  }
+
+  @keyframes drift-b {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+    40%      { transform: translate3d(-8%, 6%, 0) scale(0.92); }
+    70%      { transform: translate3d(5%, -4%, 0) scale(1.15); }
+  }
+
+  @keyframes drift-c {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(0.95); }
+    50%      { transform: translate3d(4%, 7%, 0) scale(1.2); }
+  }
+
+  @keyframes grid-pan {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-64px, -64px, 0); }
+  }
+
+  @keyframes sheen {
+    0%   { transform: translate3d(-120%, 0, 0); opacity: 0; }
+    15%  { opacity: 0.5; }
+    60%  { opacity: 0; }
+    100% { transform: translate3d(120%, 0, 0); opacity: 0; }
+  }
+
   /* --- Layout ------------------------------------------------------------- */
   --spacing-header: 4.5rem;
 }
