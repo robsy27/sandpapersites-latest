@@ -6,7 +6,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { PricingTeaser } from "@/components/sections/PricingTeaser";
 import { FinalCta } from "@/components/sections/FinalCta";
-import { Card } from "@/components/ui/Card";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { CollapsibleCard } from "@/components/ui/CollapsibleCard";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -52,23 +53,16 @@ export default function ServicesPage() {
           lead="You pay once to have it made, then a small monthly amount to have it hosted, secured and kept current."
         />
 
-        <div className="mt-10 space-y-6">
+        <div className="mt-10 space-y-5">
           {services.map((service, index) => (
             <Reveal key={service.id} delay={index * 70}>
-              <Card className="grid gap-8 lg:grid-cols-12">
-                <div className="lg:col-span-4">
-                  <span className="inline-flex size-12 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent">
-                    <Icon name={service.icon} className="size-6" />
-                  </span>
-                  <h3 className="mt-6 font-display text-2xl font-bold text-white">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 text-body leading-relaxed text-mist-300">
-                    {service.summary}
-                  </p>
-                </div>
-
-                <ul className="grid gap-x-8 gap-y-3.5 sm:grid-cols-2 lg:col-span-8 lg:content-start">
+              <CollapsibleCard
+                icon={service.icon}
+                title={service.title}
+                summary={service.summary}
+                defaultOpen={index === 0}
+              >
+                <ul className="grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
                   {service.details.map((detail) => (
                     <li
                       key={detail}
@@ -76,13 +70,13 @@ export default function ServicesPage() {
                     >
                       <Icon
                         name="check"
-                        className="mt-1 size-3.5 shrink-0 text-accent"
+                        className="mt-1.5 size-3.5 shrink-0 text-accent"
                       />
                       {detail}
                     </li>
                   ))}
                 </ul>
-              </Card>
+              </CollapsibleCard>
             </Reveal>
           ))}
         </div>
@@ -96,18 +90,20 @@ export default function ServicesPage() {
           lead="These aren’t upsells. They’re the baseline for a site that actually works for a local business."
         />
 
-        <ul className="mt-10 grid gap-x-10 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {included.map((item, index) => (
             <Reveal as="li" key={item.title} delay={index * 70}>
-              <span className="inline-flex size-11 items-center justify-center rounded-xl bg-navy-800 text-accent ring-1 ring-navy-700">
-                <Icon name={item.icon} className="size-5" />
-              </span>
-              <h3 className="mt-5 font-display text-lg font-bold text-white">
-                {item.title}
-              </h3>
-              <p className="mt-2.5 text-body leading-relaxed text-mist-300">
-                {item.body}
-              </p>
+              <GlassCard interactive className="group h-full p-6">
+                <span className="inline-flex size-11 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent transition-colors duration-300 group-hover:border-accent/50 group-hover:bg-accent/20">
+                  <Icon name={item.icon} className="size-5" />
+                </span>
+                <h3 className="mt-5 font-display text-lg font-bold text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-2.5 text-body leading-relaxed text-mist-300">
+                  {item.body}
+                </p>
+              </GlassCard>
             </Reveal>
           ))}
         </ul>
@@ -124,7 +120,7 @@ export default function ServicesPage() {
         <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {feeExplainer.map((fee, index) => (
             <Reveal as="li" key={fee.label} delay={index * 70}>
-              <Card className="h-full">
+              <GlassCard interactive className="h-full p-6 sm:p-7">
                 <span className="inline-flex size-12 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent">
                   <Icon name={fee.icon} className="size-6" />
                 </span>
@@ -137,7 +133,7 @@ export default function ServicesPage() {
                 <p className="mt-4 text-body leading-relaxed text-mist-300">
                   {fee.body}
                 </p>
-              </Card>
+              </GlassCard>
             </Reveal>
           ))}
         </ol>

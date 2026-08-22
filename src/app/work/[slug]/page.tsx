@@ -7,7 +7,7 @@ import { Scene } from "@/components/ui/Scene";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
-import { Card } from "@/components/ui/Card";
+import { CollapsibleCard } from "@/components/ui/CollapsibleCard";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -132,22 +132,18 @@ export default async function ProjectPage({
           </h2>
         </Reveal>
 
-        <ol className="mt-12 space-y-5">
+        <ol className="mt-10 space-y-3">
           {project.decisions.map((decision, index) => (
             <Reveal as="li" key={decision.title} delay={index * 70}>
-              <Card className="flex flex-col gap-5 sm:flex-row sm:gap-8">
-                <span className="font-display text-3xl font-bold text-accent/30 tabular-nums">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-display text-lg font-bold text-white">
-                    {decision.title}
-                  </h3>
-                  <p className="mt-2.5 leading-relaxed text-mist-300">
-                    {decision.body}
-                  </p>
-                </div>
-              </Card>
+              <CollapsibleCard
+                eyebrow={`Decision ${String(index + 1).padStart(2, "0")}`}
+                title={decision.title}
+                defaultOpen={index === 0}
+              >
+                <p className="text-body leading-relaxed text-mist-300">
+                  {decision.body}
+                </p>
+              </CollapsibleCard>
             </Reveal>
           ))}
         </ol>

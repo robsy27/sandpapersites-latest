@@ -3,7 +3,8 @@ import { booking, site } from "@/content/site";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Section } from "@/components/ui/Section";
-import { Card } from "@/components/ui/Card";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { CollapsibleCard } from "@/components/ui/CollapsibleCard";
 import { Icon } from "@/components/ui/Icon";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -47,7 +48,7 @@ export default function ContactPage() {
           {/* Form */}
           <div className="lg:col-span-7">
             <Reveal>
-              <Card className="sm:p-9">
+              <GlassCard className="p-6 sm:p-9">
                 <h2 className="font-display text-2xl font-bold text-white">
                   Get a free quote
                 </h2>
@@ -58,7 +59,7 @@ export default function ContactPage() {
                 <div className="mt-8">
                   <ContactForm />
                 </div>
-              </Card>
+              </GlassCard>
             </Reveal>
           </div>
 
@@ -66,7 +67,7 @@ export default function ContactPage() {
           <div className="lg:col-span-5">
             <Reveal delay={100} className="space-y-6">
               {/* Book a call */}
-              <Card className="border-accent/25 bg-accent/8">
+              <GlassCard active className="p-6 sm:p-8">
                 <span className="inline-flex size-12 items-center justify-center rounded-xl bg-accent/15 text-accent">
                   <Icon name="calendar" className="size-6" />
                 </span>
@@ -88,10 +89,10 @@ export default function ContactPage() {
                     {booking.label}
                   </ButtonLink>
                 </div>
-              </Card>
+              </GlassCard>
 
               {/* Direct details */}
-              <Card>
+              <GlassCard className="p-6 sm:p-8">
                 <h2 className="font-display text-lg font-bold text-white">
                   Direct details
                 </h2>
@@ -119,29 +120,23 @@ export default function ContactPage() {
                     Replies within one working day
                   </li>
                 </ul>
-              </Card>
+              </GlassCard>
 
               {/* FAQs */}
-              <Card>
-                <h2 className="font-display text-lg font-bold text-white">
+              <div>
+                <h2 className="mb-4 font-display text-lg font-bold text-white">
                   Quick answers
                 </h2>
-                <dl className="mt-5 space-y-5">
+                <div className="space-y-3">
                   {faqs.map((faq) => (
-                    <div
-                      key={faq.question}
-                      className="border-b border-navy-700 pb-5 last:border-0 last:pb-0"
-                    >
-                      <dt className="font-display text-sm font-semibold text-white">
-                        {faq.question}
-                      </dt>
-                      <dd className="mt-2 text-body leading-relaxed text-mist-300">
+                    <CollapsibleCard key={faq.question} title={faq.question}>
+                      <p className="text-body leading-relaxed text-mist-300">
                         {faq.answer}
-                      </dd>
-                    </div>
+                      </p>
+                    </CollapsibleCard>
                   ))}
-                </dl>
-              </Card>
+                </div>
+              </div>
             </Reveal>
           </div>
         </div>

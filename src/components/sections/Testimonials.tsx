@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
+import { GlassCard } from "@/components/ui/GlassCard";
 
 /**
  * Shows real client quotes once they exist. Until then it shows commitments
@@ -63,18 +64,20 @@ export function Testimonials() {
         lead="I'm early enough that I don't have a wall of client quotes yet, and I'd rather not invent any. So here's what I'll commit to instead — hold me to all of it."
       />
 
-      <ul className="mt-10 grid gap-x-10 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {promises.map((promise, index) => (
           <Reveal as="li" key={promise.title} delay={(index % 3) * 70}>
-            <span className="inline-flex size-11 items-center justify-center rounded-xl bg-navy-800 text-accent ring-1 ring-navy-700">
-              <Icon name={promise.icon} className="size-5" />
-            </span>
-            <h3 className="mt-5 font-display text-lg font-bold text-white">
-              {promise.title}
-            </h3>
-            <p className="mt-2.5 text-body leading-relaxed text-mist-300">
-              {promise.body}
-            </p>
+            <GlassCard interactive className="group h-full p-6">
+              <span className="inline-flex size-11 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent transition-colors duration-300 group-hover:border-accent/50 group-hover:bg-accent/20">
+                <Icon name={promise.icon} className="size-5" />
+              </span>
+              <h3 className="mt-5 font-display text-lg font-bold text-white">
+                {promise.title}
+              </h3>
+              <p className="mt-2.5 text-body leading-relaxed text-mist-300">
+                {promise.body}
+              </p>
+            </GlassCard>
           </Reveal>
         ))}
       </ul>

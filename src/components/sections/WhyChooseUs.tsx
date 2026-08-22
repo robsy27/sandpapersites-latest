@@ -2,6 +2,7 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
+import { GlassCard } from "@/components/ui/GlassCard";
 
 const reasons: { icon: IconName; title: string; body: string }[] = [
   {
@@ -45,18 +46,20 @@ export function WhyChooseUs() {
         lead="Big agencies charge thousands and put a junior on your account. DIY builders leave you doing the work. This sits in the gap between them."
       />
 
-      <ul className="mt-10 grid gap-x-10 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {reasons.map((reason, index) => (
           <Reveal as="li" key={reason.title} delay={(index % 3) * 70}>
-            <span className="inline-flex size-11 items-center justify-center rounded-xl bg-navy-800 text-accent ring-1 ring-navy-700">
-              <Icon name={reason.icon} className="size-5" />
-            </span>
-            <h3 className="mt-5 font-display text-lg font-bold text-white">
-              {reason.title}
-            </h3>
-            <p className="mt-2.5 text-body leading-relaxed text-mist-300">
-              {reason.body}
-            </p>
+            <GlassCard interactive className="group h-full p-6">
+              <span className="inline-flex size-11 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent transition-colors duration-300 group-hover:border-accent/50 group-hover:bg-accent/20">
+                <Icon name={reason.icon} className="size-5" />
+              </span>
+              <h3 className="mt-5 font-display text-lg font-bold text-white">
+                {reason.title}
+              </h3>
+              <p className="mt-2.5 text-body leading-relaxed text-mist-300">
+                {reason.body}
+              </p>
+            </GlassCard>
           </Reveal>
         ))}
       </ul>
