@@ -50,7 +50,6 @@ const suitedTo = [
 const notSuitedTo = [
   "Large e-commerce stores with thousands of products",
   "Venture-backed startups needing a full product team",
-  "Businesses wanting a full brand identity from scratch",
 ];
 
 /** The "In short" summary, as collapsible cards. */
