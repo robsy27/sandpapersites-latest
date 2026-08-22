@@ -11,8 +11,10 @@ export const site = {
   /** Used for canonical URLs, sitemap and Open Graph. Update before launch. */
   url: "https://sandpapersites.co.uk",
   email: "contact@sandpapersites.co.uk",
-  phone: "+44 7000 000000",
-  phoneDisplay: "07000 000 000",
+  /** E.164 for tel: links and structured data — no spaces, so dialling works everywhere. */
+  phone: "+447706261786",
+  /** How it reads on the page. */
+  phoneDisplay: "07706 261 786",
   location: "Serving local businesses across the UK",
   /** Replace with your real Calendly / SavvyCal / Cal.com link. */
   bookingUrl: "https://calendly.com/sandpapersites/intro-call",
