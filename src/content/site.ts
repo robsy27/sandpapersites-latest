@@ -16,8 +16,15 @@ export const site = {
   /** How it reads on the page. */
   phoneDisplay: "07706 261 786",
   location: "Serving local businesses across the UK",
-  /** Replace with your real Calendly / SavvyCal / Cal.com link. */
-  bookingUrl: "https://calendly.com/sandpapersites/intro-call",
+  /**
+   * Booking link. Set this to your real Calendly / Cal.com URL once the
+   * account exists — bookings then land in whichever inbox that account
+   * was created with.
+   *
+   * Leave it null and every "Book a call" button falls back to the contact
+   * page instead of pointing at a URL that 404s.
+   */
+  bookingUrl: null as string | null,
   social: {
     linkedin: "https://www.linkedin.com/company/sandpapersites",
     instagram: "https://www.instagram.com/sandpapersites",
@@ -30,3 +37,15 @@ export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+/**
+ * Where "Book a call" should point.
+ *
+ * With a real booking URL set it opens that in a new tab; without one it
+ * sends people to the contact page, so the call to action is always live.
+ */
+export const booking = {
+  href: site.bookingUrl ?? "/contact",
+  external: site.bookingUrl !== null,
+  label: site.bookingUrl ? "Book a 15-min call" : "Arrange a call",
+} as const;

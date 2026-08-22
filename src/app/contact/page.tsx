@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/content/site";
+import { booking, site } from "@/content/site";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Section } from "@/components/ui/Section";
@@ -79,13 +79,13 @@ export default function ContactPage() {
                 </p>
                 <div className="mt-7">
                   <ButtonLink
-                    href={site.bookingUrl}
-                    external
+                    href={booking.href}
+                    external={booking.external}
                     size="lg"
                     className="w-full"
                     icon="arrowRight"
                   >
-                    Book a 15-min call
+                    {booking.label}
                   </ButtonLink>
                 </div>
               </Card>

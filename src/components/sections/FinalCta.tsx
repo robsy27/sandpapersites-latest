@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+import { booking, site } from "@/content/site";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -30,13 +30,13 @@ export function FinalCta({
               Get a free quote
             </ButtonLink>
             <ButtonLink
-              href={site.bookingUrl}
-              external
+              href={booking.href}
+              external={booking.external}
               variant="secondary"
               size="lg"
               icon="calendar"
             >
-              Book a 15-min call
+              {booking.label}
             </ButtonLink>
           </div>
 

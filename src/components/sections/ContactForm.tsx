@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
-import { Button } from "@/components/ui/Button";
+import { Button, ButtonLink } from "@/components/ui/Button";
+import { site } from "@/content/site";
 import { Icon } from "@/components/ui/Icon";
 
 /**
@@ -65,19 +66,46 @@ function validate(values: Values): Errors {
   return errors;
 }
 
-async function submitEnquiry(values: Values): Promise<void> {
-  // TODO: replace with a real submission endpoint before launch.
-  console.info("Enquiry (not yet sent anywhere):", values);
-  await new Promise((resolve) => setTimeout(resolve, 700));
+/** Thrown when the server has no mail provider configured yet. */
+class NotConfiguredError extends Error {}
+
+async function submitEnquiry(
+  values: Values,
+  honeypot: string,
+): Promise<void> {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...values, company: honeypot }),
+  });
+
+  if (response.ok) return;
+
+  const data = await response.json().catch(() => ({}));
+
+  if (response.status === 503 && data.error === "not_configured") {
+    throw new NotConfiguredError();
+  }
+  if (response.status === 429) {
+    throw new Error(
+      "That's a few messages in a short time — give it a few minutes, or ring me instead.",
+    );
+  }
+  throw new Error(
+    "Something went wrong sending that. Try again, or email me directly.",
+  );
 }
 
 export function ContactForm() {
   const [values, setValues] = useState<Values>(emptyValues);
   const [errors, setErrors] = useState<Errors>({});
   const [touched, setTouched] = useState<Partial<Record<Field, boolean>>>({});
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "sent" | "error" | "unavailable"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  /* Honeypot value. Hidden from people, irresistible to bots. */
+  const [company, setCompany] = useState("");
 
   const summaryRef = useRef<HTMLDivElement>(null);
 
@@ -131,12 +159,72 @@ export function ContactForm() {
 
     setStatus("sending");
     try {
-      await submitEnquiry(values);
+      await submitEnquiry(values, company);
       setStatus("sent");
-    } catch {
+    } catch (cause) {
+      if (cause instanceof NotConfiguredError) {
+        setStatus("unavailable");
+        return;
+      }
+      setErrorMessage(
+        cause instanceof Error && cause.message
+          ? cause.message
+          : "Something went wrong sending that.",
+      );
       setStatus("error");
     }
   };
+
+  /* Delivery isn't set up yet. Rather than pretend the message was sent,
+     hand the visitor the details and pre-fill an email for them. */
+  if (status === "unavailable") {
+    const subject = encodeURIComponent(
+      `Website enquiry — ${values.name || "new enquiry"}`,
+    );
+    const body = encodeURIComponent(
+      `Name: ${values.name}\nEmail: ${values.email}\nBusiness type: ${values.businessType}\n\n${values.message}`,
+    );
+
+    return (
+      <div
+        role="alert"
+        className="rounded-2xl border border-amber-400/35 bg-amber-500/10 p-8 sm:p-9"
+      >
+        <h3 className="font-display text-xl font-bold text-white">
+          Let&rsquo;s get this to me another way
+        </h3>
+        <p className="mt-4 text-sm leading-relaxed text-mist-300">
+          The form isn&rsquo;t connected to my inbox just yet, and I&rsquo;d
+          rather tell you that than lose your message. Your answers are still
+          filled in below — send them straight over instead:
+        </p>
+        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          <ButtonLink
+            href={`mailto:${site.email}?subject=${subject}&body=${body}`}
+            size="lg"
+            icon="mail"
+          >
+            Email it to me
+          </ButtonLink>
+          <ButtonLink
+            href={`tel:${site.phone}`}
+            variant="secondary"
+            size="lg"
+            icon="phone"
+          >
+            {site.phoneDisplay}
+          </ButtonLink>
+        </div>
+        <button
+          type="button"
+          onClick={() => setStatus("idle")}
+          className="mt-6 cursor-pointer text-sm text-mist-400 underline underline-offset-4 transition-colors hover:text-accent"
+        >
+          Back to the form
+        </button>
+      </div>
+    );
+  }
 
   if (status === "sent") {
     return (
@@ -176,7 +264,7 @@ export function ContactForm() {
   );
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="space-y-6">
+    <form noValidate onSubmit={handleSubmit} className="relative space-y-6">
       {/* Error summary — focusable, each item links to its field */}
       {visibleErrors.length > 1 && (
         <div
@@ -299,10 +387,24 @@ export function ContactForm() {
         <FieldError id="message-error" message={touched.message ? errors.message : undefined} />
       </div>
 
+      {/* Honeypot. Off-screen rather than display:none, which some bots skip.
+          Never announced, never tabbable, never autofilled. */}
+      <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="company">Company (leave blank)</label>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={company}
+          onChange={(event) => setCompany(event.target.value)}
+        />
+      </div>
+
       {status === "error" && (
         <p role="alert" className="text-sm text-red-300">
-          Something went wrong sending that. Try again, or email me directly —
-          the address is below.
+          {errorMessage} You can also ring me on {site.phoneDisplay}.
         </p>
       )}
 

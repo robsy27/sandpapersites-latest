@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
-import { navLinks, site } from "@/content/site";
+import { booking, navLinks, site } from "@/content/site";
 import { Icon } from "@/components/ui/Icon";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -176,8 +176,8 @@ export function Header() {
                 Get a quote
               </ButtonLink>
               <ButtonLink
-                href={site.bookingUrl}
-                external
+                href={booking.href}
+                external={booking.external}
                 variant="secondary"
                 size="lg"
                 icon="calendar"

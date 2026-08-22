@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navLinks, site } from "@/content/site";
+import { booking, navLinks, site } from "@/content/site";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { Logo } from "./Logo";
@@ -77,13 +77,14 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href={site.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={booking.href}
+                  {...(booking.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                   className="inline-flex min-h-11 items-center gap-2.5 text-sm text-mist-400 transition-colors hover:text-accent"
                 >
                   <Icon name="calendar" className="size-4 shrink-0" />
-                  Book a call
+                  {booking.label}
                 </a>
               </li>
             </ul>

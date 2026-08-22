@@ -39,25 +39,69 @@ component code to change what the site says.
    optionally `url`) on entries in `src/content/portfolio.ts`.
 4. **Contact form** — currently frontend-only. See below.
 
-## Wiring up the contact form
+## Contact form
 
-The form validates, shows errors and renders a success state, but doesn't send
-anywhere yet. In `src/components/sections/ContactForm.tsx`, replace the
-`submitEnquiry` function with a real request:
+The form posts to `src/app/api/contact/route.ts`, which validates server-side,
+screens bots with a honeypot and a rate limit, then sends the enquiry through
+Resend's REST API. **It needs two environment variables before any email is
+actually delivered.**
 
-```ts
-async function submitEnquiry(values: Values): Promise<void> {
-  const res = await fetch("https://formspree.io/f/YOUR_ID", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(values),
-  });
-  if (!res.ok) throw new Error("Submission failed");
-}
+Until they are set, the endpoint replies `503 not_configured` and the form
+tells the visitor so, handing them a pre-filled email and the phone number —
+an enquiry is never silently lost.
+
+### Turning delivery on (about two minutes)
+
+1. Sign up at [resend.com](https://resend.com) — the free tier is ample for a
+   contact form. Sign up with the address you want enquiries to reach.
+2. Create an API key.
+3. Set both variables in Hostinger: hPanel → your site → Environment
+   variables.
+
+   ```
+   RESEND_API_KEY=re_your_key_here
+   CONTACT_TO_EMAIL=where-enquiries-should-land@example.com
+   ```
+
+4. Redeploy, then send yourself a test enquiry.
+
+`CONTACT_TO_EMAIL` is an environment variable rather than a value in the code
+so a personal address never appears in this public repository.
+
+For local development, copy `.env.example` to `.env.local` and fill in the
+same values. `.env*` is gitignored.
+
+### Sending from your own domain
+
+Until a domain is verified in Resend, mail goes out via their shared sender
+and **only delivers to your own Resend account address** — fine to start with.
+To send from your own domain, verify `sandpapersites.co.uk` in Resend, then
+add:
+
+```
+CONTACT_FROM_EMAIL="Sandpaper Sites <contact@sandpapersites.co.uk>"
 ```
 
-Throwing makes the form show its error state; resolving shows the success state.
-Nothing else needs changing.
+### Using a different provider
+
+Only the `fetch` call in `route.ts` is Resend-specific. Swap that one request
+for Formspree, Postmark, SendGrid or SMTP and nothing else changes.
+
+## Booking link
+
+`bookingUrl` in `src/content/site.ts` is `null` until you have a real booking
+page. While it is null, every "Book a call" button routes to `/contact`
+instead of a dead link.
+
+Once you have one — Calendly, Cal.com, SavvyCal — set it:
+
+```ts
+bookingUrl: "https://calendly.com/your-handle/intro-call",
+```
+
+Bookings are notified to whichever inbox the booking account was created
+with, so sign up with the address you want those notifications in. Setting a
+URL also switches the buttons to open in a new tab automatically.
 
 ## Project structure
 

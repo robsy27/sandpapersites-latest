@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+import { booking } from "@/content/site";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -53,13 +53,13 @@ export function Hero() {
                   Get a free quote
                 </ButtonLink>
                 <ButtonLink
-                  href={site.bookingUrl}
-                  external
+                  href={booking.href}
+                  external={booking.external}
                   variant="secondary"
                   size="lg"
                   icon="calendar"
                 >
-                  Book a 15-min call
+                  {booking.label}
                 </ButtonLink>
               </div>
             </Reveal>
