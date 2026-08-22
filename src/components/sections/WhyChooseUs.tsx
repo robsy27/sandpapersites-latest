@@ -21,8 +21,8 @@ const reasons: { icon: IconName; title: string; body: string }[] = [
   },
   {
     icon: "clock",
-    title: "Edits done the same day",
-    body: "Prices changed? Closed for a bank holiday? Email me and it’s live. Unlimited small edits are part of the monthly, not an extra.",
+    title: "Edits priced before they happen",
+    body: "Prices changed? Closed for a bank holiday? Email me, I quote the exact job, and it goes live once you say yes. No open-ended retainer, no surprise invoice.",
   },
   {
     icon: "search",

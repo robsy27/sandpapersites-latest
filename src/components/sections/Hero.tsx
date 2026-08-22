@@ -9,7 +9,7 @@ import { SitePreview, previewThemes } from "@/components/ui/SitePreview";
 const proofPoints = [
   { icon: "clock" as const, label: "Live in 2–3 weeks" },
   { icon: "wallet" as const, label: "From £495 + £25/mo" },
-  { icon: "refresh" as const, label: "Unlimited edits included" },
+  { icon: "refresh" as const, label: "Edits quoted, never guessed" },
 ];
 
 export function Hero() {

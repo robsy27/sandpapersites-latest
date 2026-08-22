@@ -29,7 +29,7 @@ const principles: { icon: IconName; title: string; body: string }[] = [
   {
     icon: "refresh",
     title: "A site is not a one-off",
-    body: "A website that’s three years out of date is worse than no website. That’s why edits are included rather than billed — so you actually send them.",
+    body: "A website that’s three years out of date is worse than no website. So edits are priced honestly and quoted upfront — small enough that you actually send them, clear enough that you always know the cost first.",
   },
   {
     icon: "shield",
@@ -92,8 +92,8 @@ export default function AboutPage() {
                   So {site.name} does the boring, useful thing in the middle. I
                   build you a proper custom site for a fair one-off fee. I host
                   it, secure it, back it up and keep it online. And when
-                  something needs changing, you email me and I change it —
-                  usually the same day, at no extra cost.
+                  something needs changing, you email me, I tell you exactly
+                  what it costs, and it&rsquo;s live as soon as you say yes.
                 </p>
                 <p>
                   It’s deliberately unglamorous. There’s no account team, no
@@ -115,7 +115,7 @@ export default function AboutPage() {
                     { term: "What I do", detail: "Build, host and maintain websites for small local businesses" },
                     { term: "Who for", detail: "Owner-operators with no site, or one that’s letting them down" },
                     { term: "Typical build", detail: "Two to three weeks from first call to live" },
-                    { term: "Pricing", detail: "From £495 one-off, then £25/month all-in" },
+                    { term: "Pricing", detail: "From £495 to build, £25/month to run, edits quoted per job" },
                     { term: "Contract", detail: "None — 30 days' notice, and you keep your domain" },
                   ].map((item) => (
                     <div

@@ -1,14 +1,23 @@
 /**
- * Pricing. Edit the numbers here and they update on the home page teaser
- * and the full Services page table.
+ * Pricing — two tiers, three separate fees.
+ *
+ * All figures live here. Change a number and it updates on the home page
+ * teaser and the Services page together.
+ *
+ *   initialFee — one-off, covers design and build
+ *   monthlyFee — hosting, domain, SSL, backups, monitoring
+ *   editFee    — quoted per request, always agreed before any work starts
  */
 
 export type Plan = {
   id: string;
   name: string;
   blurb: string;
-  buildFee: string;
-  monthly: string;
+  bestFor: string;
+  initialFee: string;
+  monthlyFee: string;
+  editFee: string;
+  editNote: string;
   featured: boolean;
   features: string[];
   cta: string;
@@ -18,59 +27,74 @@ export const plans: Plan[] = [
   {
     id: "starter",
     name: "Starter",
-    blurb: "For sole traders who need to exist online, properly.",
-    buildFee: "£495",
-    monthly: "£25",
+    blurb:
+      "A proper presence for sole traders and small teams who need to be found, look credible and get the phone ringing.",
+    bestFor: "Sole traders and one-location businesses",
+    initialFee: "£495",
+    monthlyFee: "£25",
+    editFee: "From £25",
+    editNote: "Quoted per request before any work begins",
     featured: false,
-    cta: "Book a call",
+    cta: "Get a quote",
     features: [
-      "Up to 3 pages",
+      "Up to 4 pages",
       "Mobile-first custom design",
       "Contact form and click-to-call",
       "Hosting, SSL and domain management",
-      "Unlimited small content edits",
+      "Daily backups and uptime monitoring",
       "Google Business Profile setup",
+      "Edits quoted and turned around in 2 working days",
     ],
   },
   {
     id: "professional",
     name: "Professional",
-    blurb: "For established local businesses that need to win the search result.",
-    buildFee: "£895",
-    monthly: "£35",
+    blurb:
+      "For established local businesses that need to win the search result, show their work and convert visitors into enquiries.",
+    bestFor: "Established businesses competing on local search",
+    initialFee: "£995",
+    monthlyFee: "£39",
+    editFee: "From £25",
+    editNote: "Priority turnaround, quoted before any work begins",
     featured: true,
-    cta: "Book a call",
+    cta: "Get a quote",
     features: [
-      "Up to 8 pages",
+      "Up to 10 pages",
       "Everything in Starter",
       "Copywriting for every page",
       "Photo gallery or portfolio section",
       "Local SEO setup and structured data",
       "Reviews and testimonials section",
-      "Priority same-day edits",
-    ],
-  },
-  {
-    id: "bespoke",
-    name: "Bespoke",
-    blurb: "Booking systems, online ordering, multi-location — anything bigger.",
-    buildFee: "From £1,500",
-    monthly: "£45+",
-    featured: false,
-    cta: "Discuss your project",
-    features: [
-      "Unlimited pages",
-      "Everything in Professional",
-      "Online booking or ordering integration",
-      "Multi-location or multi-service structure",
-      "Custom integrations (CRM, payments, stock)",
-      "Ongoing strategy calls",
+      "Booking or enquiry integration",
+      "Priority same-working-day edits",
     ],
   },
 ];
 
+/** The three fees, explained once and reused. */
+export const feeExplainer = [
+  {
+    icon: "layers" as const,
+    label: "Initial fee",
+    summary: "One-off, covers the build",
+    body: "Design, build, copy and launch. Fixed before work starts — agreed on the first call and it does not move.",
+  },
+  {
+    icon: "server" as const,
+    label: "Monthly fee",
+    summary: "Keeps the site running",
+    body: "Hosting, domain, SSL, daily backups, uptime monitoring and security updates. No contract; 30 days' notice.",
+  },
+  {
+    icon: "refresh" as const,
+    label: "Edit fee",
+    summary: "Quoted per request",
+    body: "Changes are priced on exactly what's needed and quoted upfront. You approve the figure before I touch anything, so there is never a surprise invoice.",
+  },
+];
+
 export const pricingNotes = [
-  "The build fee is a one-off. The monthly covers hosting, domain, SSL, backups and unlimited small edits.",
-  "No contract — cancel any time with 30 days' notice.",
-  "You own your domain and your content. If you leave, they come with you.",
+  "Three separate fees, so you only ever pay for what you actually use — no padded retainer covering edits you never ask for.",
+  "Every edit is quoted and approved before work begins. Nothing gets billed that you have not agreed to first.",
+  "No contract — cancel any time with 30 days' notice. You own your domain and your content, and they leave with you.",
 ];

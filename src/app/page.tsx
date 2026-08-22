@@ -9,7 +9,7 @@ import { FinalCta } from "@/components/sections/FinalCta";
 export const metadata: Metadata = {
   title: "Affordable Custom Websites for Small Local Businesses",
   description:
-    "Sandpiper Sites builds, hosts and maintains custom websites for small local businesses. One clear build fee, one small monthly cost, unlimited edits included.",
+    "Sandpiper Sites builds, hosts and maintains custom websites for small local businesses. A one-off build fee, a small monthly cost, and edits quoted only when you need them.",
   alternates: { canonical: "/" },
 };
 

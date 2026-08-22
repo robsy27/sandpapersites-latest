@@ -45,13 +45,13 @@ export const services: Service[] = [
     icon: "refresh",
     title: "Edit",
     summary:
-      "Prices changed? New photos? Email me and it's live — usually the same day.",
+      "Prices changed? New photos? Email me, I quote the exact job, and it's live once you approve it.",
     details: [
-      "Unlimited small content edits included in your monthly fee",
+      "Every change quoted upfront — you approve the figure before I start",
       "Text, images, prices, opening hours, staff changes",
-      "New pages and larger changes quoted upfront, no surprises",
+      "Small edits from £25; larger work priced the same transparent way",
       "Direct line to me — no ticket queue, no account manager",
-      "Typical turnaround: same working day",
+      "Turnaround: same working day on Professional, 2 days on Starter",
     ],
   },
 ];

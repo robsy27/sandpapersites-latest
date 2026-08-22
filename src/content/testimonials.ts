@@ -37,12 +37,12 @@ export const promises: Promise_[] = [
   {
     icon: "wallet",
     title: "The price you were quoted",
-    body: "The build fee is fixed before work starts. If the scope genuinely changes, you get a number first — never an invoice after.",
+    body: "The build fee is fixed before work starts, and every edit is priced before I touch it. You get a number first — never an invoice after.",
   },
   {
     icon: "refresh",
-    title: "Edits done the same day",
-    body: "Prices, hours, photos, staff changes. Email me and it's live, usually within hours, included in the monthly.",
+    title: "Edits quoted before they happen",
+    body: "Prices, hours, photos, staff changes. I price the exact job, you approve it, then it goes live — often the same day.",
   },
   {
     icon: "shield",

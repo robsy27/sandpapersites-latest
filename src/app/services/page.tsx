@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { included, services } from "@/content/services";
-import { pricingNotes } from "@/content/pricing";
+import { feeExplainer, pricingNotes } from "@/content/pricing";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHeader } from "@/components/sections/PageHeader";
@@ -13,7 +13,7 @@ import { Reveal } from "@/components/ui/Reveal";
 export const metadata: Metadata = {
   title: "Services & Pricing",
   description:
-    "Build, host and edit — the full package explained. A one-off build fee from £495 plus monthly hosting from £25, including unlimited small content edits.",
+    "Build, host and edit — explained. A one-off build fee from £495, monthly hosting from £25, and edits quoted per request so you only pay for what you need.",
   alternates: { canonical: "/services" },
 };
 
@@ -31,7 +31,7 @@ const process = [
   {
     step: "03",
     title: "Launch and look after",
-    body: "I handle the domain, hosting, SSL and Google setup. Once you’re live, the monthly fee covers everything — including sending me edits whenever you need them.",
+    body: "I handle the domain, hosting, SSL and Google setup. Once you’re live, the monthly fee keeps it online and secure, and any change you want is quoted before I start.",
   },
 ];
 
@@ -111,6 +111,36 @@ export default function ServicesPage() {
             </Reveal>
           ))}
         </ul>
+      </Section>
+
+      {/* How the three fees work */}
+      <Section tone="deep">
+        <SectionHeading
+          eyebrow="How the fees work"
+          title="Three fees, so you only pay for what you use."
+          lead="Most agencies bundle everything into one padded monthly retainer. Splitting it out means you are not paying every month for edits you never ask for."
+        />
+
+        <ol className="mt-14 grid gap-6 md:grid-cols-3">
+          {feeExplainer.map((fee, index) => (
+            <Reveal as="li" key={fee.label} delay={index * 70}>
+              <Card className="h-full">
+                <span className="inline-flex size-12 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent">
+                  <Icon name={fee.icon} className="size-6" />
+                </span>
+                <h3 className="mt-6 font-display text-xl font-bold text-white">
+                  {fee.label}
+                </h3>
+                <p className="mt-1.5 text-xs font-semibold tracking-wide text-accent uppercase">
+                  {fee.summary}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-mist-400">
+                  {fee.body}
+                </p>
+              </Card>
+            </Reveal>
+          ))}
+        </ol>
       </Section>
 
       {/* Pricing */}

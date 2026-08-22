@@ -6,6 +6,64 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/cn";
 
+/** One row of the three-fee breakdown inside a plan card. */
+function FeeRow({
+  label,
+  value,
+  note,
+  featured,
+  emphasis = false,
+}: {
+  label: string;
+  value: string;
+  note: string;
+  featured: boolean;
+  emphasis?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex items-baseline justify-between gap-4 border-b py-3.5 last:border-0",
+        featured ? "border-navy-700" : "border-navy-900/10",
+      )}
+    >
+      <span className="min-w-0">
+        <span
+          className={cn(
+            "block font-display text-sm font-semibold",
+            featured ? "text-white" : "text-navy-900",
+          )}
+        >
+          {label}
+        </span>
+        <span
+          className={cn(
+            "block text-xs leading-snug",
+            featured ? "text-mist-400" : "text-mist-600",
+          )}
+        >
+          {note}
+        </span>
+      </span>
+      <span
+        className={cn(
+          "shrink-0 font-display font-bold whitespace-nowrap tabular-nums",
+          emphasis ? "text-2xl" : "text-lg",
+          featured
+            ? emphasis
+              ? "text-white"
+              : "text-accent"
+            : emphasis
+              ? "text-navy-900"
+              : "text-accent-ink",
+        )}
+      >
+        {value}
+      </span>
+    </div>
+  );
+}
+
 export function PricingTeaser() {
   return (
     <Section
@@ -23,15 +81,16 @@ export function PricingTeaser() {
         aria-hidden="true"
         className="pointer-events-none absolute -top-24 left-1/2 size-[42rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]"
       />
+
       <SectionHeading
         tone="light"
         align="center"
         eyebrow="Straightforward pricing"
-        title="One build fee. One small monthly."
-        lead="No hourly rates, no hidden extras, no contract. Here’s what it costs — the same figures you’d get on a call."
+        title="Two packages. Three clear fees."
+        lead="A one-off fee to build it, a small monthly to keep it running, and edits quoted only when you actually need them — approved by you before any work starts."
       />
 
-      <ul className="mt-14 grid items-start gap-6 lg:grid-cols-3">
+      <ul className="mx-auto mt-14 grid max-w-4xl items-start gap-6 lg:grid-cols-2">
         {plans.map((plan, index) => (
           <Reveal as="li" key={plan.id} delay={index * 70}>
             <div
@@ -58,45 +117,47 @@ export function PricingTeaser() {
               </h3>
               <p
                 className={cn(
-                  "mt-2 min-h-[3rem] text-sm leading-relaxed",
+                  "mt-1.5 text-xs font-medium tracking-wide uppercase",
+                  plan.featured ? "text-accent" : "text-accent-ink",
+                )}
+              >
+                {plan.bestFor}
+              </p>
+              <p
+                className={cn(
+                  "mt-3 min-h-[4.5rem] text-sm leading-relaxed",
                   plan.featured ? "text-mist-400" : "text-mist-600",
                 )}
               >
                 {plan.blurb}
               </p>
 
+              {/* The three fees, itemised */}
               <div
                 className={cn(
-                  "mt-6 border-t pt-6",
+                  "mt-5 border-t pt-2",
                   plan.featured ? "border-navy-700" : "border-navy-900/10",
                 )}
               >
-                <p className="flex flex-wrap items-baseline gap-x-1.5">
-                  <span
-                    className={cn(
-                      "font-display text-4xl font-bold whitespace-nowrap tabular-nums",
-                      plan.featured ? "text-white" : "text-navy-900",
-                    )}
-                  >
-                    {plan.buildFee}
-                  </span>
-                  <span
-                    className={cn(
-                      "text-sm whitespace-nowrap",
-                      plan.featured ? "text-mist-400" : "text-mist-600",
-                    )}
-                  >
-                    one-off build
-                  </span>
-                </p>
-                <p
-                  className={cn(
-                    "mt-1.5 text-sm font-medium tabular-nums",
-                    plan.featured ? "text-accent" : "text-accent-ink",
-                  )}
-                >
-                  then {plan.monthly}/month — hosting, edits and support
-                </p>
+                <FeeRow
+                  label="Initial fee"
+                  note="One-off, to build the site"
+                  value={plan.initialFee}
+                  featured={plan.featured}
+                  emphasis
+                />
+                <FeeRow
+                  label="Monthly fee"
+                  note="Hosting and running the site"
+                  value={`${plan.monthlyFee}/mo`}
+                  featured={plan.featured}
+                />
+                <FeeRow
+                  label="Edit fee"
+                  note={plan.editNote}
+                  value={plan.editFee}
+                  featured={plan.featured}
+                />
               </div>
 
               <ul className="mt-7 flex-1 space-y-3">
@@ -137,7 +198,7 @@ export function PricingTeaser() {
 
       <Reveal delay={140} className="mt-12 text-center">
         <ButtonLink href="/services" variant="light" icon="arrowRight">
-          Full breakdown of what’s included
+          Full breakdown of what&rsquo;s included
         </ButtonLink>
       </Reveal>
     </Section>
