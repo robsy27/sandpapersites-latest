@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { booking, site } from "@/content/site";
+import { faqs } from "@/content/faqs";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Section } from "@/components/ui/Section";
@@ -16,23 +17,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-const faqs = [
-  {
-    question: "How long does a site take?",
-    answer:
-      "Two to three weeks for most builds, from the first call to going live. The main variable is how quickly you can get me your photos and content.",
-  },
-  {
-    question: "What if I already have a domain?",
-    answer:
-      "Bring it with you. I’ll handle pointing it at the new site with no downtime, and you keep ownership of it throughout.",
-  },
-  {
-    question: "Am I tied into a contract?",
-    answer:
-      "No. The monthly rolls on 30 days' notice. If you leave, your domain and content go with you.",
-  },
-];
 
 export default function ContactPage() {
   return (
