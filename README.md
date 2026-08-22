@@ -11,8 +11,11 @@ npm run dev
 
 Then open http://localhost:3000
 
-Other scripts: `npm run build` (production build), `npm start` (serve the build),
-`npm run lint`.
+Other scripts: `npm run build` (static export into `out/`), `npm run lint`.
+
+Note: `npm start` does not apply — the site is a static export, so there is no
+server to run. To preview a build, serve the `out/` folder with any static
+server, e.g. `python3 -m http.server 4000 --directory out`.
 
 ## Where to edit content
 
@@ -107,7 +110,30 @@ Worth preserving if you edit the components:
 
 ## Deploying
 
-**Vercel** — import the repo; no configuration needed.
+The site is configured for **static export** (`output: "export"` in
+`next.config.ts`). `npm run build` writes a complete, self-contained site to
+`out/` — plain HTML, CSS and JS with no Node server required. That makes it
+deployable to essentially any host.
 
-**Netlify** — build command `npm run build`, and install
-`@netlify/plugin-nextjs` (Netlify usually adds it automatically).
+### Hostinger / cPanel / any static host
+
+1. `npm run build`
+2. Upload **the contents of `out/`** — not the folder itself — into
+   `public_html`, so that `public_html/index.html` exists.
+3. Include the hidden `out/.htaccess` file. It wires up the 404 page and sets
+   caching. Most file managers hide dotfiles by default; in Hostinger's File
+   Manager turn on *Settings → Show hidden files*.
+
+The whole site is ~2.4 MB. Uploading a zip and extracting it in place is much
+faster than uploading files individually.
+
+Common mistake: uploading the project source or the `.next/` folder. Neither
+works on shared hosting — `.next/` is a Node server build and needs a running
+Node process. Only `out/` is servable as static files.
+
+### Vercel or Netlify
+
+Import the repo; both detect Next.js automatically and need no configuration.
+Static export works fine on both. If you later want server features (a real
+contact-form endpoint, image optimisation), remove the `output: "export"` line
+from `next.config.ts` and deploy to one of these instead.
