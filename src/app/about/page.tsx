@@ -100,7 +100,7 @@ export default function AboutPage() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal>
-              <div className="max-w-measure space-y-6 text-base leading-relaxed text-mist-300">
+              <div className="space-y-6 text-base leading-relaxed text-mist-300">
                 <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
                   The story
                 </h2>

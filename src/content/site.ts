@@ -17,12 +17,20 @@ export const site = {
   phoneDisplay: "07706 261 786",
   location: "Serving local businesses across the UK",
   /**
-   * Booking link. Set this to your real Calendly / Cal.com URL once the
-   * account exists — bookings then land in whichever inbox that account
-   * was created with.
+   * Booking link for the "Arrange a call" buttons.
    *
-   * Leave it null and every "Book a call" button falls back to the contact
-   * page instead of pointing at a URL that 404s.
+   * To use Google Calendar: open Google Calendar, Create > Appointment
+   * schedule, set your availability and a 15-minute slot length, then use
+   * "Share" > "Copy link". It looks like:
+   *
+   *   https://calendar.app.google/XXXXXXXXXXXX
+   *
+   * Paste it below. Bookings then appear straight in that Google account's
+   * calendar and inbox — no extra service in between.
+   *
+   * While this is null, every "Arrange a call" button routes to /contact
+   * rather than pointing at a URL that 404s. Setting it also switches the
+   * buttons to open in a new tab and relabels them "Book a 15-min call".
    */
   bookingUrl: null as string | null,
   social: {
