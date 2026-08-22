@@ -1,0 +1,151 @@
+import type { Metadata } from "next";
+import { site } from "@/content/site";
+import { PageHeader } from "@/components/sections/PageHeader";
+import { ContactForm } from "@/components/sections/ContactForm";
+import { Section } from "@/components/ui/Section";
+import { Card } from "@/components/ui/Card";
+import { Icon } from "@/components/ui/Icon";
+import { ButtonLink } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get a free, no-obligation quote for your business website, or book a 15-minute intro call. Replies usually within one working day.",
+  alternates: { canonical: "/contact" },
+};
+
+const faqs = [
+  {
+    question: "How long does a site take?",
+    answer:
+      "Two to three weeks for most builds, from the first call to going live. The main variable is how quickly you can get me your photos and content.",
+  },
+  {
+    question: "What if I already have a domain?",
+    answer:
+      "Bring it with you. I’ll handle pointing it at the new site with no downtime, and you keep ownership of it throughout.",
+  },
+  {
+    question: "Am I tied into a contract?",
+    answer:
+      "No. The monthly rolls on 30 days' notice. If you leave, your domain and content go with you.",
+  },
+];
+
+export default function ContactPage() {
+  return (
+    <>
+      <PageHeader
+        eyebrow="Contact"
+        title="Tell me about your business."
+        lead="Fill in the form and I’ll come back with a straight answer on cost and timescale — usually within one working day. Or skip ahead and book a call."
+      />
+
+      <Section tone="deep">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+          {/* Form */}
+          <div className="lg:col-span-7">
+            <Reveal>
+              <Card className="sm:p-9">
+                <h2 className="font-display text-2xl font-bold text-white">
+                  Get a free quote
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-mist-400">
+                  No obligation, no follow-up sequence. Just an honest answer on
+                  what I’d build and what it would cost.
+                </p>
+                <div className="mt-8">
+                  <ContactForm />
+                </div>
+              </Card>
+            </Reveal>
+          </div>
+
+          {/* Sidebar */}
+          <div className="lg:col-span-5">
+            <Reveal delay={100} className="space-y-6">
+              {/* Book a call */}
+              <Card className="border-accent/25 bg-accent/8">
+                <span className="inline-flex size-12 items-center justify-center rounded-xl bg-accent/15 text-accent">
+                  <Icon name="calendar" className="size-6" />
+                </span>
+                <h2 className="mt-6 font-display text-xl font-bold text-white">
+                  Rather just talk?
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-mist-300">
+                  Book a free 15-minute call at a time that suits you. Evenings
+                  and weekends are available — I know you’re working days.
+                </p>
+                <div className="mt-7">
+                  <ButtonLink
+                    href={site.bookingUrl}
+                    external
+                    size="lg"
+                    className="w-full"
+                    icon="arrowRight"
+                  >
+                    Book a 15-min call
+                  </ButtonLink>
+                </div>
+              </Card>
+
+              {/* Direct details */}
+              <Card>
+                <h2 className="font-display text-lg font-bold text-white">
+                  Direct details
+                </h2>
+                <ul className="mt-5 space-y-1">
+                  <li>
+                    <a
+                      href={`mailto:${site.email}`}
+                      className="flex min-h-11 items-center gap-3 rounded-lg text-sm text-mist-300 transition-colors hover:text-accent break-anywhere"
+                    >
+                      <Icon name="mail" className="size-4 shrink-0 text-accent" />
+                      {site.email}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`tel:${site.phone}`}
+                      className="flex min-h-11 items-center gap-3 rounded-lg text-sm text-mist-300 transition-colors hover:text-accent"
+                    >
+                      <Icon name="phone" className="size-4 shrink-0 text-accent" />
+                      {site.phoneDisplay}
+                    </a>
+                  </li>
+                  <li className="flex min-h-11 items-center gap-3 text-sm text-mist-400">
+                    <Icon name="clock" className="size-4 shrink-0 text-accent" />
+                    Replies within one working day
+                  </li>
+                </ul>
+              </Card>
+
+              {/* FAQs */}
+              <Card>
+                <h2 className="font-display text-lg font-bold text-white">
+                  Quick answers
+                </h2>
+                <dl className="mt-5 space-y-5">
+                  {faqs.map((faq) => (
+                    <div
+                      key={faq.question}
+                      className="border-b border-navy-700 pb-5 last:border-0 last:pb-0"
+                    >
+                      <dt className="font-display text-sm font-semibold text-white">
+                        {faq.question}
+                      </dt>
+                      <dd className="mt-2 text-sm leading-relaxed text-mist-400">
+                        {faq.answer}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </Card>
+            </Reveal>
+          </div>
+        </div>
+      </Section>
+    </>
+  );
+}

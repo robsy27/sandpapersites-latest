@@ -1,26 +1,135 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   Sandpiper Sites — Design Tokens
+   Pattern: Trust & Authority + Conversion
+   Navy/grey corporate base, teal accent reserved for CTAs and highlights.
+   ========================================================================== */
+
+@theme {
+  /* --- Brand: navy -------------------------------------------------------- */
+  --color-navy-950: #060f1f; /* deepest — footer, overlays */
+  --color-navy-900: #0a1930; /* primary brand background */
+  --color-navy-800: #132441; /* raised surface on navy */
+  --color-navy-700: #1e2a3a; /* section break / card border */
+  --color-navy-600: #2b3b52;
+
+  /* --- Neutrals: cool greys ----------------------------------------------- */
+  --color-mist-50: #f9fafb;
+  --color-mist-100: #f3f4f6; /* light section background */
+  --color-mist-200: #e5e7eb; /* light borders, muted text on navy */
+  --color-mist-300: #cbd5e1;
+  --color-mist-400: #94a3b8; /* muted text on navy (6.5:1) */
+  --color-mist-600: #475569; /* muted text on light (6:1) */
+
+  /* --- Accent: teal -------------------------------------------------------
+     `accent` is for DARK backgrounds only. On light backgrounds use
+     `accent-ink` for text (4.9:1 on mist-100) — teal-400 fails there.     */
+  --color-accent: #2dd4bf;
+  --color-accent-hover: #5eead4;
+  --color-accent-deep: #14b8a6;
+  --color-accent-ink: #0f766e;
+
+  /* --- Typography --------------------------------------------------------- */
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* --- Motion ------------------------------------------------------------- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* --- Layout ------------------------------------------------------------- */
+  --spacing-header: 4.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Sticky header must not obscure the scroll/focus target (WCAG 2.2 AA) */
+    scroll-padding-top: calc(var(--spacing-header) + 1.5rem);
+    -webkit-text-size-adjust: 100%;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-navy-900);
+    color: var(--color-mist-200);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible focus on every interactive control (never removed) */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Long URLs / IDs reflow instead of forcing horizontal scroll */
+  .break-anywhere {
+    overflow-wrap: anywhere;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Scroll reveal. The hidden state is undone by JS on intersection; the
+     <noscript> block in layout.tsx reveals everything when JS is off. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 600ms var(--ease-out-soft),
+      transform 600ms var(--ease-out-soft);
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(100deg, var(--color-accent) 0%, #7dd3fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Subtle grid texture for hero / dark sections */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
