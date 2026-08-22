@@ -125,7 +125,7 @@ export default function AboutPage() {
                       <dt className="font-display text-xs font-semibold tracking-[0.14em] text-accent uppercase">
                         {item.term}
                       </dt>
-                      <dd className="mt-2 text-sm leading-relaxed text-mist-300">
+                      <dd className="mt-2 text-body leading-relaxed text-mist-300">
                         {item.detail}
                       </dd>
                     </div>
@@ -144,7 +144,7 @@ export default function AboutPage() {
           title="Four things I won’t budge on."
         />
 
-        <ul className="mt-14 grid gap-x-10 gap-y-11 sm:grid-cols-2">
+        <ul className="mt-10 grid gap-x-10 gap-y-11 sm:grid-cols-2">
           {principles.map((principle, index) => (
             <Reveal as="li" key={principle.title} delay={(index % 2) * 70}>
               <span className="inline-flex size-11 items-center justify-center rounded-xl bg-navy-800 text-accent ring-1 ring-navy-700">
@@ -153,7 +153,7 @@ export default function AboutPage() {
               <h3 className="mt-5 font-display text-lg font-bold text-white">
                 {principle.title}
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-mist-400">
+              <p className="mt-2.5 text-body leading-relaxed text-mist-300">
                 {principle.body}
               </p>
             </Reveal>
@@ -170,7 +170,7 @@ export default function AboutPage() {
           lead="I’d rather tell you up front that I’m the wrong choice than take the work and disappoint you."
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <Reveal>
             <div className="h-full rounded-2xl border border-navy-900/10 bg-white p-7 sm:p-8">
               <h3 className="font-display text-lg font-bold text-navy-900">
@@ -180,7 +180,7 @@ export default function AboutPage() {
                 {suitedTo.map((item) => (
                   <li
                     key={item}
-                    className="flex gap-3 text-sm leading-relaxed text-navy-900/80"
+                    className="flex gap-3 text-body leading-relaxed text-navy-900/85"
                   >
                     <Icon
                       name="check"
@@ -202,17 +202,17 @@ export default function AboutPage() {
                 {notSuitedTo.map((item) => (
                   <li
                     key={item}
-                    className="flex gap-3 text-sm leading-relaxed text-mist-600"
+                    className="flex gap-3 text-body leading-relaxed text-mist-700"
                   >
                     <Icon
                       name="close"
-                      className="mt-1 size-3.5 shrink-0 text-mist-600"
+                      className="mt-1 size-3.5 shrink-0 text-mist-700"
                     />
                     {item}
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-sm leading-relaxed text-mist-600">
+              <p className="mt-6 text-body leading-relaxed text-mist-700">
                 If that’s you, say hello anyway — I’ll happily point you toward
                 someone better suited.
               </p>

@@ -13,7 +13,7 @@ export function FinalCta({
   lead?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-navy-900 py-20 sm:py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-navy-900 py-14 sm:py-16 lg:py-20">
       <AmbientBackground intensity="full" />
 
       <Container className="relative">
@@ -21,7 +21,7 @@ export function FinalCta({
           <h2 className="font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             {title}
           </h2>
-          <p className="mt-6 text-base leading-relaxed text-mist-400 sm:text-lg">
+          <p className="mt-6 text-base leading-relaxed text-mist-300 sm:text-lg">
             {lead}
           </p>
 
@@ -40,7 +40,7 @@ export function FinalCta({
             </ButtonLink>
           </div>
 
-          <p className="mt-8 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-mist-400">
+          <p className="mt-8 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-mist-300">
             <Icon name="mail" className="size-4 text-accent" />
             Prefer email?
             <a

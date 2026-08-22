@@ -110,7 +110,7 @@ export function Header() {
                   "relative rounded-lg px-3.5 py-2.5 text-sm font-medium transition-colors duration-200",
                   isActive(link.href)
                     ? "text-white"
-                    : "text-mist-400 hover:text-white",
+                    : "text-mist-300 hover:text-white",
                 )}
               >
                 {link.label}

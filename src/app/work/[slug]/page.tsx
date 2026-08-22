@@ -48,14 +48,14 @@ export default async function ProjectPage({
   return (
     <>
       {/* Header */}
-      <section className="relative overflow-hidden bg-navy-900 pt-14 pb-20 sm:pt-16 sm:pb-24">
+      <section className="relative overflow-hidden bg-navy-900 pt-10 pb-14 sm:pt-12 sm:pb-16">
         <AmbientBackground intensity="soft" />
 
         <Container className="relative">
           <Reveal>
             <Link
               href="/work"
-              className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-mist-400 transition-colors hover:text-accent"
+              className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-mist-300 transition-colors hover:text-accent"
             >
               <Icon name="arrowRight" className="size-4 rotate-180" />
               All work
@@ -78,7 +78,7 @@ export default async function ProjectPage({
                 <h1 className="mt-5 font-display text-4xl font-bold text-white sm:text-5xl">
                   {project.name}
                 </h1>
-                <p className="mt-6 text-lg leading-relaxed text-mist-400">
+                <p className="mt-6 text-lg leading-relaxed text-mist-300">
                   {project.summary}
                 </p>
 
@@ -143,7 +143,7 @@ export default async function ProjectPage({
                   <h3 className="font-display text-lg font-bold text-white">
                     {decision.title}
                   </h3>
-                  <p className="mt-2.5 leading-relaxed text-mist-400">
+                  <p className="mt-2.5 leading-relaxed text-mist-300">
                     {decision.body}
                   </p>
                 </div>

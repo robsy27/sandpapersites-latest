@@ -69,7 +69,7 @@ export default function WorkPage() {
                     <h2 className="mt-3 font-display text-lg font-bold text-white transition-colors group-hover:text-accent">
                       {project.name}
                     </h2>
-                    <p className="mt-2.5 text-sm leading-relaxed text-mist-400">
+                    <p className="mt-2.5 text-body leading-relaxed text-mist-300">
                       {project.summary}
                     </p>
 
@@ -99,7 +99,7 @@ export default function WorkPage() {
         </ul>
 
         <Reveal delay={140}>
-          <p className="mx-auto mt-14 max-w-2xl rounded-2xl border border-navy-700 bg-navy-800/40 p-6 text-center text-sm leading-relaxed text-mist-400">
+          <p className="mx-auto mt-14 max-w-2xl rounded-2xl border border-navy-700 bg-navy-800/40 p-6 text-center text-body leading-relaxed text-mist-300">
             These are concept builds, not past clients — I&rsquo;d rather show you
             honest work of my own than borrow someone else&rsquo;s. Real projects
             replace them as they launch.

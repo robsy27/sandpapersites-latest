@@ -45,7 +45,7 @@ export function WhyChooseUs() {
         lead="Big agencies charge thousands and put a junior on your account. DIY builders leave you doing the work. This sits in the gap between them."
       />
 
-      <ul className="mt-14 grid gap-x-10 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-10 grid gap-x-10 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
         {reasons.map((reason, index) => (
           <Reveal as="li" key={reason.title} delay={(index % 3) * 70}>
             <span className="inline-flex size-11 items-center justify-center rounded-xl bg-navy-800 text-accent ring-1 ring-navy-700">
@@ -54,7 +54,7 @@ export function WhyChooseUs() {
             <h3 className="mt-5 font-display text-lg font-bold text-white">
               {reason.title}
             </h3>
-            <p className="mt-2.5 text-sm leading-relaxed text-mist-400">
+            <p className="mt-2.5 text-body leading-relaxed text-mist-300">
               {reason.body}
             </p>
           </Reveal>

@@ -57,7 +57,7 @@ export function SectionHeading({
         <p
           className={cn(
             "mt-5 text-base leading-relaxed sm:text-lg",
-            isDark ? "text-mist-400" : "text-mist-600",
+            isDark ? "text-mist-300" : "text-mist-700",
           )}
         >
           {lead}

@@ -22,7 +22,7 @@ export function Hero() {
       />
 
       <Container className="relative">
-        <div className="grid items-center gap-16 py-20 sm:py-24 lg:grid-cols-12 lg:gap-12 lg:py-32">
+        <div className="grid items-center gap-12 py-14 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-24">
           <div className="lg:col-span-7">
             <Reveal>
               <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 font-display text-xs font-semibold tracking-[0.14em] text-accent uppercase">
@@ -40,7 +40,7 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={140}>
-              <p className="mt-7 max-w-xl text-lg leading-relaxed text-mist-400">
+              <p className="mt-7 max-w-xl text-lg leading-relaxed text-mist-300">
                 Custom-built, properly hosted and kept up to date for you. One
                 clear build fee, one small monthly cost, and a real person who
                 answers the phone when something needs changing.

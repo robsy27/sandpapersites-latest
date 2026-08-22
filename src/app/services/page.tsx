@@ -52,7 +52,7 @@ export default function ServicesPage() {
           lead="You pay once to have it made, then a small monthly amount to have it hosted, secured and kept current."
         />
 
-        <div className="mt-14 space-y-6">
+        <div className="mt-10 space-y-6">
           {services.map((service, index) => (
             <Reveal key={service.id} delay={index * 70}>
               <Card className="grid gap-8 lg:grid-cols-12">
@@ -63,7 +63,7 @@ export default function ServicesPage() {
                   <h3 className="mt-6 font-display text-2xl font-bold text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-mist-400">
+                  <p className="mt-3 text-body leading-relaxed text-mist-300">
                     {service.summary}
                   </p>
                 </div>
@@ -72,7 +72,7 @@ export default function ServicesPage() {
                   {service.details.map((detail) => (
                     <li
                       key={detail}
-                      className="flex gap-3 text-sm leading-relaxed text-mist-300"
+                      className="flex gap-3 text-body leading-relaxed text-mist-300"
                     >
                       <Icon
                         name="check"
@@ -96,7 +96,7 @@ export default function ServicesPage() {
           lead="These aren’t upsells. They’re the baseline for a site that actually works for a local business."
         />
 
-        <ul className="mt-14 grid gap-x-10 gap-y-11 md:grid-cols-3">
+        <ul className="mt-10 grid gap-x-10 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
           {included.map((item, index) => (
             <Reveal as="li" key={item.title} delay={index * 70}>
               <span className="inline-flex size-11 items-center justify-center rounded-xl bg-navy-800 text-accent ring-1 ring-navy-700">
@@ -105,7 +105,7 @@ export default function ServicesPage() {
               <h3 className="mt-5 font-display text-lg font-bold text-white">
                 {item.title}
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-mist-400">
+              <p className="mt-2.5 text-body leading-relaxed text-mist-300">
                 {item.body}
               </p>
             </Reveal>
@@ -121,7 +121,7 @@ export default function ServicesPage() {
           lead="Most agencies bundle everything into one padded monthly retainer. Splitting it out means you are not paying every month for edits you never ask for."
         />
 
-        <ol className="mt-14 grid gap-6 md:grid-cols-3">
+        <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {feeExplainer.map((fee, index) => (
             <Reveal as="li" key={fee.label} delay={index * 70}>
               <Card className="h-full">
@@ -134,7 +134,7 @@ export default function ServicesPage() {
                 <p className="mt-1.5 text-xs font-semibold tracking-wide text-accent uppercase">
                   {fee.summary}
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-mist-400">
+                <p className="mt-4 text-body leading-relaxed text-mist-300">
                   {fee.body}
                 </p>
               </Card>
@@ -147,13 +147,13 @@ export default function ServicesPage() {
       <PricingTeaser />
 
       {/* Pricing small print */}
-      <Section tone="navy" className="py-16 sm:py-20 lg:py-20">
+      <Section tone="navy" className="py-10 sm:py-12 lg:py-14">
         <Reveal>
           <ul className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-3">
             {pricingNotes.map((note) => (
               <li
                 key={note}
-                className="flex gap-3 rounded-xl border border-navy-700 bg-navy-800/40 p-5 text-sm leading-relaxed text-mist-300"
+                className="flex gap-3 rounded-xl border border-navy-700 bg-navy-800/40 p-5 text-body leading-relaxed text-mist-300"
               >
                 <Icon name="check" className="mt-1 size-3.5 shrink-0 text-accent" />
                 {note}
@@ -172,7 +172,7 @@ export default function ServicesPage() {
           lead="No lengthy onboarding, no 40-page proposal. Most sites go from first conversation to live in two to three weeks."
         />
 
-        <ol className="mt-14 grid gap-6 md:grid-cols-3">
+        <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {process.map((item, index) => (
             <Reveal as="li" key={item.step} delay={index * 70}>
               <div className="h-full rounded-2xl border border-navy-900/10 bg-white p-7 transition-all duration-250 ease-out hover:-translate-y-1 hover:shadow-lg">
@@ -182,7 +182,7 @@ export default function ServicesPage() {
                 <h3 className="mt-4 font-display text-lg font-bold text-navy-900">
                   {item.title}
                 </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-mist-600">
+                <p className="mt-2.5 text-body leading-relaxed text-mist-700">
                   {item.body}
                 </p>
               </div>

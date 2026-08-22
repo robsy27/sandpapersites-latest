@@ -51,7 +51,7 @@ export default function ContactPage() {
                 <h2 className="font-display text-2xl font-bold text-white">
                   Get a free quote
                 </h2>
-                <p className="mt-3 text-sm leading-relaxed text-mist-400">
+                <p className="mt-3 text-body leading-relaxed text-mist-300">
                   No obligation, no follow-up sequence. Just an honest answer on
                   what I’d build and what it would cost.
                 </p>
@@ -73,7 +73,7 @@ export default function ContactPage() {
                 <h2 className="mt-6 font-display text-xl font-bold text-white">
                   Rather just talk?
                 </h2>
-                <p className="mt-3 text-sm leading-relaxed text-mist-300">
+                <p className="mt-3 text-body leading-relaxed text-mist-300">
                   Book a free 15-minute call at a time that suits you. Evenings
                   and weekends are available — I know you’re working days.
                 </p>
@@ -114,7 +114,7 @@ export default function ContactPage() {
                       {site.phoneDisplay}
                     </a>
                   </li>
-                  <li className="flex min-h-11 items-center gap-3 text-sm text-mist-400">
+                  <li className="flex min-h-11 items-center gap-3 text-sm text-mist-300">
                     <Icon name="clock" className="size-4 shrink-0 text-accent" />
                     Replies within one working day
                   </li>
@@ -135,7 +135,7 @@ export default function ContactPage() {
                       <dt className="font-display text-sm font-semibold text-white">
                         {faq.question}
                       </dt>
-                      <dd className="mt-2 text-sm leading-relaxed text-mist-400">
+                      <dd className="mt-2 text-body leading-relaxed text-mist-300">
                         {faq.answer}
                       </dd>
                     </div>

@@ -15,7 +15,7 @@ export function ServicesOverview() {
         lead="Most small businesses don’t want a website project. They want a website that exists, works and stays current. That’s the three-part package."
       />
 
-      <ul className="mt-14 grid gap-6 md:grid-cols-3">
+      <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => (
           <Reveal as="li" key={service.id} delay={index * 70}>
             <Card interactive className="h-full">
@@ -25,14 +25,14 @@ export function ServicesOverview() {
               <h3 className="mt-6 font-display text-xl font-bold text-white">
                 {service.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-mist-400">
+              <p className="mt-3 text-body leading-relaxed text-mist-300">
                 {service.summary}
               </p>
               <ul className="mt-6 space-y-2.5">
                 {service.details.slice(0, 3).map((detail) => (
                   <li
                     key={detail}
-                    className="flex gap-3 text-sm leading-relaxed text-mist-300"
+                    className="flex gap-3 text-body leading-relaxed text-mist-300"
                   >
                     <Icon
                       name="check"

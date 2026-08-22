@@ -36,7 +36,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "py-20 sm:py-24 lg:py-32",
+        "py-14 sm:py-16 lg:py-20",
         tones[tone],
         ambient && "relative overflow-hidden",
         className,

@@ -12,7 +12,7 @@ export default function NotFound() {
           <h1 className="mt-5 font-display text-4xl font-bold text-white sm:text-5xl">
             That page has wandered off.
           </h1>
-          <p className="mt-6 text-base leading-relaxed text-mist-400">
+          <p className="mt-6 text-base leading-relaxed text-mist-300">
             The link may be out of date, or the page may have moved. Head back
             to the homepage, or get in touch and I’ll point you the right way.
           </p>

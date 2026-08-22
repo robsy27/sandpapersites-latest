@@ -39,7 +39,7 @@ function FeeRow({
         <span
           className={cn(
             "block text-xs leading-snug",
-            featured ? "text-mist-400" : "text-mist-600",
+            featured ? "text-mist-300" : "text-mist-700",
           )}
         >
           {note}
@@ -90,7 +90,7 @@ export function PricingTeaser() {
         lead="A one-off fee to build it, a small monthly to keep it running, and edits quoted only when you actually need them — approved by you before any work starts."
       />
 
-      <ul className="mx-auto mt-14 grid max-w-4xl items-start gap-6 lg:grid-cols-2">
+      <ul className="mx-auto mt-10 grid max-w-4xl items-start gap-6 lg:grid-cols-2">
         {plans.map((plan, index) => (
           <Reveal as="li" key={plan.id} delay={index * 70}>
             <div
@@ -125,8 +125,8 @@ export function PricingTeaser() {
               </p>
               <p
                 className={cn(
-                  "mt-3 min-h-[4.5rem] text-sm leading-relaxed",
-                  plan.featured ? "text-mist-400" : "text-mist-600",
+                  "mt-3 min-h-[4.5rem] text-body leading-relaxed",
+                  plan.featured ? "text-mist-300" : "text-mist-700",
                 )}
               >
                 {plan.blurb}
@@ -165,8 +165,8 @@ export function PricingTeaser() {
                   <li
                     key={feature}
                     className={cn(
-                      "flex gap-3 text-sm leading-relaxed",
-                      plan.featured ? "text-mist-300" : "text-navy-900/80",
+                      "flex gap-3 text-body leading-relaxed",
+                      plan.featured ? "text-mist-300" : "text-navy-900/85",
                     )}
                   >
                     <Icon

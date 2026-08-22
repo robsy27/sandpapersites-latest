@@ -97,7 +97,7 @@ export function SitePreview({
         <span className="size-2 rounded-full bg-red-400/50" />
         <span className="size-2 rounded-full bg-amber-400/50" />
         <span className="size-2 rounded-full bg-accent/60" />
-        <span className="ml-2 flex-1 truncate rounded bg-navy-950/70 px-2 py-1 text-[7px] text-mist-400">
+        <span className="ml-2 flex-1 truncate rounded bg-navy-950/70 px-2 py-1 text-[7px] text-mist-300">
           {theme.domain}
         </span>
       </div>

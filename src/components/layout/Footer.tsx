@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="border-t border-navy-700 bg-navy-950">
       <Container>
-        <div className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:py-20">
+        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:py-14">
           <div className="lg:col-span-2">
             <Link
               href="/"
@@ -19,11 +19,11 @@ export function Footer() {
                 {site.name}
               </span>
             </Link>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-mist-400">
+            <p className="mt-5 max-w-sm text-body leading-relaxed text-mist-300">
               Custom-built, properly hosted websites for small local businesses.
               Built once, looked after for good.
             </p>
-            <p className="mt-5 text-sm text-mist-400">{site.location}</p>
+            <p className="mt-5 text-sm text-mist-300">{site.location}</p>
           </div>
 
           <nav aria-label="Footer">
@@ -34,7 +34,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="inline-flex min-h-11 items-center text-sm text-mist-400 transition-colors hover:text-accent"
+                  className="inline-flex min-h-11 items-center text-sm text-mist-300 transition-colors hover:text-accent"
                 >
                   Home
                 </Link>
@@ -43,7 +43,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="inline-flex min-h-11 items-center text-sm text-mist-400 transition-colors hover:text-accent"
+                    className="inline-flex min-h-11 items-center text-sm text-mist-300 transition-colors hover:text-accent"
                   >
                     {link.label}
                   </Link>
@@ -60,7 +60,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="inline-flex min-h-11 items-center gap-2.5 text-sm text-mist-400 transition-colors hover:text-accent break-anywhere"
+                  className="inline-flex min-h-11 items-center gap-2.5 text-sm text-mist-300 transition-colors hover:text-accent break-anywhere"
                 >
                   <Icon name="mail" className="size-4 shrink-0" />
                   {site.email}
@@ -69,7 +69,7 @@ export function Footer() {
               <li>
                 <a
                   href={`tel:${site.phone}`}
-                  className="inline-flex min-h-11 items-center gap-2.5 text-sm text-mist-400 transition-colors hover:text-accent"
+                  className="inline-flex min-h-11 items-center gap-2.5 text-sm text-mist-300 transition-colors hover:text-accent"
                 >
                   <Icon name="phone" className="size-4 shrink-0" />
                   {site.phoneDisplay}
@@ -81,7 +81,7 @@ export function Footer() {
                   {...(booking.external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="inline-flex min-h-11 items-center gap-2.5 text-sm text-mist-400 transition-colors hover:text-accent"
+                  className="inline-flex min-h-11 items-center gap-2.5 text-sm text-mist-300 transition-colors hover:text-accent"
                 >
                   <Icon name="calendar" className="size-4 shrink-0" />
                   {booking.label}
@@ -91,7 +91,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-navy-700/70 py-7 text-sm text-mist-400 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-t border-navy-700/70 py-7 text-sm text-mist-300 sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>

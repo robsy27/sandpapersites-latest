@@ -13,7 +13,7 @@ export function PageHeader({
   lead: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-navy-900 pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28">
+    <section className="relative overflow-hidden bg-navy-900 pt-10 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20">
       <AmbientBackground intensity="soft" />
 
       <Container className="relative">
@@ -24,7 +24,7 @@ export function PageHeader({
           <h1 className="mt-5 font-display text-4xl font-bold text-white sm:text-5xl lg:text-[3.5rem]">
             {title}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-mist-400">{lead}</p>
+          <p className="mt-6 text-lg leading-relaxed text-mist-300">{lead}</p>
         </Reveal>
       </Container>
     </section>

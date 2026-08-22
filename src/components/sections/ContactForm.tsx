@@ -193,7 +193,7 @@ export function ContactForm() {
         <h3 className="font-display text-xl font-bold text-white">
           Let&rsquo;s get this to me another way
         </h3>
-        <p className="mt-4 text-sm leading-relaxed text-mist-300">
+        <p className="mt-4 text-body leading-relaxed text-mist-300">
           The form isn&rsquo;t connected to my inbox just yet, and I&rsquo;d
           rather tell you that than lose your message. Your answers are still
           filled in below — send them straight over instead:
@@ -218,7 +218,7 @@ export function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 cursor-pointer text-sm text-mist-400 underline underline-offset-4 transition-colors hover:text-accent"
+          className="mt-6 cursor-pointer text-sm text-mist-300 underline underline-offset-4 transition-colors hover:text-accent"
         >
           Back to the form
         </button>
@@ -238,7 +238,7 @@ export function ContactForm() {
         <h3 className="mt-6 font-display text-2xl font-bold text-white">
           Thanks — that’s with me.
         </h3>
-        <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-mist-300">
+        <p className="mx-auto mt-4 max-w-md text-body leading-relaxed text-mist-300">
           I read every enquiry myself and usually reply within one working day.
           If it’s urgent, give me a ring instead — the number’s just below.
         </p>
@@ -335,7 +335,7 @@ export function ContactForm() {
           className={cn(
             fieldClasses,
             "appearance-none bg-[length:1.1rem] bg-[right_1rem_center] bg-no-repeat pr-11",
-            values.businessType ? "text-white" : "text-mist-400",
+            values.businessType ? "text-white" : "text-mist-300",
             touched.businessType && errors.businessType
               ? errorFieldClasses
               : "border-navy-700",
@@ -358,7 +358,7 @@ export function ContactForm() {
       {/* Message */}
       <div>
         <FieldLabel htmlFor="message">{labels.message}</FieldLabel>
-        <p id="message-hint" className="mb-2 text-xs text-mist-400">
+        <p id="message-hint" className="mb-2 text-xs text-mist-300">
           What your business does, whether you have a site already, and roughly
           what you’re after.
         </p>
@@ -417,7 +417,7 @@ export function ContactForm() {
         >
           {status === "sending" ? "Sending…" : "Send enquiry"}
         </Button>
-        <p className="text-xs leading-relaxed text-mist-400">
+        <p className="text-xs leading-relaxed text-mist-300">
           I’ll only use these details to reply to you. No lists, no sharing.
         </p>
       </div>
@@ -429,7 +429,7 @@ export function ContactForm() {
 
 const fieldClasses =
   "w-full min-h-12 rounded-xl border bg-navy-800/60 px-4 py-3 text-base text-white " +
-  "placeholder:text-mist-400/60 transition-colors duration-200 " +
+  "placeholder:text-mist-300/60 transition-colors duration-200 " +
   "focus:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 const errorFieldClasses = "border-red-400/70";
