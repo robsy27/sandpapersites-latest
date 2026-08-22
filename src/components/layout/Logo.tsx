@@ -1,4 +1,4 @@
-/** Sandpiper mark — an abstract bird/wave glyph in a rounded square. */
+/** Sandpaper Sites mark — an abstract sweep-and-dot glyph in a rounded square. */
 export function Logo({ className }: { className?: string }) {
   return (
     <svg

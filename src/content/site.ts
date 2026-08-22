@@ -4,21 +4,21 @@
  */
 
 export const site = {
-  name: "Sandpiper Sites",
+  name: "Sandpaper Sites",
   tagline: "Custom websites for local business",
   description:
-    "Sandpiper Sites builds, hosts and maintains affordable custom websites for small local businesses. A professional site at a fair price — no agency overhead, no DIY builders.",
+    "Sandpaper Sites builds, hosts and maintains affordable custom websites for small local businesses. A professional site at a fair price — no agency overhead, no DIY builders.",
   /** Used for canonical URLs, sitemap and Open Graph. Update before launch. */
-  url: "https://sandpipersites.com",
-  email: "hello@sandpipersites.com",
+  url: "https://sandpapersites.co.uk",
+  email: "contact@sandpapersites.co.uk",
   phone: "+44 7000 000000",
   phoneDisplay: "07000 000 000",
   location: "Serving local businesses across the UK",
   /** Replace with your real Calendly / SavvyCal / Cal.com link. */
-  bookingUrl: "https://calendly.com/sandpipersites/intro-call",
+  bookingUrl: "https://calendly.com/sandpapersites/intro-call",
   social: {
-    linkedin: "https://www.linkedin.com/company/sandpipersites",
-    instagram: "https://www.instagram.com/sandpipersites",
+    linkedin: "https://www.linkedin.com/company/sandpapersites",
+    instagram: "https://www.instagram.com/sandpapersites",
   },
 } as const;
 

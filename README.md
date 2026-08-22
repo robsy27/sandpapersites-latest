@@ -1,4 +1,4 @@
-# Sandpiper Sites — Marketing Website
+# Sandpaper Sites — Marketing Website
 
 Next.js (App Router) + TypeScript + Tailwind CSS v4. Fully static — deploys to
 Vercel or Netlify with no extra configuration.

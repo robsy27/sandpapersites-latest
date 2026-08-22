@@ -11,7 +11,7 @@ import { Reveal } from "@/components/ui/Reveal";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Why Sandpiper Sites exists: small local businesses deserve a professional website without agency prices or DIY builder frustration. Here’s the story.",
+    "Why Sandpaper Sites exists: small local businesses deserve a professional website without agency prices or DIY builder frustration. Here’s the story.",
   alternates: { canonical: "/about" },
 };
 

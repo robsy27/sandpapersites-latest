@@ -40,7 +40,7 @@ export function WhyChooseUs() {
   return (
     <Section id="why" tone="navy">
       <SectionHeading
-        eyebrow="Why Sandpiper"
+        eyebrow="Why Sandpaper"
         title="Agency quality. Sole-trader overheads."
         lead="Big agencies charge thousands and put a junior on your account. DIY builders leave you doing the work. This sits in the gap between them."
       />
