@@ -33,9 +33,16 @@ export const site = {
    * buttons to open in a new tab and relabels them "Book a 15-min call".
    */
   bookingUrl: "https://calendar.app.google/MAJrVk7QHEqhukmcA" as string | null,
+  /**
+   * Real profile URLs only. These are published in the LocalBusiness
+   * structured data, so pointing at pages that don't exist tells search
+   * engines about profiles they then fail to find. Add them once the
+   * accounts are live.
+   */
   social: {
-    linkedin: "https://www.linkedin.com/company/sandpapersites",
-    instagram: "https://www.instagram.com/sandpapersites",
+    linkedin: null as string | null,
+    facebook: null as string | null,
+    instagram: null as string | null,
   },
 } as const;
 

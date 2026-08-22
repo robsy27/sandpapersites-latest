@@ -16,7 +16,8 @@ export function StructuredData() {
     areaServed: "GB",
     priceRange: "££",
     serviceType: "Website design, hosting and maintenance",
-    sameAs: [site.social.linkedin, site.social.instagram],
+    /* Only advertise profiles that actually exist */
+    sameAs: Object.values(site.social).filter(Boolean),
   };
 
   return (
