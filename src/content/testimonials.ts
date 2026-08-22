@@ -1,9 +1,13 @@
 /**
- * PLACEHOLDER testimonials — replace with real, attributable quotes before
- * launch. Never publish invented reviews as if they were genuine.
+ * Trust signals shown where testimonials will eventually live.
  *
- * Set `placeholder: false` on a quote once it is real; the site labels the
- * section honestly until then.
+ * Until there are real, attributable client quotes, the section shows
+ * commitments that can actually be stood behind today rather than three
+ * cards announcing that nobody has said anything yet. Never publish invented
+ * reviews as if they were genuine.
+ *
+ * When you have real quotes: fill in `testimonials` below and set
+ * `hasRealTestimonials` to true. The section swaps over automatically.
  */
 
 export type Testimonial = {
@@ -11,35 +15,48 @@ export type Testimonial = {
   name: string;
   role: string;
   initials: string;
-  placeholder: boolean;
 };
 
-export const testimonials: Testimonial[] = [
+/** Real client quotes. Empty until there are some. */
+export const testimonials: Testimonial[] = [];
+
+export const hasRealTestimonials = testimonials.length > 0;
+
+export type Promise_ = {
+  icon: "clock" | "wallet" | "refresh" | "shield" | "user" | "check";
+  title: string;
+  body: string;
+};
+
+export const promises: Promise_[] = [
   {
-    quote:
-      "Example placeholder quote — swap this for a real customer's words about the build process and what changed for their business afterwards.",
-    name: "Client name",
-    role: "Trade, Town",
-    initials: "CN",
-    placeholder: true,
+    icon: "clock",
+    title: "A reply within one working day",
+    body: "Every enquiry comes to me directly. No ticket queue, no chasing, no wondering whether it arrived.",
   },
   {
-    quote:
-      "Example placeholder quote — a good one mentions a specific result: more enquiries, better calls, less time spent on admin.",
-    name: "Client name",
-    role: "Trade, Town",
-    initials: "CN",
-    placeholder: true,
+    icon: "wallet",
+    title: "The price you were quoted",
+    body: "The build fee is fixed before work starts. If the scope genuinely changes, you get a number first — never an invoice after.",
   },
   {
-    quote:
-      "Example placeholder quote — this slot works well for a customer talking about the ongoing edits and support.",
-    name: "Client name",
-    role: "Trade, Town",
-    initials: "CN",
-    placeholder: true,
+    icon: "refresh",
+    title: "Edits done the same day",
+    body: "Prices, hours, photos, staff changes. Email me and it's live, usually within hours, included in the monthly.",
+  },
+  {
+    icon: "shield",
+    title: "You own everything",
+    body: "Your domain, your content, your images. Leave whenever you like on 30 days' notice and it all comes with you.",
+  },
+  {
+    icon: "user",
+    title: "One person, start to finish",
+    body: "The person who builds your site is the person who answers the phone. Nothing gets lost in a handover.",
+  },
+  {
+    icon: "check",
+    title: "No contract to sign",
+    body: "The monthly rolls. If it stops being worth it, you stop paying — there's nothing to get out of.",
   },
 ];
-
-/** Flips the section heading/label once you have real quotes in place. */
-export const hasRealTestimonials = testimonials.some((t) => !t.placeholder);

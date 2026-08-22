@@ -43,6 +43,20 @@ export function Section({
       )}
     >
       {ambient && <AmbientBackground intensity="subtle" />}
+      {/* Feathers the seam where a dark section meets its neighbour, instead
+          of a hard horizontal line between two flat tones. */}
+      {ambient && (
+        <>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-navy-950/45 to-transparent"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-950/45 to-transparent"
+          />
+        </>
+      )}
       <Container className={cn("relative", containerClassName)}>
         {children}
       </Container>

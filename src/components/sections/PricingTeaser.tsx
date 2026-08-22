@@ -8,7 +8,21 @@ import { cn } from "@/lib/cn";
 
 export function PricingTeaser() {
   return (
-    <Section id="pricing" tone="light">
+    <Section
+      id="pricing"
+      tone="light"
+      className="relative overflow-hidden"
+      containerClassName="relative"
+    >
+      {/* Soft tint behind the cards so the light band has depth of its own */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-accent-ink/[0.07] to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 left-1/2 size-[42rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]"
+      />
       <SectionHeading
         tone="light"
         align="center"

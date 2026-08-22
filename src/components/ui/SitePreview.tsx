@@ -121,7 +121,9 @@ export function SitePreview({
         {/* hero with imagery */}
         <div className="relative h-24 sm:h-28">
           <Scene name={theme.scene} className="absolute inset-0" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
+          {/* Scrim strong enough to keep the headline legible over every scene
+              palette, including the lighter rose and amber ones. */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/10" />
           <div className="absolute inset-0 flex flex-col justify-center gap-1.5 p-3">
             <p className="max-w-[70%] text-[10px] leading-tight font-bold text-white">
               {theme.headline}
