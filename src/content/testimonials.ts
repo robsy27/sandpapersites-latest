@@ -46,8 +46,8 @@ export const promises: Promise_[] = [
   },
   {
     icon: "shield",
-    title: "You own everything",
-    body: "Your domain, your content, your images. Leave whenever you like on 30 days' notice and it all comes with you.",
+    title: "Your domain stays yours",
+    body: "The domain goes in your name from day one, and I release it whenever you ask — no fee, no argument. The words and photos you gave me are yours to take too.",
   },
   {
     icon: "user",

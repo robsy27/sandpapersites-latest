@@ -24,7 +24,9 @@ export function PageHeader({
           <h1 className="mt-5 font-display text-4xl font-bold text-white sm:text-5xl lg:text-[3.5rem]">
             {title}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-mist-300">{lead}</p>
+          <p className="mt-6 max-w-measure text-lg leading-relaxed text-mist-300">
+            {lead}
+          </p>
         </Reveal>
       </Container>
     </section>

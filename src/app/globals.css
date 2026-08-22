@@ -41,6 +41,18 @@
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
+  /* --- Text measure --------------------------------------------------------
+     A consistent reading width for running text. Without it, paragraphs
+     stretched to whatever their column happened to be — 356px in one place
+     and 768px in another, so lines ended at different points down the page,
+     and the widest ran to 85 characters.
+
+     Deliberately a fixed length rather than `ch`: ch scales with font size,
+     so an 18px lead and 16px body would still stop at different points.
+     A fixed width gives every block of prose the same right edge. */
+  --container-measure: 36rem;
+  --container-measure-wide: 44rem;
+
   /* --- Motion ------------------------------------------------------------- */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 

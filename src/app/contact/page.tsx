@@ -125,7 +125,7 @@ export default function ContactPage() {
               {/* FAQs */}
               <div>
                 <h2 className="mb-4 font-display text-lg font-bold text-white">
-                  Quick answers
+                  FAQs
                 </h2>
                 <div className="space-y-3">
                   {faqs.map((faq) => (

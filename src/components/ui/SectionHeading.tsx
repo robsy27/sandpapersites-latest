@@ -56,7 +56,8 @@ export function SectionHeading({
       {lead && (
         <p
           className={cn(
-            "mt-5 text-base leading-relaxed sm:text-lg",
+            "mt-5 max-w-measure text-base leading-relaxed sm:text-lg",
+            align === "center" && "mx-auto",
             isDark ? "text-mist-300" : "text-mist-700",
           )}
         >

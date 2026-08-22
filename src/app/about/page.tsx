@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/sections/PageHeader";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Card } from "@/components/ui/Card";
+import { CollapsibleCard } from "@/components/ui/CollapsibleCard";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -33,8 +33,8 @@ const principles: { icon: IconName; title: string; body: string }[] = [
   },
   {
     icon: "shield",
-    title: "You own your stuff",
-    body: "Your domain, your content, your images. If you ever want to leave, everything comes with you. No hostage-taking.",
+    title: "No lock-in on your domain",
+    body: "The domain is registered in your name from the start and released whenever you ask, along with the words and photos you gave me. You are never stuck with me over paperwork.",
   },
 ];
 
@@ -53,6 +53,40 @@ const notSuitedTo = [
   "Businesses wanting a full brand identity from scratch",
 ];
 
+/** The "In short" summary, as collapsible cards. */
+const inShort = [
+  {
+    term: "What I do",
+    headline: "Build, host and maintain",
+    detail:
+      "Custom websites for small local businesses — designed, built, put online, and kept current afterwards. One person doing all four.",
+  },
+  {
+    term: "Who for",
+    headline: "Owner-operators",
+    detail:
+      "Businesses with no website at all, or one that\u2019s actively letting them down. Trades, cafés, salons, instructors, small shops.",
+  },
+  {
+    term: "Typical build",
+    headline: "Two to three weeks",
+    detail:
+      "From the first call to going live. The main variable is how quickly you can get me your photos and content.",
+  },
+  {
+    term: "Pricing",
+    headline: "From £495, then £25 a month",
+    detail:
+      "A one-off fee to build it, a small monthly to host and run it, and edits quoted per job so you only pay for what you actually need.",
+  },
+  {
+    term: "Contract",
+    headline: "None at all",
+    detail:
+      "The monthly rolls on 30 days\u2019 notice. The domain is registered in your name and released to you whenever you ask.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -67,7 +101,7 @@ export default function AboutPage() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal>
-              <div className="space-y-6 text-base leading-relaxed text-mist-300">
+              <div className="max-w-measure space-y-6 text-base leading-relaxed text-mist-300">
                 <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
                   The story
                 </h2>
@@ -106,32 +140,26 @@ export default function AboutPage() {
 
           <div className="lg:col-span-5">
             <Reveal delay={100}>
-              <Card className="lg:sticky lg:top-28">
-                <h2 className="font-display text-lg font-bold text-white">
+              <div className="lg:sticky lg:top-28">
+                <h2 className="mb-4 font-display text-lg font-bold text-white">
                   In short
                 </h2>
-                <dl className="mt-6 space-y-5">
-                  {[
-                    { term: "What I do", detail: "Build, host and maintain websites for small local businesses" },
-                    { term: "Who for", detail: "Owner-operators with no site, or one that’s letting them down" },
-                    { term: "Typical build", detail: "Two to three weeks from first call to live" },
-                    { term: "Pricing", detail: "From £495 to build, £25/month to run, edits quoted per job" },
-                    { term: "Contract", detail: "None — 30 days' notice, and you keep your domain" },
-                  ].map((item) => (
-                    <div
+                <div className="space-y-3">
+                  {inShort.map((item, index) => (
+                    <CollapsibleCard
                       key={item.term}
-                      className="border-b border-navy-700 pb-5 last:border-0 last:pb-0"
+                      eyebrow={item.term}
+                      title={item.headline}
+                      /* First one open so the pattern is obvious */
+                      defaultOpen={index === 0}
                     >
-                      <dt className="font-display text-xs font-semibold tracking-[0.14em] text-accent uppercase">
-                        {item.term}
-                      </dt>
-                      <dd className="mt-2 text-body leading-relaxed text-mist-300">
+                      <p className="text-body leading-relaxed text-mist-300">
                         {item.detail}
-                      </dd>
-                    </div>
+                      </p>
+                    </CollapsibleCard>
                   ))}
-                </dl>
-              </Card>
+                </div>
+              </div>
             </Reveal>
           </div>
         </div>

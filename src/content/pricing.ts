@@ -96,5 +96,5 @@ export const feeExplainer = [
 export const pricingNotes = [
   "Three separate fees, so you only ever pay for what you actually use — no padded retainer covering edits you never ask for.",
   "Every edit is quoted and approved before work begins. Nothing gets billed that you have not agreed to first.",
-  "No contract — cancel any time with 30 days' notice. You own your domain and your content, and they leave with you.",
+  "No contract — cancel any time with 30 days' notice. The domain is registered in your name and released to you on request, along with the copy and photos you supplied.",
 ];

@@ -21,7 +21,7 @@ export function FinalCta({
           <h2 className="font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             {title}
           </h2>
-          <p className="mt-6 text-base leading-relaxed text-mist-300 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-measure text-base leading-relaxed text-mist-300 sm:text-lg">
             {lead}
           </p>
 
