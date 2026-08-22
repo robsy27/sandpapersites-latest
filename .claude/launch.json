@@ -11,16 +11,15 @@
       "port": 3000
     },
     {
-      "name": "static-export-preview",
-      "runtimeExecutable": "python3",
+      "name": "sandpiper-prod",
+      "runtimeExecutable": "npx",
       "runtimeArgs": [
-        "-m",
-        "http.server",
-        "4000",
-        "--directory",
-        "out"
+        "next",
+        "start",
+        "-p",
+        "4100"
       ],
-      "port": 4000
+      "port": 4100
     }
   ]
 }

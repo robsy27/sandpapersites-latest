@@ -11,11 +11,8 @@ npm run dev
 
 Then open http://localhost:3000
 
-Other scripts: `npm run build` (static export into `out/`), `npm run lint`.
-
-Note: `npm start` does not apply — the site is a static export, so there is no
-server to run. To preview a build, serve the `out/` folder with any static
-server, e.g. `python3 -m http.server 4000 --directory out`.
+Other scripts: `npm run build` (production build), `npm start` (serve that
+build locally, useful for checking response headers), `npm run lint`.
 
 ## Where to edit content
 
@@ -110,30 +107,36 @@ Worth preserving if you edit the components:
 
 ## Deploying
 
-The site is configured for **static export** (`output: "export"` in
-`next.config.ts`). `npm run build` writes a complete, self-contained site to
-`out/` — plain HTML, CSS and JS with no Node server required. That makes it
-deployable to essentially any host.
+Hosted on **Hostinger**, which runs the Next.js app on Node and deploys
+automatically on every push to `main`. Push, wait for the deploy, done.
 
-### Hostinger / cPanel / any static host
+### Caching — read this before debugging a "broken" deploy
 
-1. `npm run build`
-2. Upload **the contents of `out/`** — not the folder itself — into
-   `public_html`, so that `public_html/index.html` exists.
-3. Include the hidden `out/.htaccess` file. It wires up the 404 page and sets
-   caching. Most file managers hide dotfiles by default; in Hostinger's File
-   Manager turn on *Settings → Show hidden files*.
+Hostinger puts a CDN in front of the site. Next.js defaults prerendered pages
+to `s-maxage=31536000`, which told that CDN to cache the HTML for **a year**.
 
-The whole site is ~2.4 MB. Uploading a zip and extracting it in place is much
-faster than uploading files individually.
+That caused a real outage: after a deploy the CDN kept serving old HTML, which
+referenced content-hashed asset filenames that no longer existed on the server.
+The stylesheet 404'd and every page rendered completely unstyled.
 
-Common mistake: uploading the project source or the `.next/` folder. Neither
-works on shared hosting — `.next/` is a Node server build and needs a running
-Node process. Only `out/` is servable as static files.
+`next.config.ts` now sets cache headers explicitly:
 
-### Vercel or Netlify
+| Path | Cache-Control | Why |
+|---|---|---|
+| `/_next/static/*` | `max-age=31536000, immutable` | Filenames are content-hashed, so they can never go stale |
+| everything else | `max-age=0, s-maxage=60, stale-while-revalidate=300` | CDN revalidates within a minute, so deploys go live |
 
-Import the repo; both detect Next.js automatically and need no configuration.
-Static export works fine on both. If you later want server features (a real
-contact-form endpoint, image optimisation), remove the `output: "export"` line
-from `next.config.ts` and deploy to one of these instead.
+If a deploy ever looks broken again, check this first:
+
+```bash
+curl -sI https://sandpapersites.co.uk/ | grep -iE 'age|cache-control|x-hcdn-cache'
+```
+
+An `age:` header with a large number means you are looking at a cached copy,
+not the new deploy. Purge the CDN cache in hPanel (Websites → Performance /
+CDN → Purge cache). Note this is a CDN cache, not a browser cache — incognito
+will *not* work around it.
+
+### Other hosts
+
+Vercel and Netlify both detect Next.js automatically and need no configuration.
