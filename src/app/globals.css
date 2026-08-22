@@ -30,6 +30,9 @@
   --color-accent-deep: #14b8a6;
   --color-accent-ink: #0f766e;
 
+  /* Secondary highlight, used sparingly in headlines. 11.3:1 on navy-900. */
+  --color-highlight: #facc15;
+
   /* --- Typography --------------------------------------------------------- */
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
