@@ -16,6 +16,10 @@ export type Project = {
   scene: SceneName;
   /** Key used to look up the mini-site preview, if one exists. */
   preview?: "cafe" | "trades" | "salon";
+  /** Photograph under /public. Falls back to the illustrated Scene if absent. */
+  image?: string;
+  /** Describes the photograph for screen readers and when it fails to load. */
+  imageAlt?: string;
   summary: string;
   concept: boolean;
   liveUrl?: string;
@@ -32,6 +36,9 @@ export const projects: Project[] = [
     name: "The Harbour Café",
     sector: "Café & hospitality",
     scene: "cafe",
+    image: "/images/sector-cafe.jpg",
+    imageAlt:
+      "A quiet harbourside café at first light, empty wooden tables and steam rising from the coffee machine",
     preview: "cafe",
     summary:
       "Menu, opening hours and a booking link — the three things a hungry visitor actually wants.",
@@ -60,6 +67,9 @@ export const projects: Project[] = [
     name: "Kerr Plumbing & Heating",
     sector: "Plumbing & heating",
     scene: "trades",
+    image: "/images/sector-trades.jpg",
+    imageAlt:
+      "A plumbing work van parked on a terraced street at dawn, tools neatly racked in the open side door",
     preview: "trades",
     summary:
       "Service areas, Gas Safe credentials and a click-to-call button that never scrolls out of reach.",
@@ -88,6 +98,9 @@ export const projects: Project[] = [
     name: "Wren & Co.",
     sector: "Hair & beauty",
     scene: "salon",
+    image: "/images/sector-salon.jpg",
+    imageAlt:
+      "A small hair studio after closing, single styling chair beside a large round mirror",
     preview: "salon",
     summary:
       "Price list, gallery and online booking, built to look as good as the work does.",
@@ -116,6 +129,9 @@ export const projects: Project[] = [
     name: "Ironworks Personal Training",
     sector: "Personal training",
     scene: "fitness",
+    image: "/images/sector-fitness.jpg",
+    imageAlt:
+      "An empty independent gym at dawn, kettlebells and a barbell rack lit by a shaft of light",
     summary:
       "Packages, results gallery and an enquiry form that filters out time-wasters.",
     concept: true,
@@ -139,6 +155,9 @@ export const projects: Project[] = [
     name: "Eastgate Motors",
     sector: "Motor repair",
     scene: "garage",
+    image: "/images/sector-garage.jpg",
+    imageAlt:
+      "An independent garage workshop at the end of the day, a car raised on a lift beside a work light",
     summary:
       "Services, MOT reminders and directions — everything findable in two taps.",
     concept: true,
@@ -162,6 +181,9 @@ export const projects: Project[] = [
     name: "Thorne Landscaping",
     sector: "Landscaping",
     scene: "landscaping",
+    image: "/images/sector-landscaping.jpg",
+    imageAlt:
+      "A newly finished back garden at dusk, fresh striped turf and stone patio with low garden lighting",
     summary:
       "A portfolio-led build where the photography does the selling.",
     concept: true,

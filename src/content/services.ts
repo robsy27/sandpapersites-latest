@@ -9,11 +9,17 @@ export type Service = {
   title: string;
   summary: string;
   details: string[];
+  /** Photograph under /public shown on the Services page card. */
+  image?: string;
+  imageAlt?: string;
 };
 
 export const services: Service[] = [
   {
     id: "build",
+    image: "/images/service-build.jpg",
+    imageAlt:
+      "A drawing board at dusk covered with technical plans, a ruler and pen beside a closed laptop",
     icon: "layers",
     title: "Build",
     summary:
@@ -28,6 +34,9 @@ export const services: Service[] = [
   },
   {
     id: "host",
+    image: "/images/service-host.jpg",
+    imageAlt:
+      "A dark server room corridor, rows of racks receding into the distance lit by small indicator lights",
     icon: "server",
     title: "Host",
     summary:
@@ -42,6 +51,9 @@ export const services: Service[] = [
   },
   {
     id: "edit",
+    image: "/images/service-edit.jpg",
+    imageAlt:
+      "A laptop with a blank screen open on a worn workbench in a workshop, notepad and pen alongside",
     icon: "refresh",
     title: "Edit",
     summary:

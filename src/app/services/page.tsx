@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { included, services } from "@/content/services";
 import { feeExplainer, pricingNotes } from "@/content/pricing";
 import { Section } from "@/components/ui/Section";
@@ -61,6 +62,17 @@ export default function ServicesPage() {
                 title={service.title}
                 summary={service.summary}
                 defaultOpen={index === 0}
+                media={
+                  service.image ? (
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt ?? ""}
+                      fill
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                  ) : undefined
+                }
               >
                 <ul className="grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
                   {service.details.map((detail) => (

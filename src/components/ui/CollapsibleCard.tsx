@@ -20,6 +20,7 @@ export function CollapsibleCard({
   eyebrow,
   defaultOpen = false,
   className,
+  media,
   children,
 }: {
   icon?: IconName;
@@ -28,6 +29,8 @@ export function CollapsibleCard({
   eyebrow?: string;
   defaultOpen?: boolean;
   className?: string;
+  /** Optional image revealed with the detail, under a scrim for legibility. */
+  media?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -99,6 +102,16 @@ export function CollapsibleCard({
           </svg>
         </span>
       </summary>
+
+      {media && (
+        <div className="relative aspect-[16/9] overflow-hidden border-t border-white/10">
+          {media}
+          {/* Sits the photograph back into the card rather than letting it
+              punch a bright hole in the glass. */}
+          <div className="absolute inset-0 bg-navy-950/35" />
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-navy-950/80 to-transparent" />
+        </div>
+      )}
 
       <div className="border-t border-white/10 px-6 pt-5 pb-6 sm:px-7 sm:pb-7">
         {children}

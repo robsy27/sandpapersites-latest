@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProject, projects } from "@/content/portfolio";
-import { previewThemes, SitePreview } from "@/components/ui/SitePreview";
+import Image from "next/image";
 import { Scene } from "@/components/ui/Scene";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -96,13 +96,21 @@ export default async function ProjectPage({
             </div>
 
             <Reveal delay={140} className="lg:col-span-6">
-              {project.preview ? (
-                <SitePreview theme={previewThemes[project.preview]} />
-              ) : (
-                <div className="aspect-[16/10] overflow-hidden rounded-2xl border border-navy-700">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-navy-700">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt ?? ""}
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                ) : (
                   <Scene name={project.scene} />
-                </div>
-              )}
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/45 to-transparent" />
+              </div>
             </Reveal>
           </div>
         </Container>
@@ -164,8 +172,18 @@ export default async function ProjectPage({
                 href={`/work/${other.slug}`}
                 className="group block h-full overflow-hidden rounded-2xl border border-navy-700 bg-navy-800/60 transition-all duration-250 hover:-translate-y-1 hover:border-accent/45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
-                <div className="relative aspect-[16/9] overflow-hidden border-b border-navy-700">
-                  <Scene name={other.scene} className="absolute inset-0" />
+                <div className="relative aspect-[16/9] overflow-hidden border-b border-navy-700 bg-navy-950">
+                  {other.image ? (
+                    <Image
+                      src={other.image}
+                      alt={other.imageAlt ?? ""}
+                      fill
+                      sizes="(min-width: 640px) 33vw, 100vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                    />
+                  ) : (
+                    <Scene name={other.scene} className="absolute inset-0" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent" />
                 </div>
                 <div className="p-5">
