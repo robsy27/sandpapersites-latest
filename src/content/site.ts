@@ -20,7 +20,7 @@ export const site = {
    * Booking link for the "Arrange a call" buttons.
    *
    * To use Google Calendar: open Google Calendar, Create > Appointment
-   * schedule, set your availability and a 15-minute slot length, then use
+   * schedule, set your availability and a 30-minute slot length, then use
    * "Share" > "Copy link". It looks like:
    *
    *   https://calendar.app.google/XXXXXXXXXXXX
@@ -30,7 +30,7 @@ export const site = {
    *
    * While this is null, every "Arrange a call" button routes to /contact
    * rather than pointing at a URL that 404s. Setting it also switches the
-   * buttons to open in a new tab and relabels them "Book a 15-min call".
+   * buttons to open in a new tab and relabels them "Book a 30-min call".
    */
   bookingUrl: "https://calendar.app.google/MAJrVk7QHEqhukmcA" as string | null,
   /**
@@ -62,5 +62,5 @@ export const navLinks = [
 export const booking = {
   href: site.bookingUrl ?? "/contact",
   external: site.bookingUrl !== null,
-  label: site.bookingUrl ? "Book a 15-min call" : "Arrange a call",
+  label: site.bookingUrl ? "Book a 30-min call" : "Arrange a call",
 } as const;

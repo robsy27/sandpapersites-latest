@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { PricingTeaser } from "@/components/sections/PricingTeaser";
 import { FinalCta } from "@/components/sections/FinalCta";
+import { ImageBand } from "@/components/ui/ImageBand";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { CollapsibleCard } from "@/components/ui/CollapsibleCard";
 import { Icon } from "@/components/ui/Icon";
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 const process = [
   {
     step: "01",
-    title: "A 15-minute call",
+    title: "A 30-minute call",
     body: "You tell me what your business does, who you want to reach and what’s not working now. I tell you honestly whether I can help and what it would cost.",
   },
   {
@@ -120,6 +121,14 @@ export default function ServicesPage() {
           ))}
         </ul>
       </Section>
+
+      <ImageBand
+        src="/images/device-phone.jpg"
+        alt="A phone held up against a rain-soaked high street at dusk"
+        eyebrow="Mobile first, not mobile friendly"
+        title="Most people will meet you on a phone."
+        body="Standing outside in the rain, deciding whether to come in or ring someone else. Every site is designed for that screen first and scaled up afterwards — never the other way round."
+      />
 
       {/* How the three fees work */}
       <Section tone="deep">

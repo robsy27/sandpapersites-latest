@@ -13,7 +13,7 @@ import { Reveal } from "@/components/ui/Reveal";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get a free, no-obligation quote for your business website, or book a 15-minute intro call. Replies usually within one working day.",
+    "Get a free, no-obligation quote for your business website, or book a 30-minute intro call. Replies usually within one working day.",
   alternates: { canonical: "/contact" },
 };
 
@@ -59,7 +59,7 @@ export default function ContactPage() {
                   Rather just talk?
                 </h2>
                 <p className="mt-3 text-body leading-relaxed text-mist-300">
-                  Book a free 15-minute call at a time that suits you. Evenings
+                  Book a free 30-minute call at a time that suits you. Evenings
                   and weekends are available — I know you’re working days.
                 </p>
                 <div className="mt-7">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { site } from "@/content/site";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { FinalCta } from "@/components/sections/FinalCta";
+import { ImageBand } from "@/components/ui/ImageBand";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CollapsibleCard } from "@/components/ui/CollapsibleCard";
@@ -164,6 +165,15 @@ export default function AboutPage() {
         </div>
       </Section>
 
+      <ImageBand
+        src="/images/device-laptop.jpg"
+        alt="A laptop open on a table beside a coffee, looking out over a harbour through a rain-flecked window"
+        eyebrow="How it works in practice"
+        title="One person, one laptop, no agency."
+        body="No account team, no studio overheads, no layers between you and whoever is actually doing the work. That is why it costs what it costs."
+        align="center"
+      />
+
       {/* Principles */}
       <Section tone="navy">
         <SectionHeading
@@ -250,7 +260,7 @@ export default function AboutPage() {
 
       <FinalCta
         title="Fancy a straightforward conversation?"
-        lead="Fifteen minutes, no pitch. You describe the business, I tell you what I’d build and what it would cost."
+        lead="Thirty minutes, no pitch. You describe the business, I tell you what I’d build and what it would cost."
       />
     </>
   );

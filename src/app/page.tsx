@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/Hero";
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { PricingTeaser } from "@/components/sections/PricingTeaser";
+import { ImageBand } from "@/components/ui/ImageBand";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCta } from "@/components/sections/FinalCta";
 
@@ -19,6 +20,13 @@ export default function HomePage() {
       <Hero />
       <ServicesOverview />
       <WhyChooseUs />
+      <ImageBand
+        src="/images/band-highstreet.jpg"
+        alt="A British high street at dusk seen from above, shop windows lit and the wet road reflecting the sky"
+        eyebrow="Who this is for"
+        title="The businesses on your high street."
+        body="Cafés, trades, salons, garages, instructors — the ones people find by searching a trade and a town. That search is the whole job, and it is what every site I build is pointed at."
+      />
       <PricingTeaser />
       <Testimonials />
       <FinalCta />
