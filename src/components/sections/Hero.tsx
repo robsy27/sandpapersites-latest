@@ -4,7 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
-import { SitePreview, previewThemes } from "@/components/ui/SitePreview";
+import { LaptopHero } from "@/components/ui/LaptopHero";
 
 const proofPoints = [
   { icon: "clock" as const, label: "Live in 2–3 weeks" },
@@ -79,21 +79,10 @@ export function Hero() {
             </Reveal>
           </div>
 
-          {/* A finished-looking example site, not a wireframe — this is the
-              first proof of what actually gets built. */}
+          {/* A real interface on a real photograph — the AI never renders
+              the screen, so nothing here is a hallucinated UI. */}
           <Reveal delay={200} className="lg:col-span-5">
-            <div className="relative">
-              <SitePreview
-                theme={previewThemes.cafe}
-                className="relative z-10 rotate-[0.6deg] transition-transform duration-500 ease-out hover:rotate-0"
-              />
-              {/* a second site peeking behind, to imply a body of work */}
-              <SitePreview
-                theme={previewThemes.trades}
-                compact
-                className="absolute -right-5 -bottom-8 z-0 w-2/3 -rotate-[2.5deg] opacity-70 blur-[0.4px]"
-              />
-            </div>
+            <LaptopHero />
           </Reveal>
         </div>
       </Container>
