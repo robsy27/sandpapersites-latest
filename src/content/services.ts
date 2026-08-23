@@ -12,12 +12,19 @@ export type Service = {
   /** Photograph under /public shown on the Services page card. */
   image?: string;
   imageAlt?: string;
+  /**
+   * Set when a photograph runs warmer than the rest of the set. The card
+   * lays a cool wash over it so it sits with its neighbours instead of
+   * reading as a different shoot.
+   */
+  coolTint?: boolean;
 };
 
 export const services: Service[] = [
   {
     id: "build",
     image: "/images/service-build.jpg",
+    coolTint: true,
     imageAlt:
       "A drawing board at dusk covered with technical plans, a ruler and pen beside a closed laptop",
     icon: "layers",

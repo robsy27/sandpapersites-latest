@@ -65,13 +65,25 @@ export default function ServicesPage() {
                 defaultOpen={index === 0}
                 media={
                   service.image ? (
-                    <Image
-                      src={service.image}
-                      alt={service.imageAlt ?? ""}
-                      fill
-                      sizes="(min-width: 640px) 50vw, 100vw"
-                      className="object-cover"
-                    />
+                    <>
+                      <Image
+                        src={service.image}
+                        alt={service.imageAlt ?? ""}
+                        fill
+                        sizes="(min-width: 640px) 50vw, 100vw"
+                        className={
+                          service.coolTint
+                            ? "object-cover saturate-[0.72] hue-rotate-[8deg] brightness-90"
+                            : "object-cover"
+                        }
+                      />
+                      {service.coolTint && (
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-0 bg-navy-900/45 mix-blend-multiply"
+                        />
+                      )}
+                    </>
                   ) : undefined
                 }
               >
