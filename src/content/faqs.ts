@@ -43,6 +43,11 @@ export const faqs: Faq[] = [
   {
     question: "Am I tied into a contract?",
     answer:
-      "No. The monthly rolls on 30 days' notice. The domain is registered in your name and released to you whenever you ask, along with the copy and photos you supplied.",
+      "No. The monthly rolls on 30 days' notice. There is nothing to get out of and no cancellation fee.",
+  },
+  {
+    question: "What happens if I want to leave?",
+    answer:
+      "The domain is registered in your name, so it transfers to you — no fee, no argument — and the words and photos you supplied are yours. Being straight with you about the rest: the site is built to run on my hosting, so taking it with you means having your own hosting set up and someone able to upload and manage the files. Most small businesses would rather not deal with that, which is exactly why hosting is part of the service. But you are never held here by paperwork.",
   },
 ];

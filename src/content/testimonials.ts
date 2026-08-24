@@ -47,7 +47,7 @@ export const promises: Promise_[] = [
   {
     icon: "shield",
     title: "Your domain stays yours",
-    body: "The domain goes in your name from day one, and I release it whenever you ask — no fee, no argument. The words and photos you gave me are yours to take too.",
+    body: "The domain goes in your name from day one and I release it whenever you ask — no fee, no argument. Your words and photos are yours too. The site itself runs on my hosting, so moving it means having somewhere else to host it.",
   },
   {
     icon: "user",

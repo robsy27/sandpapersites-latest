@@ -35,7 +35,7 @@ const principles: { icon: IconName; title: string; body: string }[] = [
   {
     icon: "shield",
     title: "No lock-in on your domain",
-    body: "The domain is registered in your name from the start and released whenever you ask, along with the words and photos you gave me. You are never stuck with me over paperwork.",
+    body: "The domain is registered in your name from the start and released whenever you ask, along with the words and photos you gave me. The site runs on my hosting, so taking it elsewhere means having somewhere to take it to — I would rather say that plainly now than let you find it out later.",
   },
 ];
 
