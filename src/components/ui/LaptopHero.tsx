@@ -52,14 +52,18 @@ export function LaptopHero() {
 
           {/* photographic hero — same shot as the café case study */}
           <div className="relative h-[58cqh] shrink-0">
+            {/* The café shot was graded dark to sit as a tile on a navy page.
+                Here it plays the café's own hero image, where that reads as
+                gloomy — so it is lifted and warmed, and framed on the bright
+                window side, to look like a site a café would actually run. */}
             <Image
               src="/images/sector-cafe.jpg"
               alt=""
               fill
               sizes="200px"
-              className="object-cover"
+              className="object-cover object-[38%_center] brightness-[1.7] contrast-[0.92] saturate-[1.45] sepia-[0.12]"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/15" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
             <div className="absolute inset-0 flex flex-col justify-center gap-[2.4cqh] px-[4cqw]">
               <p className="max-w-[74%] text-[4.4cqw] leading-[1.2] font-bold text-white">
                 Fresh coffee, proper breakfast, harbour views.
