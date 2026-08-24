@@ -155,7 +155,10 @@ export function Header() {
       >
         <Container>
           <nav aria-label="Mobile" className="flex flex-col gap-1 py-5">
-            {navLinks.map((link) => (
+            {/* Home is listed explicitly. On desktop the logo carries it and
+                is always in view, but a menu that lists the pages should list
+                all of them. */}
+            {[{ href: "/", label: "Home" }, ...navLinks].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
