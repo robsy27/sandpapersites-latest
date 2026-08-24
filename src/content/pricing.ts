@@ -35,7 +35,7 @@ export const plans: Plan[] = [
     editFee: "From £25",
     editNote: "Quoted per request before any work begins",
     featured: false,
-    cta: "Get a quote",
+    cta: "Get in touch",
     features: [
       "Up to 4 pages",
       "Mobile-first custom design",
@@ -57,7 +57,7 @@ export const plans: Plan[] = [
     editFee: "From £25",
     editNote: "Priority turnaround, quoted before any work begins",
     featured: true,
-    cta: "Get a quote",
+    cta: "Get in touch",
     features: [
       "Up to 10 pages",
       "Everything in Starter",

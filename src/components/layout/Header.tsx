@@ -75,6 +75,10 @@ export function Header() {
     };
   }, [open, close]);
 
+  /* Home first, then the rest. Defined once so the desktop bar and the
+     mobile panel cannot drift apart. */
+  const menuLinks = [{ href: "/", label: "Home" }, ...navLinks];
+
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(`${href}/`);
 
@@ -101,7 +105,7 @@ export function Header() {
 
           {/* Desktop navigation */}
           <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
-            {navLinks.map((link) => (
+            {menuLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -127,7 +131,7 @@ export function Header() {
 
           <div className="hidden md:block">
             <ButtonLink href="/contact" icon="arrowRight">
-              Get a quote
+              Get in touch
             </ButtonLink>
           </div>
 
@@ -155,10 +159,7 @@ export function Header() {
       >
         <Container>
           <nav aria-label="Mobile" className="flex flex-col gap-1 py-5">
-            {/* Home is listed explicitly. On desktop the logo carries it and
-                is always in view, but a menu that lists the pages should list
-                all of them. */}
-            {[{ href: "/", label: "Home" }, ...navLinks].map((link) => (
+            {menuLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -176,7 +177,7 @@ export function Header() {
             ))}
             <div className="mt-4 flex flex-col gap-3 border-t border-navy-700 pt-5 pb-2">
               <ButtonLink href="/contact" size="lg" icon="arrowRight">
-                Get a quote
+                Get in touch
               </ButtonLink>
               <ButtonLink
                 href={booking.href}
