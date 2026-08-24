@@ -28,14 +28,19 @@ const nextConfig: NextConfig = {
         /**
          * Everything else — HTML in particular.
          *
-         * Next.js defaults prerendered pages to `s-maxage=31536000`, which
-         * told Hostinger's CDN to hold the HTML for a year. After a deploy
-         * the CDN kept serving old HTML that referenced hashed assets no
-         * longer on the server, so the stylesheet 404'd and the site
-         * rendered unstyled.
+         * HTML must never outlive the assets it references. A deploy deletes
+         * the previous build's hashed files, so any cached page still asking
+         * for them gets a 404 and renders unstyled.
          *
-         * A short shared max-age plus stale-while-revalidate keeps pages
-         * fast while letting a deploy go live within a minute.
+         * The earlier `s-maxage=60, stale-while-revalidate=300` allowed the
+         * CDN to serve stale HTML for up to six minutes after a deploy,
+         * which is exactly that failure: an old page pointing at a stylesheet
+         * that no longer exists.
+         *
+         * `max-age=0, must-revalidate` means every request revalidates before
+         * the page is used. With an ETag that is a cheap 304 rather than a
+         * full fetch, and the origin answers in around 20ms, so the cost is
+         * negligible against never serving a broken page.
          *
          * The negative lookahead leaves the immutable rule above intact.
          */
@@ -43,7 +48,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=0, s-maxage=60, stale-while-revalidate=300",
+            value: "public, max-age=0, must-revalidate",
           },
         ],
       },
