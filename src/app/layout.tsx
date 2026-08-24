@@ -87,6 +87,16 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+
+        {/* Film grain over the whole viewport. Fixed rather than per-section
+            so the texture is continuous as you scroll, and pointer-events
+            none so it never intercepts a click. Large flat fields of navy
+            look digitally flat without it. */}
+        <div
+          aria-hidden="true"
+          className="bg-grain pointer-events-none fixed inset-0 z-[60] opacity-[0.035] mix-blend-overlay"
+        />
+
         <StructuredData />
       </body>
     </html>
