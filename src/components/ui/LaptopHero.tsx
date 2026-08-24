@@ -56,71 +56,69 @@ export function LaptopHero() {
         }}
       >
         <div className="relative flex size-full flex-col overflow-hidden rounded-[1.6cqw] bg-white">
-          {/* site nav, with its own mark and a booking pill */}
-          <div className="flex h-[12cqh] shrink-0 items-center justify-between border-b border-black/8 px-[3.5cqw]">
+          {/* Site nav. Kept low and quiet — an oversized header is the first
+              thing that makes a small layout look amateur. */}
+          <div className="flex h-[11cqh] shrink-0 items-center justify-between border-b border-black/[0.07] px-[5cqw]">
             <span className="flex items-center gap-[1.4cqw]">
-              <span className="size-[2.6cqw] rounded-full bg-amber-500" />
-              <span className="text-[3.4cqw] font-bold tracking-tight text-neutral-900">
+              <span className="size-[2cqw] rounded-full bg-amber-600" />
+              <span className="text-[2.9cqw] font-semibold tracking-tight text-neutral-900">
                 The Harbour Café
               </span>
             </span>
-            <span className="flex items-center gap-[2.2cqw] text-[2.5cqw] text-neutral-500">
+            <span className="flex items-center gap-[3cqw] text-[2.2cqw] text-neutral-400">
               <span>Menu</span>
+              <span>Book</span>
               <span>Find us</span>
-              <span className="rounded-full bg-neutral-900 px-[2.2cqw] py-[0.9cqh] font-semibold text-white">
-                Book
-              </span>
             </span>
           </div>
 
-          {/* photographic hero */}
-          <div className="relative h-[52cqh] shrink-0">
-            {/* The café shot was graded dark to sit as a tile on a navy page.
-                Here it plays the café's own hero image, where that reads as
-                gloomy — so it is lifted and warmed, and framed on the bright
-                window side. */}
+          {/* Hero. Given most of the screen, with the photograph only gently
+              lifted — the heavy grade before had bleached it flat. */}
+          <div className="relative h-[63cqh] shrink-0">
             <Image
               src="/images/sector-cafe.jpg"
               alt=""
               fill
-              sizes="200px"
-              className="object-cover object-[38%_center] brightness-[1.7] contrast-[0.92] saturate-[1.45] sepia-[0.12]"
+              sizes="320px"
+              className="object-cover object-[42%_center] brightness-[1.22] contrast-[1.05] saturate-[1.12]"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
-            <div className="absolute inset-0 flex flex-col justify-center gap-[2cqh] px-[3.5cqw]">
-              <p className="max-w-[72%] text-[4.2cqw] leading-[1.15] font-bold text-white">
+            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10" />
+
+            <div className="absolute inset-0 flex flex-col justify-end gap-[2.6cqh] p-[5cqw]">
+              <span className="text-[1.9cqw] font-semibold tracking-[0.22em] text-white/70 uppercase">
+                Whitby harbour
+              </span>
+              <p className="max-w-[68%] text-[3.9cqw] leading-[1.25] font-semibold text-white">
                 Fresh coffee, proper breakfast, harbour views.
               </p>
-              <span className="flex items-center gap-[2cqw]">
-                <span className="rounded-full bg-amber-500 px-[3cqw] py-[1.3cqh] text-[2.7cqw] font-semibold text-white">
+              <span className="flex items-center gap-[3cqw]">
+                <span className="rounded-[0.8cqw] bg-amber-600 px-[3.4cqw] py-[1.5cqh] text-[2.3cqw] font-semibold text-white">
                   Book a table
                 </span>
-                <span className="text-[2.4cqw] font-medium text-white/85">
+                <span className="text-[2.1cqw] text-white/75">
                   Open till 4pm
                 </span>
               </span>
             </div>
           </div>
 
-          {/* menu, priced — real content rather than placeholder bars */}
-          <div className="flex flex-1 flex-col justify-center gap-[1.6cqh] px-[3.5cqw]">
+          {/* The next section, only partly in view — a real browser shows a
+              page continuing past the fold, not a whole page shrunk to fit. */}
+          <div className="flex flex-1 flex-col justify-start gap-[1.4cqh] px-[5cqw] pt-[3cqh]">
+            <span className="text-[1.8cqw] font-semibold tracking-[0.2em] text-neutral-400 uppercase">
+              This morning
+            </span>
             {[
-              ["Full English", "£9.50"],
-              ["Eggs Benedict", "£8.00"],
-              ["Harbour crab sandwich", "£11.00"],
-            ].map(([dish, price], i) => (
-              <span
-                key={dish}
-                className={
-                  "flex items-baseline justify-between gap-[2cqw] " +
-                  (i < 2 ? "border-b border-black/8 pb-[1.4cqh]" : "")
-                }
-              >
-                <span className="truncate text-[2.7cqw] font-medium text-neutral-800">
+              ["Full English", "9.50"],
+              ["Eggs Benedict", "8.00"],
+            ].map(([dish, price]) => (
+              <span key={dish} className="flex items-baseline gap-[2cqw]">
+                <span className="shrink-0 text-[2.4cqw] text-neutral-700">
                   {dish}
                 </span>
-                <span className="shrink-0 text-[2.7cqw] font-semibold text-amber-700">
-                  {price}
+                <span className="h-px flex-1 translate-y-[-0.3cqh] bg-neutral-200" />
+                <span className="shrink-0 text-[2.4cqw] font-medium text-neutral-900">
+                  £{price}
                 </span>
               </span>
             ))}
