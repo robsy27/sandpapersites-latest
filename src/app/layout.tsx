@@ -88,6 +88,37 @@ export default function RootLayout({
         </main>
         <Footer />
 
+        {/* Stale-HTML safety net.
+            A CDN or browser can hold a page from an earlier build, and a
+            deploy deletes that build's hashed files — so the stylesheet 404s
+            and the page renders with no CSS at all. This checks whether the
+            stylesheet actually applied and, if not, reloads once against a
+            cache-busting URL to pull fresh HTML. Guarded by sessionStorage so
+            it can never loop, and it tidies the marker out of the URL on the
+            way back. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{
+  var KEY='sps_css_recover', MARK='__fresh';
+  var applied=getComputedStyle(document.documentElement)
+    .getPropertyValue('--color-navy-900').trim()!=='';
+  var url=new URL(location.href);
+  if(applied){
+    sessionStorage.removeItem(KEY);
+    if(url.searchParams.has(MARK)){
+      url.searchParams.delete(MARK);
+      history.replaceState(null,'',url.pathname+url.search+url.hash);
+    }
+    return;
+  }
+  if(sessionStorage.getItem(KEY))return;
+  sessionStorage.setItem(KEY,'1');
+  url.searchParams.set(MARK,Date.now());
+  location.replace(url.toString());
+}catch(e){}})();`,
+          }}
+        />
+
         {/* Film grain over the whole viewport. Fixed rather than per-section
             so the texture is continuous as you scroll, and pointer-events
             none so it never intercepts a click. Large flat fields of navy
