@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
+import { Spotlight } from "@/components/ui/Spotlight";
 
 export function FinalCta({
   title = "Ready for a website that pulls its weight?",
@@ -15,6 +16,7 @@ export function FinalCta({
   return (
     <section className="relative overflow-hidden bg-navy-900 py-14 sm:py-16 lg:py-20">
       <AmbientBackground intensity="full" />
+      <Spotlight />
 
       <Container className="relative">
         <Reveal className="mx-auto max-w-2xl text-center">

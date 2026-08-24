@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
+import { Spotlight } from "@/components/ui/Spotlight";
 import { LaptopHero } from "@/components/ui/LaptopHero";
 
 const proofPoints = [
@@ -16,6 +17,7 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden bg-navy-900">
       <AmbientBackground intensity="full" />
+      <Spotlight />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-navy-900"

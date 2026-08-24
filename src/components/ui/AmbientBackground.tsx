@@ -47,24 +47,34 @@ export function AmbientBackground({
         <>
           <div
             className={cn(
-              "absolute rounded-full bg-accent/14 blur-[120px] animate-drift-a",
-              "-top-44 -right-36 size-[42rem]",
+              "absolute rounded-full bg-accent/25 blur-[110px] animate-drift-a",
+              "-top-52 -right-40 size-[52rem]",
               intensity === "soft" && "opacity-70",
             )}
           />
           <div
             className={cn(
-              "absolute rounded-full bg-sky-500/12 blur-[130px] animate-drift-b",
-              "-bottom-60 -left-44 size-[38rem]",
+              "absolute rounded-full bg-sky-500/16 blur-[120px] animate-drift-b",
+              "-bottom-64 -left-48 size-[46rem]",
               intensity === "soft" && "opacity-70",
             )}
           />
           <div
             className={cn(
-              "absolute rounded-full bg-indigo-500/10 blur-[140px] animate-drift-c",
-              "top-1/3 left-1/2 size-[32rem] -translate-x-1/2",
+              "absolute rounded-full bg-teal-400/18 blur-[120px] animate-drift-c",
+              "top-1/4 left-1/2 size-[40rem] -translate-x-1/2",
               intensity === "soft" && "opacity-60",
             )}
+          />
+          {/* a fourth, low and slow, so the field never settles into a
+              recognisable three-blob arrangement */}
+          <div
+            className={cn(
+              "absolute rounded-full bg-cyan-400/14 blur-[130px] animate-drift-b",
+              "right-1/4 -bottom-44 size-[36rem]",
+              intensity === "soft" && "opacity-60",
+            )}
+            style={{ animationDuration: "38s", animationDirection: "reverse" }}
           />
         </>
       )}

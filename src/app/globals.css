@@ -61,9 +61,9 @@
      custom animations and their keyframes. Everything animates transform or
      opacity only, so it stays on the compositor and never causes layout.
      The prefers-reduced-motion block at the end of this file freezes it. */
-  --animate-drift-a: drift-a 28s ease-in-out infinite;
-  --animate-drift-b: drift-b 34s ease-in-out infinite;
-  --animate-drift-c: drift-c 24s ease-in-out infinite;
+  --animate-drift-a: drift-a 20s ease-in-out infinite;
+  --animate-drift-b: drift-b 26s ease-in-out infinite;
+  --animate-drift-c: drift-c 17s ease-in-out infinite;
   --animate-grid-pan: grid-pan 40s linear infinite;
   --animate-sheen: sheen 14s ease-in-out infinite;
 
