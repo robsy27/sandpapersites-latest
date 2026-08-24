@@ -43,14 +43,19 @@ export function LaptopHero() {
         aria-hidden="true"
         className="absolute overflow-hidden"
         style={{
-          left: "30.41%",
-          top: "30.0%",
-          width: "40.17%",
-          height: "42.5%",
+          /* Measured from the photograph's luminance profile, then inset a
+             touch so a sliver of bezel stays visible. The radius matches the
+             laptop's rounded screen corners — without it the square white
+             corners sit proud of the lid. */
+          left: "30.85%",
+          top: "30.5%",
+          width: "39.3%",
+          height: "41.5%",
+          borderRadius: "1.6cqw",
           containerType: "size",
         }}
       >
-        <div className="relative flex size-full flex-col bg-white">
+        <div className="relative flex size-full flex-col overflow-hidden rounded-[1.6cqw] bg-white">
           {/* site nav, with its own mark and a booking pill */}
           <div className="flex h-[12cqh] shrink-0 items-center justify-between border-b border-black/8 px-[3.5cqw]">
             <span className="flex items-center gap-[1.4cqw]">
