@@ -408,16 +408,19 @@ export function ContactForm() {
         </p>
       )}
 
-      <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
+      {/* Button and note share one line, the button holding its width so its
+          label never wraps and the note taking whatever is left. */}
+      <div className="flex items-center gap-4 pt-2">
         <Button
           type="submit"
           size="lg"
           disabled={status === "sending"}
           icon={status === "sending" ? undefined : "arrowRight"}
+          className="shrink-0 whitespace-nowrap"
         >
           {status === "sending" ? "Sending…" : "Send enquiry"}
         </Button>
-        <p className="text-xs leading-relaxed text-mist-300">
+        <p className="min-w-0 flex-1 text-xs leading-relaxed text-mist-300">
           I’ll only use these details to reply to you. No lists, no sharing.
         </p>
       </div>

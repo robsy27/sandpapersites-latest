@@ -106,23 +106,37 @@ export default function ContactPage() {
                 </ul>
               </GlassCard>
 
-              {/* FAQs */}
-              <div>
-                <h2 className="mb-4 font-display text-lg font-bold text-white">
-                  FAQs
-                </h2>
-                <div className="space-y-3">
-                  {faqs.map((faq) => (
-                    <CollapsibleCard key={faq.question} title={faq.question}>
-                      <p className="text-body leading-relaxed text-mist-300">
-                        {faq.answer}
-                      </p>
-                    </CollapsibleCard>
-                  ))}
-                </div>
-              </div>
             </Reveal>
           </div>
+        </div>
+      </Section>
+
+      {/* FAQs run the full width beneath the form. In the sidebar they left
+          the entire left of the page empty and were squeezed into a column
+          too narrow for the answers. */}
+      <Section tone="navy">
+        <Reveal>
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
+            FAQs
+          </h2>
+          <p className="mt-4 max-w-measure text-body leading-relaxed text-mist-300">
+            The questions that come up most often. Anything not covered here,
+            just ask.
+          </p>
+        </Reveal>
+
+        {/* items-start so opening one card does not stretch its row-mate into a
+            tall empty box */}
+        <div className="mt-10 grid items-start gap-3 md:grid-cols-2 md:gap-x-5">
+          {faqs.map((faq, index) => (
+            <Reveal key={faq.question} delay={(index % 2) * 70}>
+              <CollapsibleCard title={faq.question}>
+                <p className="text-body leading-relaxed text-mist-300">
+                  {faq.answer}
+                </p>
+              </CollapsibleCard>
+            </Reveal>
+          ))}
         </div>
       </Section>
     </>
