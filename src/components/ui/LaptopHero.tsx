@@ -1,26 +1,24 @@
 import Image from "next/image";
-import { Scene } from "./Scene";
 
 /**
  * The hero visual: a photographed laptop with the site rendered onto its
  * screen.
  *
- * The photograph was generated with a deliberately black screen, and the
- * screen rectangle was measured from the pixels — 30.41% / 29.53%, sized
- * 40.17% x 41.91%. Compositing real markup into it means the interface on
- * show is genuinely ours, rather than an AI's guess at what a website looks
- * like, which never survives close inspection.
+ * Screen rectangle measured from the photograph's pixels by scanning the
+ * luminance profile for the black panel: x 30.41%–70.58%, y 30.0%–72.5%.
  *
- * The screen renders around 185px wide at desktop, so its contents are sized
- * in container-query units and kept deliberately chunky. A shrunken copy of
- * the full mini-site would just be mush at this scale.
+ * The content on the screen uses the same photograph as the café case study
+ * rather than the illustrated Scene. An illustration sitting on a
+ * photorealistic laptop reads as fake immediately; a photograph does not.
+ * Type is kept small and a content row sits below the hero so it scans as a
+ * web page rather than a poster.
  */
 export function LaptopHero() {
   return (
     <div className="relative">
       <Image
         src="/images/hero-laptop.jpg"
-        alt="A laptop on a desk in a studio at dusk, showing a café website built by Sandpaper Sites"
+        alt="A laptop on a studio desk at dusk showing a café website built by Sandpaper Sites"
         width={1312}
         height={816}
         priority
@@ -28,47 +26,70 @@ export function LaptopHero() {
         className="h-auto w-full rounded-xl"
       />
 
-      {/* Measured screen rectangle */}
       <div
         aria-hidden="true"
         className="absolute overflow-hidden"
         style={{
           left: "30.41%",
-          top: "29.53%",
+          top: "30.0%",
           width: "40.17%",
-          height: "41.91%",
+          height: "42.5%",
           containerType: "size",
         }}
       >
-        <div className="relative size-full bg-white">
-          {/* the site's own top bar */}
-          <div className="flex h-[14cqh] items-center justify-between bg-white px-[4cqw]">
-            <span className="text-[4.4cqw] font-bold tracking-tight text-navy-900">
+        <div className="relative flex size-full flex-col bg-white">
+          {/* site nav */}
+          <div className="flex h-[13cqh] shrink-0 items-center justify-between border-b border-black/10 px-[4cqw]">
+            <span className="text-[3.6cqw] font-bold tracking-tight text-neutral-900">
               The Harbour Café
             </span>
-            <span className="flex gap-[2.5cqw] text-[3.4cqw] text-navy-900/50">
+            <span className="flex gap-[2.4cqw] text-[2.7cqw] text-neutral-500">
               <span>Menu</span>
               <span>Book</span>
+              <span>Find us</span>
             </span>
           </div>
 
-          {/* hero band */}
-          <div className="relative h-[86cqh]">
-            <Scene name="cafe" className="absolute inset-0" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10" />
-            <div className="absolute inset-0 flex flex-col justify-center gap-[2cqh] px-[4cqw]">
-              <p className="max-w-[72%] text-[6.2cqw] leading-[1.15] font-bold text-white">
+          {/* photographic hero — same shot as the café case study */}
+          <div className="relative h-[58cqh] shrink-0">
+            <Image
+              src="/images/sector-cafe.jpg"
+              alt=""
+              fill
+              sizes="200px"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/15" />
+            <div className="absolute inset-0 flex flex-col justify-center gap-[2.4cqh] px-[4cqw]">
+              <p className="max-w-[74%] text-[4.4cqw] leading-[1.2] font-bold text-white">
                 Fresh coffee, proper breakfast, harbour views.
               </p>
-              <span className="w-fit rounded-full bg-amber-500 px-[3.4cqw] py-[1.6cqh] text-[3.8cqw] font-semibold text-white">
+              <span className="w-fit rounded-[1cqw] bg-amber-500 px-[3cqw] py-[1.4cqh] text-[2.8cqw] font-semibold text-white">
                 Book a table
               </span>
             </div>
           </div>
 
-          {/* Screen glass: a faint sheen so it reads as a display, not a
-              picture pasted onto the laptop. */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/12 via-transparent to-transparent" />
+          {/* a strip of page content, so it scans as a site not a slide */}
+          <div className="grid flex-1 grid-cols-3 gap-[2cqw] px-[4cqw] py-[3cqh]">
+            {[
+              ["Breakfast", "Until 11.30"],
+              ["Lunch", "Daily specials"],
+              ["Takeaway", "Order ahead"],
+            ].map(([t, l]) => (
+              <div key={t} className="flex flex-col gap-[0.8cqh]">
+                <span className="text-[2.7cqw] font-semibold text-neutral-900">
+                  {t}
+                </span>
+                <span className="text-[2.3cqw] text-amber-700">{l}</span>
+                <span className="mt-[0.4cqh] h-[0.9cqh] w-full rounded-full bg-neutral-200" />
+                <span className="h-[0.9cqh] w-2/3 rounded-full bg-neutral-200" />
+              </div>
+            ))}
+          </div>
+
+          {/* screen glass */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
         </div>
       </div>
     </div>
