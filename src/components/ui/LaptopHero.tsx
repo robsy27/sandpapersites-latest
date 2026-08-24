@@ -15,15 +15,28 @@ import Image from "next/image";
  */
 export function LaptopHero() {
   return (
-    <div className="relative">
+    /* Cropped in on the laptop rather than shipping a tighter photograph.
+       The frame shows x 220-1100, y 185-735 of the original — the laptop
+       with ~65px of margin either side. Image and screen overlay sit in the
+       same oversized wrapper, so the measured screen percentages stay valid
+       and the screen grows from 40% of the frame to 60%. */
+    <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
+      <div
+        className="absolute"
+        style={{
+          left: "-25.00%",
+          top: "-33.64%",
+          width: "149.09%",
+          height: "148.36%",
+        }}
+      >
       <Image
         src="/images/hero-laptop.jpg"
         alt="A laptop on a studio desk at dusk showing a café website built by Sandpaper Sites"
-        width={1312}
-        height={816}
+        fill
         priority
-        sizes="(min-width: 1024px) 45vw, 90vw"
-        className="h-auto w-full rounded-xl"
+        sizes="(min-width: 1024px) 72vw, 145vw"
+        className="object-cover"
       />
 
       <div
@@ -111,6 +124,7 @@ export function LaptopHero() {
           {/* screen glass */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
         </div>
+      </div>
       </div>
     </div>
   );
