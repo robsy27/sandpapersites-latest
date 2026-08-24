@@ -38,24 +38,29 @@ export function LaptopHero() {
         }}
       >
         <div className="relative flex size-full flex-col bg-white">
-          {/* site nav */}
-          <div className="flex h-[13cqh] shrink-0 items-center justify-between border-b border-black/10 px-[4cqw]">
-            <span className="text-[3.6cqw] font-bold tracking-tight text-neutral-900">
-              The Harbour Café
+          {/* site nav, with its own mark and a booking pill */}
+          <div className="flex h-[12cqh] shrink-0 items-center justify-between border-b border-black/8 px-[3.5cqw]">
+            <span className="flex items-center gap-[1.4cqw]">
+              <span className="size-[2.6cqw] rounded-full bg-amber-500" />
+              <span className="text-[3.4cqw] font-bold tracking-tight text-neutral-900">
+                The Harbour Café
+              </span>
             </span>
-            <span className="flex gap-[2.4cqw] text-[2.7cqw] text-neutral-500">
+            <span className="flex items-center gap-[2.2cqw] text-[2.5cqw] text-neutral-500">
               <span>Menu</span>
-              <span>Book</span>
               <span>Find us</span>
+              <span className="rounded-full bg-neutral-900 px-[2.2cqw] py-[0.9cqh] font-semibold text-white">
+                Book
+              </span>
             </span>
           </div>
 
-          {/* photographic hero — same shot as the café case study */}
-          <div className="relative h-[58cqh] shrink-0">
+          {/* photographic hero */}
+          <div className="relative h-[52cqh] shrink-0">
             {/* The café shot was graded dark to sit as a tile on a navy page.
                 Here it plays the café's own hero image, where that reads as
                 gloomy — so it is lifted and warmed, and framed on the bright
-                window side, to look like a site a café would actually run. */}
+                window side. */}
             <Image
               src="/images/sector-cafe.jpg"
               alt=""
@@ -63,32 +68,43 @@ export function LaptopHero() {
               sizes="200px"
               className="object-cover object-[38%_center] brightness-[1.7] contrast-[0.92] saturate-[1.45] sepia-[0.12]"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
-            <div className="absolute inset-0 flex flex-col justify-center gap-[2.4cqh] px-[4cqw]">
-              <p className="max-w-[74%] text-[4.4cqw] leading-[1.2] font-bold text-white">
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+            <div className="absolute inset-0 flex flex-col justify-center gap-[2cqh] px-[3.5cqw]">
+              <p className="max-w-[72%] text-[4.2cqw] leading-[1.15] font-bold text-white">
                 Fresh coffee, proper breakfast, harbour views.
               </p>
-              <span className="w-fit rounded-[1cqw] bg-amber-500 px-[3cqw] py-[1.4cqh] text-[2.8cqw] font-semibold text-white">
-                Book a table
+              <span className="flex items-center gap-[2cqw]">
+                <span className="rounded-full bg-amber-500 px-[3cqw] py-[1.3cqh] text-[2.7cqw] font-semibold text-white">
+                  Book a table
+                </span>
+                <span className="text-[2.4cqw] font-medium text-white/85">
+                  Open till 4pm
+                </span>
               </span>
             </div>
           </div>
 
-          {/* a strip of page content, so it scans as a site not a slide */}
-          <div className="grid flex-1 grid-cols-3 gap-[2cqw] px-[4cqw] py-[3cqh]">
+          {/* menu, priced — real content rather than placeholder bars */}
+          <div className="flex flex-1 flex-col justify-center gap-[1.6cqh] px-[3.5cqw]">
             {[
-              ["Breakfast", "Until 11.30"],
-              ["Lunch", "Daily specials"],
-              ["Takeaway", "Order ahead"],
-            ].map(([t, l]) => (
-              <div key={t} className="flex flex-col gap-[0.8cqh]">
-                <span className="text-[2.7cqw] font-semibold text-neutral-900">
-                  {t}
+              ["Full English", "£9.50"],
+              ["Eggs Benedict", "£8.00"],
+              ["Harbour crab sandwich", "£11.00"],
+            ].map(([dish, price], i) => (
+              <span
+                key={dish}
+                className={
+                  "flex items-baseline justify-between gap-[2cqw] " +
+                  (i < 2 ? "border-b border-black/8 pb-[1.4cqh]" : "")
+                }
+              >
+                <span className="truncate text-[2.7cqw] font-medium text-neutral-800">
+                  {dish}
                 </span>
-                <span className="text-[2.3cqw] text-amber-700">{l}</span>
-                <span className="mt-[0.4cqh] h-[0.9cqh] w-full rounded-full bg-neutral-200" />
-                <span className="h-[0.9cqh] w-2/3 rounded-full bg-neutral-200" />
-              </div>
+                <span className="shrink-0 text-[2.7cqw] font-semibold text-amber-700">
+                  {price}
+                </span>
+              </span>
             ))}
           </div>
 
