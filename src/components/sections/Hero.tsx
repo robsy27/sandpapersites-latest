@@ -52,7 +52,7 @@ export function Hero() {
             <Reveal delay={210}>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <ButtonLink href="/contact" size="lg" icon="arrowRight">
-                  Get a free quote
+                  Get in touch
                 </ButtonLink>
                 <ButtonLink
                   href={booking.href}

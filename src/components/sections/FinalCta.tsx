@@ -29,7 +29,7 @@ export function FinalCta({
 
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <ButtonLink href="/contact" size="lg" icon="arrowRight">
-              Get a free quote
+              Get in touch
             </ButtonLink>
             <ButtonLink
               href={booking.href}
