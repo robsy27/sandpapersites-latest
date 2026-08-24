@@ -2,17 +2,25 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   async headers() {
+    /**
+     * The immutable rule below is only safe once filenames are
+     * content-hashed, which happens in a production build. The dev server
+     * reuses a single filename for the whole session, so caching it for a
+     * year told the browser to keep serving stale CSS — and `immutable`
+     * means even a normal reload will not revalidate it. That is what made
+     * the layout appear to break repeatedly in development.
+     */
+    const isDev = process.env.NODE_ENV === "development";
+
     return [
       {
-        /**
-         * Build assets are content-hashed, so a new deploy always produces
-         * new filenames. Safe to cache indefinitely.
-         */
         source: "/_next/static/:path*",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            value: isDev
+              ? "no-store, must-revalidate"
+              : "public, max-age=31536000, immutable",
           },
         ],
       },
