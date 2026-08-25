@@ -106,14 +106,17 @@ export function PricingTeaser() {
         lead="A one-off fee to build it, a small monthly to keep it running, and edits quoted only when you actually need them — approved by you before any work starts."
       />
 
-      <ul className="mx-auto mt-10 grid max-w-4xl items-start gap-6 lg:grid-cols-2">
+      {/* items-stretch (the default) so both cards share the taller card's
+          height. With items-start they sized to their own content, and the
+          Professional plan has one more feature row than Starter. */}
+      <ul className="mx-auto mt-10 grid max-w-4xl gap-6 lg:grid-cols-2">
         {plans.map((plan, index) => (
           <Reveal as="li" key={plan.id} delay={index * 70}>
             <div
               className={cn(
                 "relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-250 ease-out sm:p-8",
                 plan.featured
-                  ? "border-navy-900 bg-navy-900 text-mist-200 shadow-xl lg:-mt-4 lg:pb-11"
+                  ? "border-navy-900 bg-navy-900 text-mist-200 shadow-xl"
                   : "border-navy-900/10 bg-white hover:-translate-y-1 hover:shadow-lg",
               )}
             >
