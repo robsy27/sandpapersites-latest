@@ -15,7 +15,10 @@ export function ServicesOverview() {
         lead="Most small businesses don't want a website project. They want a website that exists, works and stays current. That's the three-part package."
       />
 
-      <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {/* items-start: without it, CSS Grid's default stretch makes every
+          card in the row grow to match whichever one is open, so closed
+          cards look expanded too — just full of blank space. */}
+      <ul className="mt-10 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => (
           <Reveal as="li" key={service.id} delay={index * 70}>
             <CollapsibleCard

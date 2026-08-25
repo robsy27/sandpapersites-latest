@@ -40,7 +40,7 @@ export const site = {
    * accounts are live.
    */
   social: {
-    linkedin: null as string | null,
+    linkedin: "https://www.linkedin.com/in/tom-robinson-477023431/" as string | null,
     facebook: null as string | null,
     instagram: null as string | null,
   },

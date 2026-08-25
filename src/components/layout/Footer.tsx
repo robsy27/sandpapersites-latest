@@ -72,6 +72,22 @@ export function Footer() {
                   {booking.label}
                 </a>
               </li>
+              {site.social.linkedin && (
+                <li>
+                  <a
+                    href={site.social.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-2.5 text-body text-mist-300 transition-colors hover:text-accent"
+                  >
+                    <Icon
+                      name="linkedin"
+                      className="size-4 shrink-0 text-accent"
+                    />
+                    LinkedIn
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
