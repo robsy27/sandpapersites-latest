@@ -49,3 +49,6 @@ next-env.d.ts
 
 # source document for public/terms.html — the served copy is what's tracked
 /terms-and-conditions.md
+
+# source document for public/privacy.html — the served copy is what's tracked
+/privacy-policy.md

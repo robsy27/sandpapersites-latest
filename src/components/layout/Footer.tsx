@@ -129,6 +129,13 @@ export function Footer() {
             >
               Terms &amp; Conditions
             </a>
+            {" "}&middot;{" "}
+            <a
+              href="/privacy.html"
+              className="underline underline-offset-4 transition-colors hover:text-accent"
+            >
+              Privacy Policy
+            </a>
           </p>
           <p>Built and hosted in-house — like yours would be.</p>
         </div>
