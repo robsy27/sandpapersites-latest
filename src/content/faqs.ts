@@ -4,9 +4,10 @@
  * Ordered by what blocks an enquiry: what's required of the customer first,
  * then timescales, then money, then admin.
  *
- * NOTE: the instalment terms and the edit price examples below are drafts —
- * confirm they match what you actually offer before this goes in front of
- * anyone, since both are commitments.
+ * NOTE: the edit price examples below are drafts — confirm they match what
+ * you actually offer before this goes in front of anyone, since they are a
+ * commitment. The build fee is payable in full upfront, matching Section 2
+ * of public/terms.html; keep the two in step if either changes.
  */
 
 export type Faq = {
@@ -31,9 +32,9 @@ export const faqs: Faq[] = [
       "Most are £25 — changing prices, updating opening hours, swapping a photo, adding a staff member. Something larger, like a new page or a new section, is usually £60 to £120 depending on what is involved. Either way you get the exact figure before I start, and you are free to say no.",
   },
   {
-    question: "Can I pay the build fee in instalments?",
+    question: "When do I pay the build fee?",
     answer:
-      "Yes. Half before I start and half when the site goes live, as standard. If that is still awkward for your cash flow, say so on the call — I would rather split it further than lose a good business over timing.",
+      "In full before I start. You get the exact figure on the first call and it does not move, so there is nothing left to settle once the site goes live. The monthly hosting fee only begins when you are live.",
   },
   {
     question: "What if I already have a domain?",
