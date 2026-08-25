@@ -25,8 +25,6 @@ export function ServicesOverview() {
               icon={service.icon}
               title={service.title}
               summary={service.summary}
-              /* First one open, so the pattern is obvious at a glance */
-              defaultOpen={index === 0}
             >
               <ul className="space-y-2.5">
                 {service.details.slice(0, 3).map((detail) => (

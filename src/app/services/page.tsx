@@ -62,7 +62,6 @@ export default function ServicesPage() {
                 icon={service.icon}
                 title={service.title}
                 summary={service.summary}
-                defaultOpen={index === 0}
                 media={
                   service.image ? (
                     <>

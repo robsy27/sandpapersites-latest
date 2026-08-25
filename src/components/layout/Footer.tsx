@@ -122,6 +122,13 @@ export function Footer() {
         <div className="flex flex-col gap-2 border-t border-navy-700/70 py-6 text-body text-mist-300 sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
+            {" "}
+            <a
+              href="/terms.html"
+              className="underline underline-offset-4 transition-colors hover:text-accent"
+            >
+              Terms &amp; Conditions
+            </a>
           </p>
           <p>Built and hosted in-house — like yours would be.</p>
         </div>

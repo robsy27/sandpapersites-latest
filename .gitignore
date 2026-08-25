@@ -46,3 +46,6 @@ next-env.d.ts
 
 # original AI image exports (working files, not served)
 /images/
+
+# source document for public/terms.html — the served copy is what's tracked
+/terms-and-conditions.md

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Terms &amp; Conditions | Sandpaper Sites</title>
+<meta name="description" content="Terms and conditions for website design, development and hosting services provided by Sandpaper Sites." />
+<meta name="robots" content="noindex, follow" />
+<link rel="icon" href="/icon" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy-950: #060f1f;
+    --navy-900: #0a1930;
+    --navy-800: #132441;
+    --navy-700: #1e2a3a;
+    --mist-200: #e5e7eb;
+    --mist-300: #cbd5e1;
+    --mist-400: #94a3b8;
+    --accent: #2dd4bf;
+    --accent-hover: #5eead4;
+    --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --measure: 42rem;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--navy-900);
+    color: var(--mist-300);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2 {
+    font-family: var(--font-display);
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; }
+
+  .container {
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  @media (min-width: 640px) { .container { padding: 0 2rem; } }
+  @media (min-width: 1024px) { .container { padding: 0 2.5rem; } }
+
+  /* ---- header ---- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(10, 25, 48, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--navy-700);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 4.5rem;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.0625rem;
+  }
+  .brand svg { color: var(--accent); }
+  nav.main-nav { display: none; align-items: center; gap: 0.25rem; }
+  nav.main-nav a {
+    padding: 0.6rem 0.85rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--mist-400);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav.main-nav a:hover { color: #fff; }
+  @media (min-width: 768px) { nav.main-nav { display: inline-flex; } }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0 1.3rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--navy-950);
+    box-shadow: 0 8px 24px -8px rgba(45, 212, 191, 0.6);
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+
+  /* ---- hero ---- */
+  .hero {
+    padding: 3.5rem 0 2.75rem;
+    border-bottom: 1px solid var(--navy-700);
+    background:
+      radial-gradient(ellipse 70% 50% at 50% -10%, rgba(45, 212, 191, 0.09), transparent 70%);
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1rem;
+  }
+  h1 { font-size: 2.5rem; font-weight: 700; margin: 0 0 0.9rem; }
+  @media (min-width: 640px) { h1 { font-size: 3rem; } }
+  .updated { font-size: 0.875rem; color: var(--mist-400); margin: 0 0 1.1rem; }
+  .lead {
+    max-width: var(--measure);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--mist-300);
+    margin: 0;
+  }
+
+  /* ---- notice callouts ---- */
+  .notice {
+    max-width: var(--measure);
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem 1.15rem;
+    border-radius: 0.85rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 1.75rem 0;
+  }
+  .notice-icon { flex-shrink: 0; margin-top: 0.15rem; }
+  .notice-info {
+    background: rgba(45, 212, 191, 0.08);
+    border: 1px solid rgba(45, 212, 191, 0.28);
+    color: var(--mist-300);
+  }
+  .notice-info .notice-icon { color: var(--accent); }
+  .notice-warn {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: #fde9c8;
+  }
+  .notice-warn .notice-icon { color: #f5a524; }
+  .notice strong { color: #fff; }
+
+  /* ---- content ---- */
+  main { padding: 3rem 0 4rem; }
+  .prose { max-width: var(--measure); }
+  section.clause { padding: 1.75rem 0; border-top: 1px solid var(--navy-700); }
+  section.clause:first-child { border-top: none; padding-top: 0; }
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 0.85rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  h2 .num {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .prose p { margin: 0 0 0.9rem; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose ul { margin: 0.9rem 0; padding: 0; list-style: none; }
+  .prose li {
+    position: relative;
+    padding-left: 1.4rem;
+    margin-bottom: 0.65rem;
+  }
+  .prose li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+  .prose li:last-child { margin-bottom: 0; }
+  .fill { color: #fff; font-weight: 600; }
+  .flag {
+    background: rgba(245, 158, 11, 0.16);
+    color: #fde9c8;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    border-radius: 0.35rem;
+    padding: 0.05rem 0.4rem;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+  }
+
+  .disclaimer {
+    max-width: var(--measure);
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--navy-700);
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--mist-400);
+    font-style: italic;
+  }
+
+  /* ---- footer (mirrors the live site) ---- */
+  footer { border-top: 1px solid var(--navy-700); background: var(--navy-950); }
+  .footer-top {
+    display: grid;
+    gap: 2.5rem;
+    padding: 3rem 0;
+  }
+  @media (min-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+  .footer-brand { display: inline-flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem; }
+  .footer-brand svg { color: var(--accent); }
+  .footer-blurb { max-width: 24rem; margin: 1rem 0 0; font-size: 0.9375rem; line-height: 1.7; color: var(--mist-300); }
+  .footer-location { margin: 1rem 0 0; font-size: 0.9375rem; color: var(--mist-300); }
+  .footer-col-title { font-family: var(--font-display); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; margin: 0; }
+  @media (min-width: 768px) { .footer-col-right { justify-self: end; } }
+  .footer-links { list-style: none; margin: 1rem 0 0; padding: 0; }
+  .footer-links li a {
+    display: inline-flex; align-items: center; gap: 0.65rem;
+    min-height: 2.75rem; font-size: 0.9375rem; color: var(--mist-300);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links li a:hover { color: var(--accent); }
+  .footer-links svg { color: var(--accent); flex-shrink: 0; }
+  .footer-nav { border-top: 1px solid rgba(30, 42, 58, 0.7); padding: 1rem 0; }
+  .footer-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0.5rem; }
+  @media (min-width: 640px) { .footer-nav ul { justify-content: space-between; } }
+  .footer-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 0.75rem; font-size: 0.9375rem; font-weight: 500; color: var(--mist-300); text-decoration: none; transition: color 0.2s; }
+  .footer-nav a:hover { color: var(--accent); }
+  .footer-bottom {
+    border-top: 1px solid rgba(30, 42, 58, 0.7);
+    padding: 1.5rem 0;
+    display: flex; flex-direction: column; gap: 0.65rem;
+    font-size: 0.9375rem; color: var(--mist-300);
+  }
+  @media (min-width: 640px) { .footer-bottom { flex-direction: row; align-items: center; justify-content: space-between; } }
+  .footer-bottom a { color: var(--mist-300); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+  .footer-bottom a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="9" stroke="currentColor" stroke-width="1.75" opacity="0.45"/>
+        <path d="M7 20.5c3.4 0 4.6-3 6.6-6.2C15.2 11.7 17 9.5 20 9.5" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"/>
+        <path d="M12 22.5c3.6 0 5.2-2.4 7.2-4.6" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" opacity="0.55"/>
+        <circle cx="22.5" cy="10.5" r="2.25" fill="currentColor"/>
+      </svg>
+      Sandpaper Sites
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/services">Services</a>
+      <a href="/work">Work</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <a class="btn btn-primary" href="/contact">Get in touch</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Legal</p>
+    <h1>Terms &amp; Conditions</h1>
+    <p class="updated">Last updated: 25th August 2026</p>
+    <p class="lead">
+      These Terms &amp; Conditions ("Terms") govern the provision of website design,
+      development and hosting services (the "Services") by Sandpaper Sites ("we", "us",
+      "our") to the client ("you", "your"). By engaging our Services, you agree to be
+      bound by these Terms.
+    </p>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+    <div class="prose">
+
+      <section class="clause">
+        <h2><span class="num">01</span> Our Services</h2>
+        <p>We provide custom website design and development, ongoing hosting, and
+        post-launch edits/maintenance for small businesses. The specific scope of work
+        for your project will be agreed separately (via quote, email, or project brief)
+        before work begins. Any work outside that agreed scope is treated as a change
+        request and may incur additional fees.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">02</span> Fees &amp; Payment</h2>
+        <ul>
+          <li><strong class="fill">Project Fee</strong> — a one-off fee covering design
+          and build, as quoted before work starts. Fees can either be paid in full upon
+          confirmation the client would like to go ahead, or in part to a minimum value
+          of 50% of the website build value.</li>
+          <li><strong class="fill">Hosting Fee</strong> — a recurring <span class="fill">monthly</span>
+          fee for hosting, covering server costs, uptime monitoring, and basic security
+          updates. This continues until either party cancels per Section 9.</li>
+          <li><strong class="fill">Edits &amp; Maintenance</strong> — changes requested
+          after launch that fall outside your hosting plan's included allowance (if any)
+          are billed on a price-on-application basis, quoted before work begins and
+          invoiced on completion.</li>
+          <li>Late payments may result in Services being paused, including taking your
+          website offline, until payment is received.</li>
+          <li>All fees are in GBP and exclude VAT unless stated otherwise.</li>
+        </ul>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">03</span> Client Responsibilities</h2>
+        <p>To deliver your project on time, we need you to provide content (text,
+        images, logos), feedback, and approvals promptly when requested. Delays on your
+        end may delay the project timeline and are not our responsibility.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">04</span> Revisions</h2>
+        <p>Your project fee includes <span class="fill">two rounds</span> of revisions
+        during the build phase. Additional revision rounds, or changes requested after
+        you've approved the final design, are billed per Section 2 (Edits &amp;
+        Maintenance).</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">05</span> Website Content &amp; Intellectual Property</h2>
+        <ul>
+          <li>You retain ownership of all content you provide (text, images, logos,
+          trademarks).</li>
+          <li>Once your project fee is paid in full, you own the final website design
+          and code we build for you.</li>
+          <li>If you wish to transfer your website away from our hosting (e.g. to
+          self-host or move to another provider), you're free to do so at any time.
+          We'll provide all relevant files and documentation needed to migrate the
+          site, provided your account is up to date with any outstanding fees. It's
+          your responsibility to ensure you (or your new provider) can properly host
+          and maintain the site once transferred.</li>
+          <li>We retain the right to showcase completed work in our own portfolio,
+          unless you request otherwise in writing.</li>
+          <li>Any third-party assets used (stock images, fonts, plugins) remain subject
+          to their own licences, which we'll disclose if relevant.</li>
+        </ul>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">06</span> Hosting &amp; Uptime</h2>
+        <p>We aim for high uptime but do not guarantee uninterrupted service, as
+        hosting relies on third-party infrastructure providers. We are not liable for
+        downtime, data loss, or issues caused by factors outside our reasonable control
+        (server outages, DNS issues, force majeure).</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">07</span> Domain Names</h2>
+        <p>If we register a domain on your behalf, you own that domain, but we may
+        manage renewal as part of your hosting plan unless agreed otherwise. It's your
+        responsibility to ensure renewal fees are paid to avoid losing the domain.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">08</span> Cancellation &amp; Refunds</h2>
+        <ul>
+          <li>You may cancel hosting at any time with <span class="fill">30 days'</span>
+          written notice. No refunds are given for partial months.</li>
+          <li>The project fee is non-refundable once work has begun, reflecting time
+          already invested. If you cancel before work starts, any deposit paid is
+          refundable minus a <span class="flag">[ ]% administration fee — confirm figure</span> fee.</li>
+          <li>We reserve the right to decline or end a project relationship at our
+          discretion, refunding any fees for work not yet completed.</li>
+        </ul>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">09</span> Termination of Hosting</h2>
+        <p>If hosting fees go unpaid for more than
+        <span class="flag">[ ] days — confirm grace period</span>, we reserve the right
+        to suspend the website and, after <span class="fill">30 days</span> of continued
+        non-payment, remove it entirely. We'll always attempt to contact you first.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">10</span> Warranties &amp; Liability</h2>
+        <p>We build websites to a professional standard but make no guarantee of
+        specific business outcomes (traffic, sales, rankings). To the fullest extent
+        permitted by law, our liability for any claim arising from the Services is
+        limited to the total fees paid by you in the 3 months prior to the claim. We
+        are not liable for indirect or consequential losses.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">11</span> Third-Party Services</h2>
+        <p>Your website may rely on third-party tools (hosting providers, plugins,
+        payment processors, analytics). We are not responsible for changes, outages, or
+        charges from these third parties, though we'll do our best to keep things
+        running smoothly.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">12</span> Confidentiality</h2>
+        <p>We won't share your business or personal information with third parties
+        except where necessary to deliver the Services (e.g. hosting providers) or as
+        required by law.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">13</span> Changes to These Terms</h2>
+        <p>We may update these Terms from time to time. Continued use of our Services
+        after changes are posted constitutes acceptance of the updated Terms.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">14</span> Governing Law</h2>
+        <p>These Terms are governed by the laws of England and Wales. Any disputes
+        will be subject to the exclusive jurisdiction of the courts of England and
+        Wales.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="num">15</span> Contact</h2>
+        <p>Questions about these Terms? Contact us at
+        <a href="mailto:contact@sandpapersites.co.uk" style="color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">contact@sandpapersites.co.uk</a>
+        or <a href="tel:+447706261786" style="color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">07706 261 786</a>.</p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a class="footer-brand" href="/">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="30" height="30" rx="9" stroke="currentColor" stroke-width="1.75" opacity="0.45"/>
+            <path d="M7 20.5c3.4 0 4.6-3 6.6-6.2C15.2 11.7 17 9.5 20 9.5" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"/>
+            <path d="M12 22.5c3.6 0 5.2-2.4 7.2-4.6" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" opacity="0.55"/>
+            <circle cx="22.5" cy="10.5" r="2.25" fill="currentColor"/>
+          </svg>
+          Sandpaper Sites
+        </a>
+        <p class="footer-blurb">Custom-built, properly hosted websites for small local businesses. Built once, looked after for good.</p>
+        <p class="footer-location">Serving local businesses across the UK</p>
+      </div>
+      <div class="footer-col-right">
+        <p class="footer-col-title">Get in touch</p>
+        <ul class="footer-links">
+          <li><a href="mailto:contact@sandpapersites.co.uk">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+            contact@sandpapersites.co.uk
+          </a></li>
+          <li><a href="tel:+447706261786">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"/></svg>
+            07706 261 786
+          </a></li>
+          <li><a href="https://calendar.app.google/MAJrVk7QHEqhukmcA" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            Book a 30-min call
+          </a></li>
+          <li><a href="https://www.linkedin.com/in/tom-robinson-477023431/" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a></li>
+        </ul>
+      </div>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Sandpaper Sites. All rights reserved. &nbsp;·&nbsp; <a href="/terms.html">Terms &amp; Conditions</a></p>
+      <p>Built and hosted in-house — like yours would be.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
