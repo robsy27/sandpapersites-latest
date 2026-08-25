@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { plans } from "@/content/pricing";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -200,15 +201,34 @@ export function PricingTeaser() {
                 ))}
               </ul>
 
+              {/* Straight to Stripe for the build fee. `external` opens a new
+                  tab with rel="noopener noreferrer", so the site stays put
+                  behind the checkout and back-navigation still works. */}
               <div className="mt-8">
                 <ButtonLink
-                  href="/contact"
+                  href={plan.checkoutUrl}
+                  external
                   variant={plan.featured ? "primary" : "light"}
                   className="w-full"
                   icon="arrowRight"
                 >
                   {plan.cta}
                 </ButtonLink>
+                <p
+                  className={cn(
+                    "mt-3 text-center text-xs leading-relaxed",
+                    plan.featured ? "text-mist-400" : "text-mist-700",
+                  )}
+                >
+                  Not ready to pay yet?{" "}
+                  <Link
+                    href="/contact"
+                    className="underline underline-offset-2 transition-colors hover:text-accent"
+                  >
+                    Get in touch first
+                  </Link>
+                  .
+                </p>
               </div>
             </div>
           </Reveal>

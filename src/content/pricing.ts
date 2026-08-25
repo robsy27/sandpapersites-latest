@@ -21,6 +21,12 @@ export type Plan = {
   featured: boolean;
   features: string[];
   cta: string;
+  /**
+   * Stripe payment link for the build fee. Opens in a new tab, so the site
+   * stays put behind the checkout. The build fee is payable in full upfront
+   * (Section 2 of public/terms.html), which is what these collect.
+   */
+  checkoutUrl: string;
 };
 
 export const plans: Plan[] = [
@@ -35,7 +41,8 @@ export const plans: Plan[] = [
     editFee: "From £25",
     editNote: "Quoted per request before any work begins",
     featured: false,
-    cta: "Get in touch",
+    cta: "Pay and get started",
+    checkoutUrl: "https://buy.stripe.com/28E28t2wKbRXar2gC15wI05",
     features: [
       "Up to 4 pages",
       "Mobile-first custom design",
@@ -57,7 +64,8 @@ export const plans: Plan[] = [
     editFee: "From £25",
     editNote: "Priority turnaround, quoted before any work begins",
     featured: true,
-    cta: "Get in touch",
+    cta: "Pay and get started",
+    checkoutUrl: "https://buy.stripe.com/28E14pefs1dj9mYfxX5wI04",
     features: [
       "Up to 10 pages",
       "Everything in Starter",
