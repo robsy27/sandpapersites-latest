@@ -7,17 +7,23 @@ import { Logo } from "./Logo";
 /**
  * Shared across every page, so this layout applies site-wide.
  *
- * Upper band: brand alongside the contact details, which now occupy the
- * column the page list used to sit in.
- * Lower band: the page list spread horizontally across the bottom.
+ * Three columns on desktop: brand, page list, contact details. The page
+ * list previously ran as a full-width strip above the copyright, spread
+ * with justify-between — at 1280px that pushed five short links ~150px
+ * apart while the two-column band above left ~400px empty down the middle.
+ * Giving the pages their own column fills that gap and reads as a group
+ * rather than five stranded words.
+ *
+ * The brand column is set wider (1.4fr) so its blurb wraps over two
+ * comfortable lines instead of being capped short by an even split.
  */
 export function Footer() {
   return (
     <footer className="border-t border-navy-700 bg-navy-950">
       <Container>
-        {/* Brand + Get in touch */}
-        <div className="grid gap-10 py-12 md:grid-cols-2 lg:gap-16 lg:py-14">
-          <div>
+        {/* Brand + Pages + Get in touch */}
+        <div className="grid gap-x-12 gap-y-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.1fr] lg:gap-x-16 lg:py-16">
+          <div className="sm:col-span-2 lg:col-span-1">
             <Link
               href="/"
               className="inline-flex min-h-11 items-center gap-2.5 text-white transition-opacity hover:opacity-85"
@@ -34,7 +40,33 @@ export function Footer() {
             <p className="mt-4 text-body text-mist-300">{site.location}</p>
           </div>
 
-          <div className="md:justify-self-end">
+          <div>
+            <h2 className="font-display text-sm font-semibold tracking-[0.14em] text-white uppercase">
+              Pages
+            </h2>
+            <ul className="mt-4 space-y-1">
+              <li>
+                <Link
+                  href="/"
+                  className="inline-flex min-h-11 items-center text-body text-mist-300 transition-colors hover:text-accent"
+                >
+                  Home
+                </Link>
+              </li>
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center text-body text-mist-300 transition-colors hover:text-accent"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
             <h2 className="font-display text-sm font-semibold tracking-[0.14em] text-white uppercase">
               Get in touch
             </h2>
@@ -92,51 +124,30 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Page list, spread across the bottom */}
-        <nav
-          aria-label="Footer"
-          className="border-t border-navy-700/70 py-4"
-        >
-          <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:justify-between">
-            <li>
-              <Link
-                href="/"
-                className="inline-flex min-h-11 items-center px-3 text-body font-medium text-mist-300 transition-colors hover:text-accent"
+        {/* Copyright, legal links and the sign-off.
+            The legal links sit in their own group rather than trailing the
+            copyright sentence — run together they read as one long string. */}
+        <div className="flex flex-col gap-y-5 border-t border-navy-700/70 py-8 text-body text-mist-300 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-x-6 gap-y-3 sm:flex-row sm:items-center">
+            <p>
+              &copy; {new Date().getFullYear()} {site.name}. All rights
+              reserved.
+            </p>
+            <p className="flex items-center gap-x-6">
+              <a
+                href="/terms.html"
+                className="underline underline-offset-4 transition-colors hover:text-accent"
               >
-                Home
-              </Link>
-            </li>
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="inline-flex min-h-11 items-center px-3 text-body font-medium text-mist-300 transition-colors hover:text-accent"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="flex flex-col gap-2 border-t border-navy-700/70 py-6 text-body text-mist-300 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
-            {" "}
-            <a
-              href="/terms.html"
-              className="underline underline-offset-4 transition-colors hover:text-accent"
-            >
-              Terms &amp; Conditions
-            </a>
-            {" "}&middot;{" "}
-            <a
-              href="/privacy.html"
-              className="underline underline-offset-4 transition-colors hover:text-accent"
-            >
-              Privacy Policy
-            </a>
-          </p>
+                Terms &amp; Conditions
+              </a>
+              <a
+                href="/privacy.html"
+                className="underline underline-offset-4 transition-colors hover:text-accent"
+              >
+                Privacy Policy
+              </a>
+            </p>
+          </div>
           <p>Built and hosted in-house — like yours would be.</p>
         </div>
       </Container>

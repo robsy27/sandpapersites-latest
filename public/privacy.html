@@ -260,16 +260,21 @@
   footer { border-top: 1px solid var(--navy-700); background: var(--navy-950); }
   .footer-top {
     display: grid;
-    gap: 2.5rem;
-    padding: 3rem 0;
+    gap: 2.5rem 3rem;
+    padding: 3.5rem 0 4rem;
   }
-  @media (min-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+  @media (min-width: 640px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) {
+    .footer-top { grid-template-columns: 1.4fr 1fr 1.1fr; gap: 2.5rem 4rem; }
+  }
+  /* Brand spans both columns at the 2-up size, then takes its own at 3-up. */
+  @media (min-width: 640px) { .footer-brand-col { grid-column: span 2; } }
+  @media (min-width: 1024px) { .footer-brand-col { grid-column: span 1; } }
   .footer-brand { display: inline-flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem; }
   .footer-brand svg { color: var(--accent); }
   .footer-blurb { max-width: 24rem; margin: 1rem 0 0; font-size: 0.9375rem; line-height: 1.7; color: var(--mist-300); }
   .footer-location { margin: 1rem 0 0; font-size: 0.9375rem; color: var(--mist-300); }
   .footer-col-title { font-family: var(--font-display); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; margin: 0; }
-  @media (min-width: 768px) { .footer-col-right { justify-self: end; } }
   .footer-links { list-style: none; margin: 1rem 0 0; padding: 0; }
   .footer-links li a {
     display: inline-flex; align-items: center; gap: 0.65rem;
@@ -278,18 +283,23 @@
   }
   .footer-links li a:hover { color: var(--accent); }
   .footer-links svg { color: var(--accent); flex-shrink: 0; }
-  .footer-nav { border-top: 1px solid rgba(30, 42, 58, 0.7); padding: 1rem 0; }
-  .footer-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0.5rem; }
-  @media (min-width: 640px) { .footer-nav ul { justify-content: space-between; } }
-  .footer-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 0.75rem; font-size: 0.9375rem; font-weight: 500; color: var(--mist-300); text-decoration: none; transition: color 0.2s; }
-  .footer-nav a:hover { color: var(--accent); }
   .footer-bottom {
     border-top: 1px solid rgba(30, 42, 58, 0.7);
-    padding: 1.5rem 0;
-    display: flex; flex-direction: column; gap: 0.65rem;
+    padding: 2rem 0;
+    display: flex; flex-direction: column; gap: 1.25rem;
     font-size: 0.9375rem; color: var(--mist-300);
   }
-  @media (min-width: 640px) { .footer-bottom { flex-direction: row; align-items: center; justify-content: space-between; } }
+  /* Stays stacked at every width, unlike the React footer's equivalent row.
+     These pages carry the full legal name ("Tom Robinson, trading as ...")
+     which is ~150px longer than the site's "Sandpaper Sites", and putting
+     that plus both links plus the sign-off on one line leaves no slack —
+     every item shrinks and wraps mid-phrase. */
+  .footer-bottom p { margin: 0; }
+  /* The legal links sit apart from the copyright sentence — run together
+     they read as one long string. */
+  .footer-legal { display: flex; flex-direction: column; gap: 0.75rem; }
+  @media (min-width: 640px) { .footer-legal { flex-direction: row; align-items: center; gap: 1.5rem; } }
+  .footer-legal-links { display: flex; align-items: center; gap: 1.5rem; }
   .footer-bottom a { color: var(--mist-300); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
   .footer-bottom a:hover { color: var(--accent); }
 </style>
@@ -526,7 +536,7 @@
 <footer>
   <div class="container">
     <div class="footer-top">
-      <div>
+      <div class="footer-brand-col">
         <a class="footer-brand" href="/">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
             <rect x="1" y="1" width="30" height="30" rx="9" stroke="currentColor" stroke-width="1.75" opacity="0.45"/>
@@ -539,7 +549,17 @@
         <p class="footer-blurb">Custom-built, properly hosted websites for small local businesses. Built once, looked after for good.</p>
         <p class="footer-location">Serving local businesses across the UK</p>
       </div>
-      <div class="footer-col-right">
+      <div>
+        <p class="footer-col-title">Pages</p>
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/work">Work</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
         <p class="footer-col-title">Get in touch</p>
         <ul class="footer-links">
           <li><a href="mailto:contact@sandpapersites.co.uk">
@@ -562,18 +582,15 @@
       </div>
     </div>
 
-    <nav class="footer-nav" aria-label="Footer">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/work">Work</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Tom Robinson, trading as Sandpaper Sites. All rights reserved. &nbsp;·&nbsp; <a href="/terms.html">Terms &amp; Conditions</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy Policy</a></p>
+      <div class="footer-legal">
+        <p>&copy; 2026 Tom Robinson, trading as Sandpaper Sites. All rights reserved.</p>
+        <p class="footer-legal-links">
+          <a href="/terms.html">Terms &amp; Conditions</a>
+          <a href="/privacy.html">Privacy Policy</a>
+        </p>
+      </div>
       <p>Built and hosted in-house — like yours would be.</p>
     </div>
   </div>
