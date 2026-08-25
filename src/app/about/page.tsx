@@ -145,13 +145,11 @@ export default function AboutPage() {
                   In short
                 </h2>
                 <div className="space-y-3">
-                  {inShort.map((item, index) => (
+                  {inShort.map((item) => (
                     <CollapsibleCard
                       key={item.term}
                       eyebrow={item.term}
                       title={item.headline}
-                      /* First one open so the pattern is obvious */
-                      defaultOpen={index === 0}
                     >
                       <p className="text-body leading-relaxed text-mist-300">
                         {item.detail}
