@@ -408,19 +408,22 @@ export function ContactForm() {
         </p>
       )}
 
-      {/* Button and note share one line, the button holding its width so its
-          label never wraps and the note taking whatever is left. */}
-      <div className="flex items-center gap-4 pt-2">
+      {/* Stacked on mobile, side by side from 640px.
+          Sharing one line at every width was the problem: the button is
+          shrink-0 at around 160px, so on a 375px screen the note was left
+          roughly 150px and broke into a narrow four-line column beside it.
+          Below the button it gets the full width and reads as one sentence. */}
+      <div className="flex flex-col items-stretch gap-3 pt-2 sm:flex-row sm:items-center sm:gap-4">
         <Button
           type="submit"
           size="lg"
           disabled={status === "sending"}
           icon={status === "sending" ? undefined : "arrowRight"}
-          className="shrink-0 whitespace-nowrap"
+          className="w-full shrink-0 whitespace-nowrap sm:w-auto"
         >
           {status === "sending" ? "Sending…" : "Send enquiry"}
         </Button>
-        <p className="min-w-0 flex-1 text-xs leading-relaxed text-mist-300">
+        <p className="min-w-0 text-xs leading-relaxed text-mist-300 sm:flex-1">
           I’ll only use these details to reply to you. No lists, no sharing.
         </p>
       </div>
