@@ -23,7 +23,14 @@ export function Footer() {
     <footer className="border-t border-navy-700 bg-navy-950">
       <Container>
         {/* Brand + Pages + Get in touch */}
-        <div className="grid gap-x-12 gap-y-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.1fr] lg:gap-x-12 lg:py-16">
+        {/* The contact column takes a minmax floor rather than a plain
+            fraction. Adding the areas column squeezed it to 222px, which is
+            narrower than contact@sandpapersites.co.uk renders — and because
+            that link is break-anywhere, it broke mid-word as
+            "…sandpapersites.c / o.uk". The 15.5rem floor keeps the address
+            on one line; break-anywhere stays as a fallback for widths this
+            does not anticipate. */}
+        <div className="grid gap-x-12 gap-y-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.9fr_1fr_minmax(15.5rem,1.25fr)] lg:gap-x-12 lg:py-16">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link
               href="/"
@@ -97,7 +104,12 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="break-anywhere inline-flex min-h-11 items-center gap-2.5 text-body text-mist-300 transition-colors hover:text-accent"
+                  /* break-words, not break-anywhere. `overflow-wrap: anywhere`
+                     collapses the element's min-content width, so the grid
+                     item shrank and wrapped the address mid-word even with
+                     room to spare. `break-word` only breaks on real overflow
+                     and leaves intrinsic sizing intact. */
+                  className="inline-flex min-h-11 items-center gap-2.5 break-words text-body text-mist-300 transition-colors hover:text-accent"
                 >
                   <Icon name="mail" className="size-4 shrink-0 text-accent" />
                   {site.email}
