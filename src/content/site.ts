@@ -7,7 +7,7 @@ export const site = {
   name: "Sandpaper Sites",
   tagline: "Custom websites for local business",
   description:
-    "Sandpaper Sites builds, hosts and maintains affordable custom websites for small local businesses. A professional site at a fair price — no agency overhead, no DIY builders.",
+    "Sandpaper Sites builds, hosts and maintains affordable custom websites for small businesses across Shropshire and Cheshire. A professional site at a fair price — no agency overhead, no DIY builders.",
   /** Used for canonical URLs, sitemap and Open Graph. Update before launch. */
   url: "https://sandpapersites.co.uk",
   email: "contact@sandpapersites.co.uk",
@@ -15,7 +15,7 @@ export const site = {
   phone: "+447706261786",
   /** How it reads on the page. */
   phoneDisplay: "07706 261 786",
-  location: "Serving local businesses across the UK",
+  location: "Websites for small businesses across Shropshire and Cheshire",
   /**
    * Booking link for the "Arrange a call" buttons.
    *

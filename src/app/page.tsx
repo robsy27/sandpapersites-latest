@@ -7,10 +7,18 @@ import { ImageBand } from "@/components/ui/ImageBand";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCta } from "@/components/sections/FinalCta";
 
+/**
+ * The brand name is written out in full here on purpose. Next's
+ * `title.template` in the root layout applies to *child* segments only, not
+ * to the page sharing that segment — so this string is used verbatim and
+ * "| Sandpaper Sites" is never appended. Without the brand spelled out, the
+ * home page was the one page that never named the business in its title.
+ */
 export const metadata: Metadata = {
-  title: "Affordable Custom Websites for Small Local Businesses",
+  title:
+    "Sandpaper Sites | Affordable Websites for Small Businesses in Shropshire & Cheshire",
   description:
-    "Sandpaper Sites builds, hosts and maintains custom websites for small local businesses. A one-off build fee, a small monthly cost, and edits quoted only when you need them.",
+    "Affordable custom websites for small businesses across Shropshire and Cheshire. Built, hosted and maintained by one person — a one-off build fee from £495, hosting from £25 a month, and edits quoted before any work starts.",
   alternates: { canonical: "/" },
 };
 

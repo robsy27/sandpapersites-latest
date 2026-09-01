@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { booking, site } from "@/content/site";
 import { faqs } from "@/content/faqs";
+import { FaqSchema } from "@/components/layout/StructuredData";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Section } from "@/components/ui/Section";
@@ -13,7 +14,7 @@ import { Reveal } from "@/components/ui/Reveal";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get a free, no-obligation quote for your business website, or book a 30-minute intro call. Replies usually within one working day.",
+    "Get a free, no-obligation quote for your business website in Shropshire or Cheshire, or book a 30-minute intro call. Replies usually within one working day.",
   alternates: { canonical: "/contact" },
 };
 
@@ -21,6 +22,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+      {/* Marks up the questions rendered below, so they can qualify for
+          expandable FAQ results in Google. Fed from the same array the page
+          renders — markup that disagrees with the visible page gets the
+          rich result dropped. */}
+      <FaqSchema faqs={faqs} />
+
       <PageHeader
         eyebrow="Contact"
         title="Tell me about your business."

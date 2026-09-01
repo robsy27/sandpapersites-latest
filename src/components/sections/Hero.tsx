@@ -42,10 +42,16 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={140}>
+              {/* The H1 above is deliberately voice-led and carries no search
+                  terms. This paragraph is where "websites for small
+                  businesses" and the two counties appear — kept natural, so
+                  the page reads the same as it always did. */}
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-mist-300">
-                Custom-built, properly hosted and kept up to date for you. One
-                clear build fee, one small monthly cost, and a real person who
-                answers the phone when something needs changing.
+                Affordable websites for small businesses across Shropshire and
+                Cheshire — custom-built, properly hosted and kept up to date
+                for you. One clear build fee, one small monthly cost, and a
+                real person who answers the phone when something needs
+                changing.
               </p>
             </Reveal>
 

@@ -27,13 +27,10 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
-  keywords: [
-    "small business website design",
-    "affordable web design",
-    "local business website",
-    "website hosting and maintenance",
-    "custom website builder",
-  ],
+  /* The `keywords` meta tag was dropped here: Google has ignored it since
+     2009 and it only invited the temptation to keyword-stuff. Targeting now
+     lives in the copy, titles and structured data, which search engines
+     actually read. */
   authors: [{ name: site.name }],
   creator: site.name,
   alternates: { canonical: "/" },
