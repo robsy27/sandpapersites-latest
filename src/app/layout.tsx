@@ -8,6 +8,8 @@ import { StructuredData } from "@/components/layout/StructuredData";
 import { SideRail } from "@/components/layout/SideRail";
 import { SmoothScroll } from "@/components/chrome/SmoothScroll";
 import { Rulers } from "@/components/chrome/Rulers";
+import { Aurora } from "@/components/chrome/Aurora";
+import { Choreography } from "@/components/chrome/Choreography";
 import { ModeWatcher } from "@/components/chrome/ModeWatcher";
 import { MODE_SCRIPT } from "@/lib/mode";
 
@@ -97,8 +99,10 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <Aurora />
         <ModeWatcher />
         <SmoothScroll />
+        <Choreography />
         <Rulers />
         <SideRail />
 

@@ -13,7 +13,7 @@ export function PageHeader({
   lead: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-navy-900 pt-10 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20">
+    <section className="relative overflow-hidden bg-navy-900 pt-10 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20 cinema:bg-navy-900/60">
       <AmbientBackground intensity="soft" />
 
       <Container className="relative">

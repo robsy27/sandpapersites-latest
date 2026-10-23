@@ -15,7 +15,7 @@ const proofPoints = [
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-navy-900">
+    <section id="top" className="relative overflow-hidden bg-navy-900 cinema:bg-navy-900/60">
       <AmbientBackground intensity="full" />
       <Spotlight />
       <div
@@ -90,7 +90,9 @@ export function Hero() {
           {/* A real interface on a real photograph — the AI never renders
               the screen, so nothing here is a hallucinated UI. */}
           <Reveal delay={200} className="lg:col-span-5">
-            <LaptopHero />
+            <div data-parallax="7">
+                <LaptopHero />
+              </div>
           </Reveal>
         </div>
       </Container>

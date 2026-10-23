@@ -4,10 +4,17 @@ import { AmbientBackground } from "./AmbientBackground";
 
 type Tone = "navy" | "deep" | "light" | "raised";
 
+/**
+ * Dark tones go translucent in cinema so the Aurora canvas behind the page
+ * reads through them. They stay fully opaque everywhere else, where there is
+ * no canvas and a flat tone is what is wanted. The light tone is opaque in
+ * both: it is meant to be a bright panel cutting through the dark, and
+ * letting the aurora bleed into it just muddies it.
+ */
 const tones: Record<Tone, string> = {
-  navy: "bg-navy-900 text-mist-200",
-  deep: "bg-navy-950 text-mist-200",
-  raised: "bg-navy-800 text-mist-200",
+  navy: "bg-navy-900 text-mist-200 cinema:bg-navy-900/72",
+  deep: "bg-navy-950 text-mist-200 cinema:bg-navy-950/72",
+  raised: "bg-navy-800 text-mist-200 cinema:bg-navy-800/72",
   light: "bg-mist-100 text-navy-900",
 };
 
