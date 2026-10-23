@@ -5,6 +5,11 @@ import { site } from "@/content/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StructuredData } from "@/components/layout/StructuredData";
+import { SideRail } from "@/components/layout/SideRail";
+import { SmoothScroll } from "@/components/chrome/SmoothScroll";
+import { Rulers } from "@/components/chrome/Rulers";
+import { ModeWatcher } from "@/components/chrome/ModeWatcher";
+import { MODE_SCRIPT } from "@/lib/mode";
 
 /* Display face for headlines, readable sans for body. `swap` avoids FOIT. */
 const spaceGrotesk = Space_Grotesk({
@@ -64,7 +69,21 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+    /* suppressHydrationWarning: the inline script in <head> adds `cinema` to
+       <html> before hydration, so the class React rendered and the class in
+       the DOM differ by design. Without this, React reports a mismatch on
+       every load. It suppresses the warning for this element's attributes
+       only — it does not hide mismatches anywhere else in the tree. */
+    <html
+      lang="en-GB"
+      className={`${spaceGrotesk.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Chooses cinema or static before first paint, so there is never a
+            flash of the wrong layout. Must stay in step with lib/mode.ts. */}
+        <script dangerouslySetInnerHTML={{ __html: MODE_SCRIPT }} />
+      </head>
       <body className="min-h-dvh antialiased">
         {/* Scroll-reveal starts hidden and is undone by JS. With JS off it
             would never fire, so show everything. Unlayered, so it beats the
@@ -78,12 +97,24 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <Header />
-        {/* Offsets the fixed header so it never overlaps page content */}
-        <main id="main" className="pt-header">
-          {children}
-        </main>
-        <Footer />
+        <ModeWatcher />
+        <SmoothScroll />
+        <Rulers />
+        <SideRail />
+
+        {/* The header carries navigation in the static layout. In cinema the
+            side rail does, so the header is hidden rather than duplicated. */}
+        <div className="cinema:hidden">
+          <Header />
+        </div>
+
+        {/* Offsets the fixed header, and in cinema the fixed rail. */}
+        <div className="cinema:mr-[19rem]">
+          <main id="main" className="pt-header cinema:pt-0">
+            {children}
+          </main>
+          <Footer />
+        </div>
 
         {/* Stale-HTML safety net.
             A CDN or browser can hold a page from an earlier build, and a

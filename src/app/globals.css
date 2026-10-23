@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* Cinema layout. The inline <head> script in layout.tsx puts `cinema` on
+   <html> before first paint when the visitor is on a wide screen, with a
+   mouse, and has not asked for reduced motion. Everything the full treatment
+   adds hangs off this variant, so phones, touch screens, reduced-motion
+   users, print and no-JS all fall through to the plain layout automatically
+   rather than needing a second set of rules. */
+@custom-variant cinema {
+  &:where(html.cinema *, html.cinema) {
+    @slot;
+  }
+}
+
 /* ==========================================================================
    Sandpaper Sites — Design Tokens
    Pattern: Trust & Authority + Conversion

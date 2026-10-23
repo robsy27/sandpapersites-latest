@@ -15,7 +15,7 @@ const proofPoints = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-navy-900">
+    <section id="top" className="relative overflow-hidden bg-navy-900">
       <AmbientBackground intensity="full" />
       <Spotlight />
       <div
