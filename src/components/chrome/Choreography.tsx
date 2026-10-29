@@ -3,10 +3,10 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "@/lib/motion";
-import { isCinema } from "@/lib/mode";
+import { currentTier } from "@/lib/mode";
 
 /**
- * Scroll choreography, cinema layout only.
+ * Scroll choreography, tiered.
  *
  * Mounted once and applied from here rather than wired into each section,
  * so adding a section needs no animation code and there is one place to
@@ -27,6 +27,13 @@ import { isCinema } from "@/lib/mode";
  *              Used on section media so images sit on a different plane to
  *              the text beside them.
  *
+ * Tiering. Parallax runs on phones too — it is one transform per element and
+ * it is most of the perceived richness. Recede and rise do not: they animate
+ * whole sections at once, and on a phone the viewport is short enough that a
+ * section would be mid-fade for most of the time it is on screen, which reads
+ * as content that will not settle rather than as polish. Reduced motion gets
+ * nothing at all.
+ *
  * No blur. The reference blurs sections on exit and it looks superb, but a
  * blur filter over a full-width section is composited every frame and it
  * drops frames on ordinary laptops — which is most of the audience here.
@@ -37,11 +44,13 @@ export function Choreography() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!isCinema()) return;
+    const tier = currentTier();
+    if (tier === "minimal") return;
     const { gsap, ScrollTrigger } = motion();
 
     const ctx = gsap.context(() => {
-      const sections = gsap.utils.toArray<HTMLElement>("main > section");
+      const sections =
+        tier === "full" ? gsap.utils.toArray<HTMLElement>("main > section") : [];
 
       sections.forEach((section, index) => {
         /* recede — skip the last one, which has nothing after it to make

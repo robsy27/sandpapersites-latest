@@ -1,13 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Anton, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StructuredData } from "@/components/layout/StructuredData";
-import { SideRail } from "@/components/layout/SideRail";
 import { SmoothScroll } from "@/components/chrome/SmoothScroll";
-import { Rulers } from "@/components/chrome/Rulers";
 import { Aurora } from "@/components/chrome/Aurora";
 import { Choreography } from "@/components/chrome/Choreography";
 import { ModeWatcher } from "@/components/chrome/ModeWatcher";
@@ -18,6 +16,17 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+/* Heavy condensed caps for the big statements and the ghost wordmarks — the
+   thing that gives the Prabhu reference its punch. One weight, used sparingly
+   and large; Space Grotesk still carries section headings and Inter the body,
+   so this is a third tier rather than a replacement. */
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-anton",
   display: "swap",
 });
 
@@ -71,19 +80,19 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    /* suppressHydrationWarning: the inline script in <head> adds `cinema` to
+    /* suppressHydrationWarning: the inline script in <head> adds the motion tier to
        <html> before hydration, so the class React rendered and the class in
        the DOM differ by design. Without this, React reports a mismatch on
        every load. It suppresses the warning for this element's attributes
        only — it does not hide mismatches anywhere else in the tree. */
     <html
       lang="en-GB"
-      className={`${spaceGrotesk.variable} ${inter.variable}`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${anton.variable}`}
       suppressHydrationWarning
     >
       <head>
-        {/* Chooses cinema or static before first paint, so there is never a
-            flash of the wrong layout. Must stay in step with lib/mode.ts. */}
+        {/* Stamps the motion tier before first paint, so there is never a
+            flash of the wrong treatment. Keep in step with lib/mode.ts. */}
         <script dangerouslySetInnerHTML={{ __html: MODE_SCRIPT }} />
       </head>
       <body className="min-h-dvh antialiased">
@@ -103,22 +112,13 @@ export default function RootLayout({
         <ModeWatcher />
         <SmoothScroll />
         <Choreography />
-        <Rulers />
-        <SideRail />
 
-        {/* The header carries navigation in the static layout. In cinema the
-            side rail does, so the header is hidden rather than duplicated. */}
-        <div className="cinema:hidden">
-          <Header />
-        </div>
-
-        {/* Offsets the fixed header, and in cinema the fixed rail. */}
-        <div className="cinema:mr-[19rem]">
-          <main id="main" className="pt-header cinema:pt-0">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <Header />
+        {/* Offsets the fixed header so it never overlaps page content. */}
+        <main id="main" className="pt-header">
+          {children}
+        </main>
+        <Footer />
 
         {/* Stale-HTML safety net.
             A CDN or browser can hold a page from an earlier build, and a

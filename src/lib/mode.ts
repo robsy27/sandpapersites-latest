@@ -1,26 +1,29 @@
 /**
- * Two layouts share every page.
+ * Three motion tiers, not two layouts.
  *
- *  cinema — the full treatment: docking side rail, scroll choreography,
- *           inertial scrolling, edge rulers. Desktop with a mouse only.
- *  static — phones, tablets, touch screens, reduced motion, print and
- *           no-JavaScript. Every word is still there; nothing pins.
+ * The earlier version was binary — a full experience on desktop and a plain
+ * site everywhere else. That was wrong for this site: most visitors are on a
+ * phone, so the plain version was what most people actually saw.
  *
- * The static layout is what the exported HTML contains, so search engines and
- * visitors without JavaScript always get complete content. That matters more
- * here than on a portfolio: the county landing pages exist to rank, and a
- * layout that hid its copy behind JavaScript would undo that.
+ *   full    — wide screen with a mouse. Everything: inertial scrolling,
+ *             scroll choreography, a background that reacts to the pointer.
+ *   lite    — phones and tablets. Entrance reveals and parallax still run,
+ *             but native scrolling is left alone and nothing tracks the
+ *             pointer. Premium without fighting the device.
+ *   minimal — anyone who asked for reduced motion. Nothing animates.
  *
- * An inline script in <head> adds `cinema` to <html> before first paint when
- * the visitor qualifies, so there is no flash of the wrong layout.
+ * Content never depends on the tier. Every word is in the server-rendered
+ * HTML in all three, so search engines and no-JS visitors get the full page —
+ * which matters here because the county pages exist to rank.
+ *
+ * The tier is written to <html> as a class by an inline script before first
+ * paint, so there is no flash of the wrong treatment.
  */
 
-/**
- * 1100 rather than the reference's 960. The side rail is wider here because
- * it carries a page list and a section list rather than one page's sections,
- * so it needs more room before the main column gets cramped.
- */
-export const CINEMA_MIN_WIDTH = 1100;
+export type MotionTier = "full" | "lite" | "minimal";
+
+/** Below this, the pointer-driven and scroll-pinned work is skipped. */
+export const FULL_MIN_WIDTH = 1100;
 
 export type ModeInputs = {
   width: number;
@@ -28,26 +31,40 @@ export type ModeInputs = {
   reducedMotion: boolean;
 };
 
-export function shouldUseCinema({
+export function tierFor({
   width,
   finePointer,
   reducedMotion,
-}: ModeInputs): boolean {
-  return width >= CINEMA_MIN_WIDTH && finePointer && !reducedMotion;
+}: ModeInputs): MotionTier {
+  if (reducedMotion) return "minimal";
+  if (width >= FULL_MIN_WIDTH && finePointer) return "full";
+  return "lite";
 }
 
 /**
- * Both rules as a string for the inline <head> script.
- * Keep in step with `shouldUseCinema` above.
+ * The same rules as a string for the inline <head> script.
+ * Keep in step with `tierFor` above.
  */
 export const MODE_SCRIPT = `(function(){try{
 var m=function(q){return window.matchMedia&&window.matchMedia(q).matches};
-if(window.innerWidth>=${CINEMA_MIN_WIDTH}&&m("(pointer: fine)")&&!m("(prefers-reduced-motion: reduce)")){document.documentElement.classList.add("cinema")}
-}catch(e){}})();`;
+var t=m("(prefers-reduced-motion: reduce)")?"minimal":(window.innerWidth>=${FULL_MIN_WIDTH}&&m("(pointer: fine)"))?"full":"lite";
+document.documentElement.classList.add("motion-"+t);
+}catch(e){document.documentElement.classList.add("motion-lite")}})();`;
 
-export function isCinema(): boolean {
-  return (
-    typeof document !== "undefined" &&
-    document.documentElement.classList.contains("cinema")
-  );
+export function currentTier(): MotionTier {
+  if (typeof document === "undefined") return "lite";
+  const list = document.documentElement.classList;
+  if (list.contains("motion-full")) return "full";
+  if (list.contains("motion-minimal")) return "minimal";
+  return "lite";
+}
+
+/** True when the full, pointer-driven treatment is running. */
+export function isFull(): boolean {
+  return currentTier() === "full";
+}
+
+/** True when any motion at all is wanted. */
+export function motionAllowed(): boolean {
+  return currentTier() !== "minimal";
 }

@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { motion } from "@/lib/motion";
-import { isCinema } from "@/lib/mode";
+import { isFull } from "@/lib/mode";
 
 declare global {
   interface Window {
@@ -12,7 +12,7 @@ declare global {
 }
 
 /**
- * Inertial scrolling, cinema layout only. Lenis drives the scroll and GSAP's
+ * Inertial scrolling, full tier only. Lenis drives the scroll and GSAP's
  * ticker drives Lenis, so ScrollTrigger and the scroll position stay in
  * lockstep — running them off separate clocks makes pinned sections drift.
  *
@@ -22,7 +22,7 @@ declare global {
  */
 export function SmoothScroll() {
   useEffect(() => {
-    if (!isCinema()) return;
+    if (!isFull()) return;
     const { gsap, ScrollTrigger } = motion();
 
     const lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1 });

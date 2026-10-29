@@ -39,7 +39,7 @@ const reasons: { icon: IconName; title: string; body: string }[] = [
 
 export function WhyChooseUs() {
   return (
-    <Section id="why" tone="navy">
+    <Section id="why" ghost="Why" ghostAt="left" tone="navy">
       <SectionHeading
         eyebrow="Why Sandpaper"
         title="Agency quality. Sole-trader overheads."

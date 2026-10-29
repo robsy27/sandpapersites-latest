@@ -20,7 +20,7 @@ import { Logo } from "./Logo";
  */
 export function Footer() {
   return (
-    <footer className="border-t border-navy-700 bg-navy-950 cinema:bg-navy-950/80">
+    <footer className="border-t border-navy-700 bg-navy-950 full:bg-navy-950/80">
       <Container>
         {/* Brand + Pages + Get in touch */}
         {/* The contact column takes a minmax floor rather than a plain

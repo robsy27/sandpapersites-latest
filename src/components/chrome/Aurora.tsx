@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { isCinema } from "@/lib/mode";
+import { isFull } from "@/lib/mode";
 
 /**
- * A slow field of coloured light behind the whole site, cinema layout only.
+ * A slow field of coloured light behind the whole site, full tier only.
  *
  * Why this and not a background video. A video that looked good enough to
  * justify itself would be several megabytes, and this site sells to people
@@ -53,7 +53,7 @@ export function Aurora() {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (!isCinema()) return;
+    if (!isFull()) return;
     const canvas = ref.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d", { alpha: false });
@@ -159,7 +159,7 @@ export function Aurora() {
     <canvas
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10 hidden size-full object-cover opacity-70 blur-[64px] cinema:block"
+      className="pointer-events-none fixed inset-0 -z-10 hidden size-full object-cover opacity-70 blur-[64px] full:block"
     />
   );
 }

@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
-import { CINEMA_MIN_WIDTH, isCinema } from "@/lib/mode";
+import { FULL_MIN_WIDTH, currentTier, tierFor } from "@/lib/mode";
 
 /**
- * Cinema or static is decided once, by the inline script, before first paint.
+ * The motion tier is decided once, by the inline script, before first paint.
  * If the visitor then crosses the threshold — rotating a tablet, dragging a
  * window narrower, switching on reduced motion — the page is left in the
- * layout for a viewport it no longer has: a rail with no room, or a header
- * missing on a wide screen.
+ * treatment for a device it no longer is.
  *
  * Reloading is blunt but correct. The two layouts differ in which components
  * mount and which effects are running (Lenis, ScrollTrigger), and tearing all
@@ -18,16 +17,19 @@ import { CINEMA_MIN_WIDTH, isCinema } from "@/lib/mode";
 export function ModeWatcher() {
   useEffect(() => {
     const queries = [
-      `(min-width: ${CINEMA_MIN_WIDTH}px)`,
+      `(min-width: ${FULL_MIN_WIDTH}px)`,
       "(pointer: fine)",
       "(prefers-reduced-motion: reduce)",
     ].map((query) => window.matchMedia(query));
 
-    const was = isCinema();
+    const was = currentTier();
 
     const onChange = () => {
-      const shouldBe =
-        queries[0].matches && queries[1].matches && !queries[2].matches;
+      const shouldBe = tierFor({
+        width: window.innerWidth,
+        finePointer: queries[1].matches,
+        reducedMotion: queries[2].matches,
+      });
       if (shouldBe !== was) window.location.reload();
     };
 

@@ -69,6 +69,8 @@ export function PricingTeaser() {
   return (
     <Section
       id="pricing"
+      ghost="Price"
+      ghostAt="right"
       tone="light"
       className="relative overflow-hidden"
       containerClassName="relative"

@@ -14,7 +14,7 @@ export function FinalCta({
   lead?: string;
 }) {
   return (
-    <section id="get-started" className="relative overflow-hidden bg-navy-900 py-14 sm:py-16 lg:py-20 cinema:bg-navy-900/65">
+    <section id="get-started" className="relative overflow-hidden bg-navy-900 py-14 sm:py-16 lg:py-20 full:bg-navy-900/65">
       <AmbientBackground intensity="full" />
       <Spotlight />
 

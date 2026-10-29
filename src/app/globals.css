@@ -1,13 +1,25 @@
 @import "tailwindcss";
 
-/* Cinema layout. The inline <head> script in layout.tsx puts `cinema` on
-   <html> before first paint when the visitor is on a wide screen, with a
-   mouse, and has not asked for reduced motion. Everything the full treatment
-   adds hangs off this variant, so phones, touch screens, reduced-motion
-   users, print and no-JS all fall through to the plain layout automatically
-   rather than needing a second set of rules. */
-@custom-variant cinema {
-  &:where(html.cinema *, html.cinema) {
+/* Motion tiers. The inline <head> script in layout.tsx stamps motion-full,
+   motion-lite or motion-minimal on <html> before first paint.
+
+   `full:`   — only the widest, pointer-driven treatment
+   `motion:` — full or lite, i.e. anything that is not reduced-motion
+
+   Content is never gated on either. These control treatment only, so no-JS
+   and reduced-motion visitors still get the complete page. */
+@custom-variant full {
+  &:where(html.motion-full *, html.motion-full) {
+    @slot;
+  }
+}
+
+/* Anything with motion at all — full or lite, but not reduced-motion. */
+@custom-variant motion {
+  &:where(
+      html.motion-full *, html.motion-full,
+      html.motion-lite *, html.motion-lite
+    ) {
     @slot;
   }
 }
@@ -51,6 +63,8 @@
   --text-body--line-height: 1.7;
 
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  /* Poster weight, for statements and ghost wordmarks only. */
+  --font-poster: var(--font-anton), "Arial Narrow", ui-sans-serif, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* --- Text measure --------------------------------------------------------
