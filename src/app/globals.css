@@ -182,6 +182,26 @@
 }
 
 @layer utilities {
+  /* Marquee. The track holds two copies of the list, so translating it by
+     exactly half its width lands the second copy where the first started —
+     a seamless loop with no JavaScript. Paused entirely under
+     prefers-reduced-motion by the global rule further down. */
+  .marquee-track {
+    animation-name: marquee-run;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  @keyframes marquee-run {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
   /* Scroll reveal. The hidden state is undone by JS on intersection; the
      <noscript> block in layout.tsx reveals everything when JS is off. */
   .reveal {
@@ -262,5 +282,13 @@
   .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  /* The blanket rule above would run the marquee once at 0.01ms, snapping
+     the track to -50% and showing the duplicated half. Stop it at the
+     start instead, where the list reads correctly. */
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
   }
 }
