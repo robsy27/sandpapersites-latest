@@ -181,7 +181,7 @@ export default function ServicesPage() {
             {pricingNotes.map((note) => (
               <li
                 key={note}
-                className="flex gap-3 rounded-xl border border-navy-700 bg-navy-800/40 p-5 text-body leading-relaxed text-mist-300"
+                className="flex h-full gap-3 rounded-xl border border-navy-700 bg-navy-800/40 p-5 text-body leading-relaxed text-mist-300"
               >
                 <Icon name="check" className="mt-1 size-3.5 shrink-0 text-accent" />
                 {note}

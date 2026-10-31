@@ -128,11 +128,27 @@
 
 @layer base {
   /* Typesetting, applied once rather than per component.
-     `pretty` stops paragraphs ending on a single stranded word and evens the
-     rag down the right edge, which is what made body copy look untidy.
-     `balance` keeps headings from breaking one word onto their last line. */
+
+     Body paragraphs are justified so lines end flush on both edges, which
+     is what was asked for. Justification without hyphenation opens rivers
+     of white space between words, so `hyphens: auto` goes with it — the two
+     are a pair, not independent choices.
+
+     Headings and short labels are left out below: justifying two or three
+     words stretches them across the measure with enormous gaps. */
   p {
+    text-align: justify;
+    hyphens: auto;
     text-wrap: pretty;
+  }
+
+  /* Anything short or deliberately ragged opts out. */
+  p:where(.no-justify, [class*="text-center"], [class*="text-xs"], [class*="uppercase"]),
+  li p,
+  figcaption,
+  label p {
+    text-align: left;
+    hyphens: manual;
   }
 
   h1,

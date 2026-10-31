@@ -1,6 +1,5 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { VideoBackdrop } from "@/components/chrome/VideoBackdrop";
 
 /** Shared hero band for inner pages. */
@@ -16,16 +15,16 @@ export function PageHeader({
   /** Looping clip behind the band. Replaces the ambient backdrop. */
   video?: string;
 }) {
+  /* Every inner page gets footage, not just the county pages. Shrewsbury is
+     the default because Shropshire is the home county; the Cheshire page
+     passes Chester explicitly. */
+  const clip = video ?? "/video/shrewsbury.mp4";
   return (
     /* Given real height and its content vertically centred. It used to be a
        shallow band with the title crowded against the fixed header, which
        read as the page starting mid-sentence. */
     <section className="relative flex min-h-[58svh] items-center overflow-hidden bg-navy-900 py-20 sm:min-h-[62svh] sm:py-24 lg:py-28 full:bg-navy-900/82">
-      {video ? (
-        <VideoBackdrop src={video} />
-      ) : (
-        <AmbientBackground intensity="soft" />
-      )}
+      <VideoBackdrop src={clip} />
 
       <Container className="relative w-full">
         <Reveal className="max-w-3xl">

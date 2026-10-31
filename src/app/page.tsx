@@ -4,7 +4,6 @@ import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { PriceLine } from "@/components/sections/PriceLine";
 import { ImageBand } from "@/components/ui/ImageBand";
-import { Marquee } from "@/components/ui/Marquee";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCta } from "@/components/sections/FinalCta";
 
@@ -36,16 +35,6 @@ export default function HomePage() {
         eyebrow="Who this is for"
         title="The businesses on your high street."
         body="Cafés, trades, salons, garages, instructors — the ones people find by searching a trade and a town. That search is the whole job, and it is what every site I build is pointed at."
-      />
-      <Marquee
-        items={[
-          "Built once, looked after for good",
-          "No contract",
-          "Your domain stays yours",
-          "Edits quoted, never guessed",
-          "One person, start to finish",
-          "Live in 2–3 weeks",
-        ]}
       />
       <PriceLine />
       <Testimonials />

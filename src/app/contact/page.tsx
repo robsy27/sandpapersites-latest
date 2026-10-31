@@ -35,11 +35,13 @@ export default function ContactPage() {
       />
 
       <Section tone="deep">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+        {/* items-stretch so the sidebar column matches the form's height and the
+            two cards in it finish on the same line as the form. */}
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-14">
           {/* Form */}
           <div className="lg:col-span-7">
-            <Reveal>
-              <GlassCard className="p-6 sm:p-9">
+            <Reveal className="h-full">
+              <GlassCard className="h-full p-6 sm:p-9">
                 <h2 className="font-display text-2xl font-bold text-white">
                   Get a free quote
                 </h2>
@@ -56,9 +58,9 @@ export default function ContactPage() {
 
           {/* Sidebar */}
           <div className="lg:col-span-5">
-            <Reveal delay={100} className="space-y-6">
+            <Reveal delay={100} className="flex h-full flex-col gap-6">
               {/* Book a call */}
-              <GlassCard active className="p-6 sm:p-8">
+              <GlassCard active className="flex-1 p-6 sm:p-8">
                 <span className="inline-flex size-12 items-center justify-center rounded-xl bg-accent/15 text-accent">
                   <Icon name="calendar" className="size-6" />
                 </span>
@@ -83,7 +85,7 @@ export default function ContactPage() {
               </GlassCard>
 
               {/* Direct details */}
-              <GlassCard className="p-6 sm:p-8">
+              <GlassCard className="flex-1 p-6 sm:p-8">
                 <h2 className="font-display text-lg font-bold text-white">
                   Direct details
                 </h2>

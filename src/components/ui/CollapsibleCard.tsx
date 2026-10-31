@@ -48,6 +48,13 @@ export function CollapsibleCard({
       <summary
         className={cn(
           "flex cursor-pointer list-none items-start gap-4 p-6 sm:p-7",
+          /* A consistent collapsed height. Without it a question that wraps
+             to two lines made a visibly taller card than a one-line
+             neighbour, so a row of closed cards looked ragged. Set on the
+             summary rather than the card so opening one still only grows
+             that one — stretching the whole row to match would leave the
+             unopened card as a tall empty box. */
+          "min-h-[6.5rem] sm:min-h-[7rem]",
           "rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
           // Safari renders a disclosure triangle without this
           "[&::-webkit-details-marker]:hidden",

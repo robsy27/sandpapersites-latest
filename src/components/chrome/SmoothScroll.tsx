@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { motion } from "@/lib/motion";
 import { isFull } from "@/lib/mode";
@@ -21,6 +22,17 @@ declare global {
  * visitors are on a phone.
  */
 export function SmoothScroll() {
+  const pathname = usePathname();
+
+  /* Next resets the scroll position on navigation, but Lenis keeps its own
+     and immediately restores it — so following a footer link from the bottom
+     of one page dropped you at the bottom of the next. Reset Lenis too. */
+  useEffect(() => {
+    const lenis = window.__lenis;
+    if (!lenis) return;
+    lenis.scrollTo(0, { immediate: true });
+  }, [pathname]);
+
   useEffect(() => {
     if (!isFull()) return;
     const { gsap, ScrollTrigger } = motion();

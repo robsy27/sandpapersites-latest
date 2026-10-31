@@ -6,6 +6,7 @@ import { ImageBand } from "@/components/ui/ImageBand";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CollapsibleCard } from "@/components/ui/CollapsibleCard";
+import { OutlineCard } from "@/components/ui/OutlineCard";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -182,15 +183,20 @@ export default function AboutPage() {
         <ul className="mt-10 grid gap-x-10 gap-y-11 sm:grid-cols-2">
           {principles.map((principle, index) => (
             <Reveal as="li" key={principle.title} delay={(index % 2) * 70}>
-              <span className="inline-flex size-11 items-center justify-center rounded-xl bg-navy-800 text-accent ring-1 ring-navy-700">
-                <Icon name={principle.icon} className="size-5" />
-              </span>
-              <h3 className="mt-5 font-display text-lg font-bold text-white">
-                {principle.title}
-              </h3>
-              <p className="mt-2.5 text-body leading-relaxed text-mist-300">
-                {principle.body}
-              </p>
+              {/* Boxed to match the card treatment used elsewhere — these
+                  four were bare text in a grid, which read as unfinished
+                  next to every other section. */}
+              <OutlineCard className="h-full">
+                <span className="inline-flex size-11 items-center justify-center border border-accent/30 bg-accent/10 text-accent">
+                  <Icon name={principle.icon} className="size-5" />
+                </span>
+                <h3 className="mt-5 font-display text-lg font-bold text-white">
+                  {principle.title}
+                </h3>
+                <p className="mt-2.5 text-body leading-relaxed text-mist-300">
+                  {principle.body}
+                </p>
+              </OutlineCard>
             </Reveal>
           ))}
         </ul>
