@@ -15,7 +15,6 @@ const HOME: RailSection[] = [
   { id: "top", label: "Start" },
   { id: "services", label: "What I do" },
   { id: "why", label: "Why me" },
-  { id: "work", label: "Recent work" },
   { id: "testimonials", label: "Trust" },
   { id: "get-started", label: "Get started" },
 ];

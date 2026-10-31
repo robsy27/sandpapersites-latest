@@ -4,6 +4,7 @@ import { projects } from "@/content/portfolio";
 import Image from "next/image";
 import { Scene } from "@/components/ui/Scene";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { WorkTeaser } from "@/components/sections/WorkTeaser";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Section } from "@/components/ui/Section";
 import { Icon } from "@/components/ui/Icon";
@@ -24,6 +25,11 @@ export default function WorkPage() {
         title="Sites built the way local businesses actually get found."
         lead="Real work for a real business, with the reasoning behind every decision. Click through to see what the brief was and what got built."
       />
+
+      {/* The same treatment that was briefly on the home page. It belongs
+          here: this is the work section, and it gives the one project the
+          room it deserves before the card grid below. */}
+      <WorkTeaser />
 
       <Section tone="deep">
         {/* Caps at two columns and centres: a single card stretched across a

@@ -24,8 +24,12 @@ export function Hero() {
       />
 
       <Container className="relative">
-        <div className="grid items-center gap-12 py-14 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-24">
-          <div className="lg:col-span-7">
+        {/* 7/5 left the laptop at roughly 420px floating in the middle of a
+            650px text column — small, and with nothing anchoring it. 6/6 with
+            the image column stretched gives it real presence and lines its
+            top edge up with the headline instead of its centre. */}
+        <div className="grid items-center gap-12 py-14 sm:py-16 lg:grid-cols-12 lg:items-stretch lg:gap-10 lg:py-24">
+          <div className="lg:col-span-6 lg:self-center">
             <Reveal>
               <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 font-display text-xs font-semibold tracking-[0.14em] text-accent uppercase">
                 <Icon name="spark" className="size-3.5" />
@@ -47,8 +51,8 @@ export function Hero() {
                   businesses" and the two counties appear — kept natural, so
                   the page reads the same as it always did. */}
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-mist-300">
-                Affordable websites for small businesses across Shropshire and
-                Cheshire — custom-built, properly hosted and kept up to date
+                Affordable websites for small businesses in Shropshire, Cheshire
+                and anywhere in the UK — custom-built, properly hosted and kept up to date
                 for you. One clear build fee, one small monthly cost, and a
                 real person who answers the phone when something needs
                 changing.
@@ -89,7 +93,7 @@ export function Hero() {
 
           {/* A real interface on a real photograph — the AI never renders
               the screen, so nothing here is a hallucinated UI. */}
-          <Reveal delay={200} className="lg:col-span-5">
+          <Reveal delay={200} className="lg:col-span-6 lg:self-center">
             <div data-parallax="7">
                 <LaptopHero />
               </div>

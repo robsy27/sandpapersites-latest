@@ -37,6 +37,11 @@ export const faqs: Faq[] = [
       "In full before I start. You get the exact figure on the first call and it does not move, so there is nothing left to settle once the site goes live. The monthly hosting fee only begins when you are live.",
   },
   {
+    question: "Do you only work with businesses in Shropshire and Cheshire?",
+    answer:
+      "No. Those are the two counties I know best and can get to in person, so they are the ones I talk about most — but the work happens over email and video calls, and plenty of it would never need a site visit at all. If you are elsewhere in the UK and the fit is right, get in touch. I will tell you honestly if I think being local matters for your particular job.",
+  },
+  {
     question: "What if I already have a domain?",
     answer:
       "Bring it with you. I will point it at the new site with no downtime, and it stays registered in your name throughout.",

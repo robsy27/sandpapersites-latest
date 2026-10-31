@@ -66,6 +66,7 @@ export default async function AreaPage({
         eyebrow={area.eyebrow}
         title={area.heading}
         lead={area.lead}
+        video={area.video}
       />
 
       {/* The county in its own right — the part that has to be genuinely

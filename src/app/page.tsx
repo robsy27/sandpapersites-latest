@@ -3,7 +3,6 @@ import { Hero } from "@/components/sections/Hero";
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { PriceLine } from "@/components/sections/PriceLine";
-import { WorkTeaser } from "@/components/sections/WorkTeaser";
 import { ImageBand } from "@/components/ui/ImageBand";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -37,7 +36,6 @@ export default function HomePage() {
         title="The businesses on your high street."
         body="Cafés, trades, salons, garages, instructors — the ones people find by searching a trade and a town. That search is the whole job, and it is what every site I build is pointed at."
       />
-      <WorkTeaser />
       <PriceLine />
       <Testimonials />
       <FinalCta />

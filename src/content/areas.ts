@@ -31,12 +31,15 @@ export type Area = {
   needs: { title: string; body: string }[];
   /** Closing paragraph before the pricing block. */
   close: string;
+  /** Looping aerial clip behind the page header, full tier only. */
+  video?: string;
 };
 
 export const areas: Area[] = [
   {
     slug: "websites-shropshire",
     county: "Shropshire",
+    video: "/video/shrewsbury.mp4",
     towns: [
       "Shrewsbury",
       "Telford",
@@ -82,6 +85,7 @@ export const areas: Area[] = [
   {
     slug: "websites-cheshire",
     county: "Cheshire",
+    video: "/video/chester.mp4",
     towns: [
       "Chester",
       "Crewe",

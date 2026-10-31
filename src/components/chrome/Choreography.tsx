@@ -63,8 +63,13 @@ export function Choreography() {
             ease: "none",
             scrollTrigger: {
               trigger: section,
-              start: "bottom 85%",
-              end: "bottom 15%",
+              /* Tied to the section leaving the top of the viewport, not to
+                 its bottom crossing 85%. The old trigger fired relative to
+                 section height, so a short band — a page header — began
+                 fading the instant it rendered and was already half
+                 transparent before anyone had scrolled. */
+              start: "top top",
+              end: "bottom top",
               scrub: 0.6,
             },
           });

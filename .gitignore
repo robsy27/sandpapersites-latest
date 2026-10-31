@@ -55,3 +55,6 @@ next-env.d.ts
 
 # stock-footage previews — watermarked comps, not licensed for use
 /stock-footage-*.webm
+
+# source footage — large originals, not served
+/*.mov

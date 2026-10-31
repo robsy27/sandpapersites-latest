@@ -28,13 +28,20 @@ export function StructuredData() {
     priceRange: "££",
     currenciesAccepted: "GBP",
     serviceType: "Website design, hosting and maintenance",
-    areaServed: areas.flatMap((area) => [
+    /* The whole UK is served; the counties and towns are listed because
+       that is where the local-search intent is and where I can be on site.
+       Listing only the two counties told Google the business was unavailable
+       everywhere else, which is not true. */
+    areaServed: [
+      { "@type": "Country", name: "United Kingdom" },
+      ...areas.flatMap((area) => [
       {
         "@type": "AdministrativeArea",
         name: area.county,
       },
       ...area.towns.map((town) => ({ "@type": "City", name: town })),
-    ]),
+      ]),
+    ],
     /* The real, published prices — no invented figures. */
     hasOfferCatalog: {
       "@type": "OfferCatalog",

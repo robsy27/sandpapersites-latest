@@ -127,6 +127,20 @@
 }
 
 @layer base {
+  /* Typesetting, applied once rather than per component.
+     `pretty` stops paragraphs ending on a single stranded word and evens the
+     rag down the right edge, which is what made body copy look untidy.
+     `balance` keeps headings from breaking one word onto their last line. */
+  p {
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
   html {
     scroll-behavior: smooth;
     /* Sticky header must not obscure the scroll/focus target (WCAG 2.2 AA) */
