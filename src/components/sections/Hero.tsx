@@ -52,7 +52,7 @@ export function Hero() {
                   terms. This paragraph is where "websites for small
                   businesses" and the two counties appear — kept natural, so
                   the page reads the same as it always did. */}
-              <p className="mx-auto mt-7 max-w-2xl text-center text-lg leading-relaxed text-mist-300">
+              <p className="mx-auto mt-7 max-w-2xl text-justify text-lg leading-relaxed text-mist-300 [hyphens:auto]">
                 Affordable websites for small businesses in Shropshire, Cheshire
                 and anywhere in the UK — custom-built, properly hosted and kept up to date
                 for you. One clear build fee, one small monthly cost, and a

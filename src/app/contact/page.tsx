@@ -85,7 +85,7 @@ export default function ContactPage() {
               </GlassCard>
 
               {/* Direct details */}
-              <GlassCard className="flex-1 p-6 sm:p-8">
+              <GlassCard className="flex flex-1 flex-col p-6 sm:p-8">
                 <h2 className="font-display text-lg font-bold text-white">
                   Direct details
                 </h2>
@@ -113,6 +113,18 @@ export default function ContactPage() {
                     Replies within one working day
                   </li>
                 </ul>
+
+                {/* Fills the space left under the three details once the card
+                    was stretched to match the form, and ends the column on an
+                    invitation rather than a list. */}
+                <div className="mt-auto flex items-center gap-4 border-t border-white/10 pt-6">
+                  <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-accent">
+                    <Icon name="spark" className="size-5" />
+                  </span>
+                  <p className="text-body leading-snug text-mist-200">
+                    Let&rsquo;s discuss your website.
+                  </p>
+                </div>
               </GlassCard>
 
             </Reveal>
