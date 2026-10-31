@@ -17,7 +17,7 @@ import { GlassCard } from "@/components/ui/GlassCard";
 export function Testimonials() {
   if (hasRealTestimonials) {
     return (
-      <Section id="testimonials" tone="deep">
+      <Section id="testimonials" ghost="Trust" ghostAt="right" tone="deep">
         <SectionHeading
           eyebrow="Client feedback"
           title="What local businesses say"

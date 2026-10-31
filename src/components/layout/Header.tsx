@@ -86,11 +86,39 @@ export function Header() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out",
+        /* Always backed, never transparent. It used to be transparent at the
+           top of the page, which let the aurora through and left the nav
+           sitting on a bright teal wash with almost no contrast. */
+        "bg-navy-950/85 backdrop-blur-xl",
         scrolled || open
-          ? "border-b border-navy-700/80 bg-navy-900/92 backdrop-blur-lg"
-          : "border-b border-transparent bg-transparent",
+          ? "border-b border-navy-700/80 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.8)]"
+          : "border-b border-white/[0.06]",
       )}
     >
+      {/* Utility strip, as the reference has: contact on the left, the places
+          you can find us on the right. Hidden once the bar condenses so the
+          header does not stay two storeys tall the whole way down the page. */}
+      <div
+        className={cn(
+          "hidden overflow-hidden border-b border-navy-700/50 transition-all duration-300 md:block",
+          scrolled || open ? "max-h-0 opacity-0" : "max-h-10 opacity-100",
+        )}
+      >
+        <Container>
+          <div className="flex h-9 items-center justify-between gap-4">
+            <a
+              href={`mailto:${site.email}`}
+              className="font-mono text-[11px] tracking-[0.12em] text-mist-400 transition-colors hover:text-accent"
+            >
+              Get in touch: {site.email}
+            </a>
+            <p className="font-mono text-[11px] tracking-[0.18em] text-mist-400 uppercase">
+              {site.location}
+            </p>
+          </div>
+        </Container>
+      </div>
+
       <Container>
         <div className="flex h-header items-center justify-between gap-4">
           <Link
@@ -98,33 +126,28 @@ export function Header() {
             className="flex items-center gap-2.5 rounded-lg py-2 text-white transition-opacity hover:opacity-85"
           >
             <Logo className="size-8 text-accent" />
-            <span className="font-display text-lg font-bold tracking-tight">
+            <span className="font-poster text-[1.35rem] leading-none tracking-[0.02em] uppercase">
               {site.name}
             </span>
           </Link>
 
           {/* Desktop navigation */}
-          <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
+          <nav aria-label="Main" className="hidden items-center gap-2 md:flex">
             {menuLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "relative rounded-lg px-3.5 py-2.5 text-sm font-medium transition-colors duration-200",
+                  "border px-3.5 py-2 font-display text-[0.7rem] font-semibold tracking-[0.14em] uppercase transition-colors duration-200",
+                  /* The active page inverts rather than relying on colour
+                     alone, so it still reads without colour perception. */
                   isActive(link.href)
-                    ? "text-white"
-                    : "text-mist-300 hover:text-white",
+                    ? "border-white bg-white text-navy-950"
+                    : "border-white/20 bg-white/[0.04] text-mist-200 hover:border-accent hover:bg-accent/10 hover:text-accent",
                 )}
               >
                 {link.label}
-                {/* Active location marker — not colour alone, it’s a shape too */}
-                <span
-                  className={cn(
-                    "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-accent transition-transform duration-250 ease-out",
-                    isActive(link.href) ? "scale-x-100" : "scale-x-0",
-                  )}
-                />
               </Link>
             ))}
           </nav>

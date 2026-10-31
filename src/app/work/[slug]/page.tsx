@@ -43,7 +43,6 @@ export default async function ProjectPage({
   const project = getProject(slug);
   if (!project) notFound();
 
-  const others = projects.filter((p) => p.slug !== project.slug).slice(0, 3);
 
   return (
     <>
@@ -69,9 +68,13 @@ export default async function ProjectPage({
                   <p className={`font-display text-xs font-semibold tracking-[0.18em] uppercase ${project.accent}`}>
                     {project.sector}
                   </p>
-                  {project.concept && (
+                  {project.concept ? (
                     <span className="rounded-full border border-mist-400/30 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-mist-300 uppercase">
                       Concept build
+                    </span>
+                  ) : (
+                    <span className="rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-accent uppercase">
+                      Live client site
                     </span>
                   )}
                 </div>
@@ -92,6 +95,21 @@ export default async function ProjectPage({
                     </li>
                   ))}
                 </ul>
+
+                {/* liveUrl existed on the type but was never rendered — the
+                    template predated having a real client to link to. */}
+                {project.liveUrl && (
+                  <div className="mt-8">
+                    <ButtonLink
+                      href={project.liveUrl}
+                      external
+                      size="lg"
+                      icon="arrowRight"
+                    >
+                      Visit {project.name}
+                    </ButtonLink>
+                  </div>
+                )}
               </Reveal>
             </div>
 
@@ -116,16 +134,25 @@ export default async function ProjectPage({
         </Container>
       </section>
 
-      {/* The brief */}
-      <Section tone="deep">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <Reveal className="lg:col-span-5">
-            <h2 className="font-display text-3xl font-bold text-white">
-              The brief
+      {/* The brief.
+          Was a 5/7 split with nothing but two words in the left column, which
+          left a large hole beside a single paragraph. The heading now sits
+          above its text in one measured column. */}
+      <Section tone="deep" ghost="Brief" ghostAt="right">
+        <div className="max-w-3xl">
+          <Reveal>
+            <p className="font-display text-xs font-semibold tracking-[0.18em] text-accent uppercase">
+              01 — The brief
+            </p>
+            {/* Generic, not the client's name: this template serves every
+                project, so a hardcoded "What Dan needed" would be wrong the
+                moment a second one is added. */}
+            <h2 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+              Where they started
             </h2>
           </Reveal>
-          <Reveal delay={70} className="lg:col-span-7">
-            <p className="text-lg leading-relaxed text-mist-300">
+          <Reveal delay={70}>
+            <p className="mt-6 text-lg leading-relaxed text-mist-300">
               {project.brief}
             </p>
           </Reveal>
@@ -133,10 +160,15 @@ export default async function ProjectPage({
       </Section>
 
       {/* Decisions */}
-      <Section tone="navy">
+      <Section tone="navy" ghost="Built" ghostAt="left">
         <Reveal>
+          {/* Conditional tense: speculative for a concept, past for work that
+              actually shipped. Saying "what I'd build" about a live client
+              site undersells it and reads as though it never happened. */}
           <h2 className="font-display text-3xl font-bold text-white">
-            What I&rsquo;d build, and why
+            {project.concept
+              ? "What I’d build, and why"
+              : "What I built, and why"}
           </h2>
         </Reveal>
 
@@ -157,54 +189,6 @@ export default async function ProjectPage({
         </ol>
       </Section>
 
-      {/* More work */}
-      <Section tone="deep">
-        <Reveal>
-          <h2 className="font-display text-2xl font-bold text-white">
-            More work
-          </h2>
-        </Reveal>
-
-        <ul className="mt-10 grid gap-6 sm:grid-cols-3">
-          {others.map((other, index) => (
-            <Reveal as="li" key={other.slug} delay={index * 70}>
-              <Link
-                href={`/work/${other.slug}`}
-                className="group block h-full overflow-hidden rounded-2xl border border-navy-700 bg-navy-800/60 transition-all duration-250 hover:-translate-y-1 hover:border-accent/45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                <div className="relative aspect-[16/9] overflow-hidden border-b border-navy-700 bg-navy-950">
-                  {other.image ? (
-                    <Image
-                      src={other.image}
-                      alt={other.imageAlt ?? ""}
-                      fill
-                      sizes="(min-width: 640px) 33vw, 100vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                    />
-                  ) : (
-                    <Scene name={other.scene} className="absolute inset-0" />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent" />
-                </div>
-                <div className="p-5">
-                  <p className={`font-display text-[11px] font-semibold tracking-[0.14em] uppercase ${other.accent}`}>
-                    {other.sector}
-                  </p>
-                  <p className="mt-2 font-display font-bold text-white transition-colors group-hover:text-accent">
-                    {other.name}
-                  </p>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
-        </ul>
-
-        <Reveal delay={140} className="mt-12">
-          <ButtonLink href="/work" variant="secondary" icon="arrowRight">
-            See all work
-          </ButtonLink>
-        </Reveal>
-      </Section>
 
       <FinalCta
         title={`Need something like ${project.name}?`}

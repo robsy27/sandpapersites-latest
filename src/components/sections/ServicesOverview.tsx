@@ -8,7 +8,7 @@ import { ButtonLink } from "@/components/ui/Button";
 
 export function ServicesOverview() {
   return (
-    <Section id="services" tone="deep">
+    <Section id="services" ghost="Build" ghostAt="right" tone="deep">
       <SectionHeading
         eyebrow="What you get"
         title="Build, host, edit — the whole thing, handled."

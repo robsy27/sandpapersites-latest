@@ -15,7 +15,7 @@ export const site = {
   phone: "+447706261786",
   /** How it reads on the page. */
   phoneDisplay: "07706 261 786",
-  location: "Websites for small businesses across Shropshire and Cheshire",
+  location: "Shropshire, Cheshire and across the UK",
   /**
    * Booking link for the "Arrange a call" buttons.
    *

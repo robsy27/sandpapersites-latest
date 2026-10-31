@@ -47,7 +47,14 @@ export function CollapsibleCard({
     >
       <summary
         className={cn(
-          "flex cursor-pointer list-none items-start gap-4 p-6 sm:p-7",
+          "flex cursor-pointer list-none items-center gap-4 p-6 sm:p-7",
+          /* A consistent collapsed height. Without it a question that wraps
+             to two lines made a visibly taller card than a one-line
+             neighbour, so a row of closed cards looked ragged. Set on the
+             summary rather than the card so opening one still only grows
+             that one — stretching the whole row to match would leave the
+             unopened card as a tall empty box. */
+          "min-h-[6.5rem] sm:min-h-[7rem]",
           "rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
           // Safari renders a disclosure triangle without this
           "[&::-webkit-details-marker]:hidden",
@@ -103,6 +110,13 @@ export function CollapsibleCard({
         </span>
       </summary>
 
+      {/* Detail first, photograph second. The image used to sit between the
+          summary and the detail, so opening a card pushed the text you had
+          just asked for below a large picture and often off-screen. */}
+      <div className="border-t border-white/10 px-6 pt-5 pb-6 sm:px-7 sm:pb-7">
+        {children}
+      </div>
+
       {media && (
         <div className="relative aspect-[16/9] overflow-hidden border-t border-white/10">
           {media}
@@ -112,10 +126,6 @@ export function CollapsibleCard({
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-navy-950/80 to-transparent" />
         </div>
       )}
-
-      <div className="border-t border-white/10 px-6 pt-5 pb-6 sm:px-7 sm:pb-7">
-        {children}
-      </div>
     </details>
   );
 }

@@ -69,6 +69,8 @@ export function PricingTeaser() {
   return (
     <Section
       id="pricing"
+      ghost="Price"
+      ghostAt="right"
       tone="light"
       className="relative overflow-hidden"
       containerClassName="relative"
@@ -221,9 +223,11 @@ export function PricingTeaser() {
                   )}
                 >
                   Not ready to pay yet?{" "}
+                  {/* inline-flex with a min height: at its natural 15px this
+                      was well under the 44px minimum tap target on a phone. */}
                   <Link
                     href="/contact"
-                    className="underline underline-offset-2 transition-colors hover:text-accent"
+                    className="inline-flex min-h-11 items-center underline underline-offset-2 transition-colors hover:text-accent"
                   >
                     Get in touch first
                   </Link>

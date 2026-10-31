@@ -1,16 +1,32 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Anton, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { StructuredData } from "@/components/layout/StructuredData";
+import { BrandSchema, StructuredData } from "@/components/layout/StructuredData";
+import { SmoothScroll } from "@/components/chrome/SmoothScroll";
+import { Aurora } from "@/components/chrome/Aurora";
+import { Choreography } from "@/components/chrome/Choreography";
+import { ModeWatcher } from "@/components/chrome/ModeWatcher";
+import { MODE_SCRIPT } from "@/lib/mode";
 
 /* Display face for headlines, readable sans for body. `swap` avoids FOIT. */
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+/* Heavy condensed caps for the big statements and the ghost wordmarks — the
+   thing that gives the Prabhu reference its punch. One weight, used sparingly
+   and large; Space Grotesk still carries section headings and Inter the body,
+   so this is a third tier rather than a replacement. */
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-anton",
   display: "swap",
 });
 
@@ -64,7 +80,21 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+    /* suppressHydrationWarning: the inline script in <head> adds the motion tier to
+       <html> before hydration, so the class React rendered and the class in
+       the DOM differ by design. Without this, React reports a mismatch on
+       every load. It suppresses the warning for this element's attributes
+       only — it does not hide mismatches anywhere else in the tree. */
+    <html
+      lang="en-GB"
+      className={`${spaceGrotesk.variable} ${inter.variable} ${anton.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Stamps the motion tier before first paint, so there is never a
+            flash of the wrong treatment. Keep in step with lib/mode.ts. */}
+        <script dangerouslySetInnerHTML={{ __html: MODE_SCRIPT }} />
+      </head>
       <body className="min-h-dvh antialiased">
         {/* Scroll-reveal starts hidden and is undone by JS. With JS off it
             would never fire, so show everything. Unlayered, so it beats the
@@ -78,8 +108,13 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <Aurora />
+        <ModeWatcher />
+        <SmoothScroll />
+        <Choreography />
+
         <Header />
-        {/* Offsets the fixed header so it never overlaps page content */}
+        {/* Offsets the fixed header so it never overlaps page content. */}
         <main id="main" className="pt-header">
           {children}
         </main>
@@ -116,16 +151,19 @@ export default function RootLayout({
           }}
         />
 
-        {/* Film grain over the whole viewport. Fixed rather than per-section
+        {/* Film grain over the whole viewport. soft-light rather than
+            overlay: over a saturated teal, overlay pushed the highlights warm
+            and produced a brown cast along the top of the page. Fixed rather than per-section
             so the texture is continuous as you scroll, and pointer-events
             none so it never intercepts a click. Large flat fields of navy
             look digitally flat without it. */}
         <div
           aria-hidden="true"
-          className="bg-grain pointer-events-none fixed inset-0 z-[60] opacity-[0.035] mix-blend-overlay"
+          className="bg-grain pointer-events-none fixed inset-0 z-[60] opacity-[0.05] mix-blend-soft-light"
         />
 
         <StructuredData />
+        <BrandSchema />
       </body>
     </html>
   );

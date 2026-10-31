@@ -2,7 +2,7 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { OutlineCard } from "@/components/ui/OutlineCard";
 
 const reasons: { icon: IconName; title: string; body: string }[] = [
   {
@@ -39,7 +39,7 @@ const reasons: { icon: IconName; title: string; body: string }[] = [
 
 export function WhyChooseUs() {
   return (
-    <Section id="why" tone="navy">
+    <Section id="why" ghost="Why" ghostAt="left" tone="navy">
       <SectionHeading
         eyebrow="Why Sandpaper"
         title="Agency quality. Sole-trader overheads."
@@ -49,8 +49,8 @@ export function WhyChooseUs() {
       <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {reasons.map((reason, index) => (
           <Reveal as="li" key={reason.title} delay={(index % 3) * 70}>
-            <GlassCard interactive className="group h-full p-6">
-              <span className="inline-flex size-11 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent transition-colors duration-300 group-hover:border-accent/50 group-hover:bg-accent/20">
+            <OutlineCard className="h-full">
+              <span className="inline-flex size-11 items-center justify-center border border-accent/30 bg-accent/10 text-accent transition-colors duration-300 group-hover:border-accent/60 group-hover:bg-accent/20">
                 <Icon name={reason.icon} className="size-5" />
               </span>
               <h3 className="mt-5 font-display text-lg font-bold text-white">
@@ -59,7 +59,7 @@ export function WhyChooseUs() {
               <p className="mt-2.5 text-body leading-relaxed text-mist-300">
                 {reason.body}
               </p>
-            </GlassCard>
+            </OutlineCard>
           </Reveal>
         ))}
       </ul>

@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+/* Motion tiers. The inline <head> script in layout.tsx stamps motion-full,
+   motion-lite or motion-minimal on <html> before first paint.
+
+   `full:`   — only the widest, pointer-driven treatment
+   `motion:` — full or lite, i.e. anything that is not reduced-motion
+
+   Content is never gated on either. These control treatment only, so no-JS
+   and reduced-motion visitors still get the complete page. */
+@custom-variant full {
+  &:where(html.motion-full *, html.motion-full) {
+    @slot;
+  }
+}
+
+/* Anything with motion at all — full or lite, but not reduced-motion. */
+@custom-variant motion {
+  &:where(
+      html.motion-full *, html.motion-full,
+      html.motion-lite *, html.motion-lite
+    ) {
+    @slot;
+  }
+}
+
 /* ==========================================================================
    Sandpaper Sites — Design Tokens
    Pattern: Trust & Authority + Conversion
@@ -39,6 +63,8 @@
   --text-body--line-height: 1.7;
 
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  /* Poster weight, for statements and ghost wordmarks only. */
+  --font-poster: var(--font-anton), "Arial Narrow", ui-sans-serif, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* --- Text measure --------------------------------------------------------
@@ -101,6 +127,36 @@
 }
 
 @layer base {
+  /* Typesetting, applied once rather than per component.
+
+     Body paragraphs are justified so lines end flush on both edges, which
+     is what was asked for. Justification without hyphenation opens rivers
+     of white space between words, so `hyphens: auto` goes with it — the two
+     are a pair, not independent choices.
+
+     Headings and short labels are left out below: justifying two or three
+     words stretches them across the measure with enormous gaps. */
+  p {
+    text-align: justify;
+    hyphens: auto;
+    text-wrap: pretty;
+  }
+
+  /* Anything short or deliberately ragged opts out. */
+  p:where(.no-justify, [class*="text-center"], [class*="text-xs"], [class*="uppercase"]),
+  li p,
+  figcaption,
+  label p {
+    text-align: left;
+    hyphens: manual;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
   html {
     scroll-behavior: smooth;
     /* Sticky header must not obscure the scroll/focus target (WCAG 2.2 AA) */
@@ -142,6 +198,26 @@
 }
 
 @layer utilities {
+  /* Marquee. The track holds two copies of the list, so translating it by
+     exactly half its width lands the second copy where the first started —
+     a seamless loop with no JavaScript. Paused entirely under
+     prefers-reduced-motion by the global rule further down. */
+  .marquee-track {
+    animation-name: marquee-run;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  @keyframes marquee-run {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
   /* Scroll reveal. The hidden state is undone by JS on intersection; the
      <noscript> block in layout.tsx reveals everything when JS is off. */
   .reveal {
@@ -222,5 +298,13 @@
   .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  /* The blanket rule above would run the marquee once at 0.01ms, snapping
+     the track to -50% and showing the duplicated half. Stop it at the
+     start instead, where the list reads correctly. */
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
   }
 }

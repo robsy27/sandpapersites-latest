@@ -14,7 +14,7 @@ export function FinalCta({
   lead?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-navy-900 py-14 sm:py-16 lg:py-20">
+    <section id="get-started" className="relative overflow-hidden bg-navy-900 py-14 sm:py-16 lg:py-20 full:bg-navy-900/85">
       <AmbientBackground intensity="full" />
       <Spotlight />
 
@@ -45,9 +45,12 @@ export function FinalCta({
           <p className="mt-8 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-mist-300">
             <Icon name="mail" className="size-4 text-accent" />
             Prefer email?
+            {/* min-h-11: at its natural 20px this was under the 44px tap
+                target, and it is the fallback contact route on a phone —
+                the one link that most needs to be easy to hit. */}
             <a
               href={`mailto:${site.email}`}
-              className="font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline break-anywhere"
+              className="break-anywhere inline-flex min-h-11 items-center font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline"
             >
               {site.email}
             </a>

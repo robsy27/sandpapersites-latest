@@ -20,7 +20,7 @@ import { Logo } from "./Logo";
  */
 export function Footer() {
   return (
-    <footer className="border-t border-navy-700 bg-navy-950">
+    <footer className="border-t border-navy-700 bg-navy-950 full:bg-navy-950/92">
       <Container>
         {/* Brand + Pages + Get in touch */}
         {/* The contact column takes a minmax floor rather than a plain
@@ -93,6 +93,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              {/* The counties are where the local-search intent is, but the
+                  work is not limited to them — said here so the list does
+                  not read as a boundary. */}
+              <li>
+                <span className="inline-flex min-h-11 items-center text-body text-mist-400">
+                  &amp; anywhere in the UK
+                </span>
+              </li>
             </ul>
           </div>
 

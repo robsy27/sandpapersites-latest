@@ -28,13 +28,20 @@ export function StructuredData() {
     priceRange: "££",
     currenciesAccepted: "GBP",
     serviceType: "Website design, hosting and maintenance",
-    areaServed: areas.flatMap((area) => [
+    /* The whole UK is served; the counties and towns are listed because
+       that is where the local-search intent is and where I can be on site.
+       Listing only the two counties told Google the business was unavailable
+       everywhere else, which is not true. */
+    areaServed: [
+      { "@type": "Country", name: "United Kingdom" },
+      ...areas.flatMap((area) => [
       {
         "@type": "AdministrativeArea",
         name: area.county,
       },
       ...area.towns.map((town) => ({ "@type": "City", name: town })),
-    ]),
+      ]),
+    ],
     /* The real, published prices — no invented figures. */
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -83,6 +90,64 @@ export function FaqSchema({
       name: faq.question,
       acceptedAnswer: { "@type": "Answer", text: faq.answer },
     })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+/**
+ * Organization and WebSite markup, for the brand query specifically.
+ *
+ * Searching "sandpaper sites" was returning nothing because "sandpaper" is an
+ * ordinary English word — without an explicit brand entity, Google reads the
+ * query as being about abrasive paper and ranks shops accordingly. This says,
+ * in the vocabulary Google uses for exactly this, that Sandpaper Sites is an
+ * organisation, that these are its alternate spellings, and that this domain
+ * is its home.
+ *
+ * It is necessary but not sufficient: the strongest brand signal is a
+ * verified Google Business Profile, which is still outstanding. Add its URL
+ * to `sameAs` in site.ts once it exists.
+ */
+export function BrandSchema() {
+  const data = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${site.url}/#organization`,
+        name: site.name,
+        /* The ways people actually type it. */
+        alternateName: [
+          "Sandpaper Sites",
+          "sandpapersites",
+          "Sandpaper Sites Shropshire",
+          "Sandpaper Sites Cheshire",
+        ],
+        url: site.url,
+        email: site.email,
+        telephone: site.phone,
+        logo: {
+          "@type": "ImageObject",
+          url: `${site.url}/icon`,
+        },
+        founder: { "@type": "Person", name: "Tom Robinson" },
+        sameAs: Object.values(site.social).filter(Boolean),
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${site.url}/#website`,
+        name: site.name,
+        url: site.url,
+        publisher: { "@id": `${site.url}/#organization` },
+        inLanguage: "en-GB",
+      },
+    ],
   };
 
   return (
