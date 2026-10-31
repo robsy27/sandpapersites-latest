@@ -4,7 +4,7 @@ import "./globals.css";
 import { site } from "@/content/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { StructuredData } from "@/components/layout/StructuredData";
+import { BrandSchema, StructuredData } from "@/components/layout/StructuredData";
 import { SmoothScroll } from "@/components/chrome/SmoothScroll";
 import { Aurora } from "@/components/chrome/Aurora";
 import { Choreography } from "@/components/chrome/Choreography";
@@ -163,6 +163,7 @@ export default function RootLayout({
         />
 
         <StructuredData />
+        <BrandSchema />
       </body>
     </html>
   );

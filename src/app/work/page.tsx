@@ -22,11 +22,13 @@ export default function WorkPage() {
       <PageHeader
         eyebrow="Work"
         title="Sites built the way local businesses actually get found."
-        lead="Each of these is a concept build — a real design for a real kind of business, showing how I'd approach the brief. Click any one to see the thinking behind it."
+        lead="Real work for a real business, with the reasoning behind every decision. Click through to see what the brief was and what got built."
       />
 
       <Section tone="deep">
-        <ul className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Caps at two columns and centres: a single card stretched across a
+            three-column grid looked like two had failed to load. */}
+        <ul className="mx-auto grid max-w-3xl gap-7 sm:grid-cols-1">
           {projects.map((project, index) => (
             <Reveal as="li" key={project.slug} delay={(index % 3) * 70}>
               <article className="group h-full overflow-hidden rounded-2xl border border-navy-700 bg-navy-800/60 transition-all duration-250 ease-out hover:-translate-y-1 hover:border-accent/45">
@@ -97,17 +99,20 @@ export default function WorkPage() {
           ))}
         </ul>
 
+        {/* One client, said plainly. A thin portfolio stated honestly reads
+            better than six invented projects padding it out — and anyone
+            hiring a sole trader expects to be early. */}
         <Reveal delay={140}>
           <p className="mx-auto mt-14 max-w-2xl rounded-2xl border border-navy-700 bg-navy-800/40 p-6 text-center text-body leading-relaxed text-mist-300">
-            These are concept builds, not past clients — I&rsquo;d rather show you
-            honest work of my own than borrow someone else&rsquo;s. Real projects
-            replace them as they launch.
+            One client so far, and it is a real one you can go and look at.
+            I&rsquo;d rather show you a single site that is live and working
+            than a portfolio padded with work nobody paid for.
           </p>
         </Reveal>
       </Section>
 
       <FinalCta
-        title="Want yours to be one of these?"
+        title="Want yours next?"
         lead="Whatever your trade, the approach is the same: work out what your customers need to see, then build the shortest path to them getting in touch."
       />
     </>

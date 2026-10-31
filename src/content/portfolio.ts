@@ -3,10 +3,13 @@ import type { SceneName } from "@/components/ui/Scene";
 /**
  * Portfolio entries.
  *
- * These are CONCEPT builds, not past clients — labelled as such on the page
- * and on each detail view, so nothing here implies work that wasn't done.
- * Replace one with a real project by filling in `liveUrl` and setting
- * `concept: false`.
+ * The six concept builds that used to live here are gone. They were honest —
+ * labelled as concepts throughout — but a real client beats six imagined ones
+ * for anyone deciding whether to hire you, and keeping them alongside a real
+ * build would only have diluted it.
+ *
+ * `concept: true` and the labelling around it are kept in the type, so a
+ * speculative piece could be added again without pretending it was paid work.
  */
 
 export type Project = {
@@ -32,173 +35,42 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "harbour-cafe",
-    name: "The Harbour Café",
-    sector: "Café & hospitality",
+    slug: "dans-cafe",
+    name: "Dan's Cafe",
+    sector: "Café — Whitchurch, Shropshire",
     scene: "cafe",
     image: "/images/sector-cafe.jpg",
     imageAlt:
-      "A quiet harbourside café at first light, empty wooden tables and steam rising from the coffee machine",
+      "A café at first light, empty wooden tables and steam rising from the coffee machine",
     preview: "cafe",
     summary:
-      "Menu, opening hours and a booking link — the three things a hungry visitor actually wants.",
-    concept: true,
-    tags: ["5 pages", "Bookings", "Local SEO"],
+      "A Whitchurch breakfast and brunch cafe that people could find, read the menu for, and order from — without ringing to ask.",
+    concept: false,
+    liveUrl: "https://danscafe.co.uk/",
+    tags: ["Single page", "Menu", "Collection orders", "Local SEO"],
     accent: "text-amber-300",
     brief:
-      "A harbourside café doing strong summer trade and quiet winters, relying entirely on a Facebook page. Visitors couldn't find opening hours without scrolling a feed, and the kitchen was fielding the same three questions by phone all day.",
+      "Dan runs a breakfast, brunch and diner cafe on Bridgewater Street in Whitchurch. The food and the regulars were already there; the problem was everyone else. With no website, anyone searching for breakfast in Whitchurch found competitors first, and the questions that should answer themselves — what's on, when are you open, can I order ahead — were arriving by phone during service.",
     decisions: [
       {
-        title: "Hours and menu above everything",
-        body: "Both sit in the first screen on mobile. Most visits are someone standing outside deciding whether to come in, so the site answers that first.",
+        title: "One page, because that is the whole decision",
+        body: "Someone deciding where to eat wants the menu, the hours and the address. Splitting those across five pages adds clicks between a hungry person and your door. Everything sits on one page in the order people ask for it, so the answer is always a scroll away rather than a navigation choice.",
       },
       {
-        title: "Booking without an account",
-        body: "A single form, no login, no app. Anything heavier and a table booking becomes a phone call instead.",
+        title: "The menu is the main event",
+        body: "Not a PDF that downloads sideways on a phone. The full menu is real text on the page — readable one-handed, searchable by Google, and updatable in minutes when a price moves. Allergen information sits with it rather than on a separate sheet nobody finds.",
       },
       {
-        title: "Seasonal menu the owner can change",
-        body: "Menu items live in one editable list. A price change is an email, live the same day, included in the monthly.",
-      },
-    ],
-  },
-  {
-    slug: "kerr-plumbing",
-    name: "Kerr Plumbing & Heating",
-    sector: "Plumbing & heating",
-    scene: "trades",
-    image: "/images/sector-trades.jpg",
-    imageAlt:
-      "A plumbing work van parked on a terraced street at dawn, tools neatly racked in the open side door",
-    preview: "trades",
-    summary:
-      "Service areas, Gas Safe credentials and a click-to-call button that never scrolls out of reach.",
-    concept: true,
-    tags: ["4 pages", "Click-to-call", "Reviews"],
-    accent: "text-sky-300",
-    brief:
-      "A two-van heating firm competing against national callout services in local search. Most enquiries arrive as emergencies from a phone, where the decision is made in under a minute.",
-    decisions: [
-      {
-        title: "A phone number that follows you",
-        body: "A sticky call bar on mobile, present on every page. In an emergency the visitor should never have to look for it.",
+        title: "Order ahead for collection",
+        body: "The single change that takes work off the counter. Collection orders come through the site instead of interrupting service, and people who were never going to ring now order anyway.",
       },
       {
-        title: "Credentials stated plainly",
-        body: "Gas Safe registration number, insurance and areas covered, in text rather than a badge image, so search engines read them too.",
+        title: "Built to be found in Whitchurch",
+        body: "Structured data tells Google this is a cafe, where it is, and when it is open, so the opening hours show in search results rather than making people click through. Address, phone and hours are consistent everywhere, which is what local search actually rewards.",
       },
       {
-        title: "Built around towns, not services",
-        body: "Pages match how people actually search — trade plus town — which is where a local firm can outrank a national one.",
-      },
-    ],
-  },
-  {
-    slug: "wren-and-co",
-    name: "Wren & Co.",
-    sector: "Hair & beauty",
-    scene: "salon",
-    image: "/images/sector-salon.jpg",
-    imageAlt:
-      "A small hair studio after closing, single styling chair beside a large round mirror",
-    preview: "salon",
-    summary:
-      "Price list, gallery and online booking, built to look as good as the work does.",
-    concept: true,
-    tags: ["6 pages", "Gallery", "Booking"],
-    accent: "text-rose-300",
-    brief:
-      "A small independent studio whose work is genuinely photogenic, previously represented by a booking-platform profile that looked identical to every competitor in town.",
-    decisions: [
-      {
-        title: "Photography leads",
-        body: "The gallery is the hero, not an afterthought page. In this trade the portfolio is the pitch.",
-      },
-      {
-        title: "Prices published",
-        body: "Full price list, no 'from' hedging. It filters enquiries down to people who already know what they'll pay.",
-      },
-      {
-        title: "Booking that keeps the brand",
-        body: "Booking sits on the studio's own site rather than sending customers to a marketplace full of rivals.",
-      },
-    ],
-  },
-  {
-    slug: "ironworks-fitness",
-    name: "Ironworks Personal Training",
-    sector: "Personal training",
-    scene: "fitness",
-    image: "/images/sector-fitness.jpg",
-    imageAlt:
-      "An empty independent gym at dawn, kettlebells and a barbell rack lit by a shaft of light",
-    summary:
-      "Packages, results gallery and an enquiry form that filters out time-wasters.",
-    concept: true,
-    tags: ["5 pages", "Packages", "Forms"],
-    accent: "text-teal-300",
-    brief:
-      "An independent trainer spending hours a week replying to enquiries that were never going to convert, mostly because pricing was never stated up front.",
-    decisions: [
-      {
-        title: "Packages priced openly",
-        body: "Three clear tiers. The enquiries that arrive afterwards are from people who have already accepted the cost.",
-      },
-      {
-        title: "A qualifying form",
-        body: "Goal, availability and budget range asked before the first reply, which turns a long email thread into one message.",
-      },
-    ],
-  },
-  {
-    slug: "eastgate-motors",
-    name: "Eastgate Motors",
-    sector: "Motor repair",
-    scene: "garage",
-    image: "/images/sector-garage.jpg",
-    imageAlt:
-      "An independent garage workshop at the end of the day, a car raised on a lift beside a work light",
-    summary:
-      "Services, MOT reminders and directions — everything findable in two taps.",
-    concept: true,
-    tags: ["4 pages", "Maps", "Local SEO"],
-    accent: "text-slate-300",
-    brief:
-      "An independent garage losing MOT repeat business to chains with automated reminders, and hard to find on a map despite being on a main road.",
-    decisions: [
-      {
-        title: "MOT reminder signup",
-        body: "A single field on the homepage. Repeat trade is the cheapest trade a garage can get.",
-      },
-      {
-        title: "Directions that work in a car",
-        body: "Address, what to look for and a maps link — no embedded widget that eats mobile data.",
-      },
-    ],
-  },
-  {
-    slug: "thorne-landscaping",
-    name: "Thorne Landscaping",
-    sector: "Landscaping",
-    scene: "landscaping",
-    image: "/images/sector-landscaping.jpg",
-    imageAlt:
-      "A newly finished back garden at dusk, fresh striped turf and stone patio with low garden lighting",
-    summary:
-      "A portfolio-led build where the photography does the selling.",
-    concept: true,
-    tags: ["6 pages", "Gallery", "Quote form"],
-    accent: "text-green-300",
-    brief:
-      "A landscaper with years of striking before-and-after photography sitting unused on a phone, and a website that showed none of it.",
-    decisions: [
-      {
-        title: "Before and after, paired",
-        body: "The transformation is the product. Showing the pair together does more than any amount of description.",
-      },
-      {
-        title: "Quote form that sets expectations",
-        body: "Garden size, access and rough budget captured up front, so the first site visit is already qualified.",
+        title: "Fast on a phone, in a market town",
+        body: "Most visits are someone standing outside deciding, often on patchy signal. The site is static HTML with compressed images and no page builder — it loads before they change their mind.",
       },
     ],
   },

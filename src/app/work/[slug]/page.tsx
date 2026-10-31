@@ -69,9 +69,13 @@ export default async function ProjectPage({
                   <p className={`font-display text-xs font-semibold tracking-[0.18em] uppercase ${project.accent}`}>
                     {project.sector}
                   </p>
-                  {project.concept && (
+                  {project.concept ? (
                     <span className="rounded-full border border-mist-400/30 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-mist-300 uppercase">
                       Concept build
+                    </span>
+                  ) : (
+                    <span className="rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-accent uppercase">
+                      Live client site
                     </span>
                   )}
                 </div>
@@ -92,6 +96,21 @@ export default async function ProjectPage({
                     </li>
                   ))}
                 </ul>
+
+                {/* liveUrl existed on the type but was never rendered — the
+                    template predated having a real client to link to. */}
+                {project.liveUrl && (
+                  <div className="mt-8">
+                    <ButtonLink
+                      href={project.liveUrl}
+                      external
+                      size="lg"
+                      icon="arrowRight"
+                    >
+                      Visit {project.name}
+                    </ButtonLink>
+                  </div>
+                )}
               </Reveal>
             </div>
 
@@ -135,8 +154,13 @@ export default async function ProjectPage({
       {/* Decisions */}
       <Section tone="navy">
         <Reveal>
+          {/* Conditional tense: speculative for a concept, past for work that
+              actually shipped. Saying "what I'd build" about a live client
+              site undersells it and reads as though it never happened. */}
           <h2 className="font-display text-3xl font-bold text-white">
-            What I&rsquo;d build, and why
+            {project.concept
+              ? "What I’d build, and why"
+              : "What I built, and why"}
           </h2>
         </Reveal>
 

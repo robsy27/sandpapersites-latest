@@ -92,3 +92,61 @@ export function FaqSchema({
     />
   );
 }
+
+/**
+ * Organization and WebSite markup, for the brand query specifically.
+ *
+ * Searching "sandpaper sites" was returning nothing because "sandpaper" is an
+ * ordinary English word — without an explicit brand entity, Google reads the
+ * query as being about abrasive paper and ranks shops accordingly. This says,
+ * in the vocabulary Google uses for exactly this, that Sandpaper Sites is an
+ * organisation, that these are its alternate spellings, and that this domain
+ * is its home.
+ *
+ * It is necessary but not sufficient: the strongest brand signal is a
+ * verified Google Business Profile, which is still outstanding. Add its URL
+ * to `sameAs` in site.ts once it exists.
+ */
+export function BrandSchema() {
+  const data = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${site.url}/#organization`,
+        name: site.name,
+        /* The ways people actually type it. */
+        alternateName: [
+          "Sandpaper Sites",
+          "sandpapersites",
+          "Sandpaper Sites Shropshire",
+          "Sandpaper Sites Cheshire",
+        ],
+        url: site.url,
+        email: site.email,
+        telephone: site.phone,
+        logo: {
+          "@type": "ImageObject",
+          url: `${site.url}/icon`,
+        },
+        founder: { "@type": "Person", name: "Tom Robinson" },
+        sameAs: Object.values(site.social).filter(Boolean),
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${site.url}/#website`,
+        name: site.name,
+        url: site.url,
+        publisher: { "@id": `${site.url}/#organization` },
+        inLanguage: "en-GB",
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
