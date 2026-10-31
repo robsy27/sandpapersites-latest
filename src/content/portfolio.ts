@@ -39,9 +39,9 @@ export const projects: Project[] = [
     name: "Dan's Cafe",
     sector: "Café — Whitchurch, Shropshire",
     scene: "cafe",
-    image: "/images/sector-cafe.jpg",
+    image: "/images/work-dans-cafe.jpg",
     imageAlt:
-      "A café at first light, empty wooden tables and steam rising from the coffee machine",
+      "Inside Dan's Cafe: a window bar lined with wooden stools under pendant bulbs, plants along the sill and the coffee board behind",
     preview: "cafe",
     summary:
       "A Whitchurch breakfast and brunch cafe that people could find, read the menu for, and order from — without ringing to ask.",
