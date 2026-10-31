@@ -43,6 +43,16 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/tom-robinson-477023431/" as string | null,
     facebook: null as string | null,
     instagram: null as string | null,
+    /**
+     * Google Business Profile, in canonical CID form rather than the
+     * maps.app.goo.gl short link or a share URL — those are redirects with
+     * tracking parameters and no guarantee of staying put. The CID is the
+     * profile's permanent identifier.
+     *
+     * This is what explicitly ties the site to the profile, which is what
+     * the map pack and the "sandpaper sites" brand query rely on.
+     */
+    google: "https://maps.google.com/?cid=4613831360892109151" as string | null,
   },
 } as const;
 
