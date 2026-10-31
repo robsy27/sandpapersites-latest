@@ -13,9 +13,9 @@ type Tone = "navy" | "deep" | "light" | "raised";
  * letting the aurora bleed into it just muddies it.
  */
 const tones: Record<Tone, string> = {
-  navy: "bg-navy-900 text-mist-200 full:bg-navy-900/72",
-  deep: "bg-navy-950 text-mist-200 full:bg-navy-950/72",
-  raised: "bg-navy-800 text-mist-200 full:bg-navy-800/72",
+  navy: "bg-navy-900 text-mist-200 full:bg-navy-900/90",
+  deep: "bg-navy-950 text-mist-200 full:bg-navy-950/90",
+  raised: "bg-navy-800 text-mist-200 full:bg-navy-800/90",
   light: "bg-mist-100 text-navy-900",
 };
 

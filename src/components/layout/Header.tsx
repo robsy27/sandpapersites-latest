@@ -86,9 +86,13 @@ export function Header() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out",
+        /* Always backed, never transparent. It used to be transparent at the
+           top of the page, which let the aurora through and left the nav
+           sitting on a bright teal wash with almost no contrast. */
+        "bg-navy-950/85 backdrop-blur-xl",
         scrolled || open
-          ? "border-b border-navy-700/80 bg-navy-900/92 backdrop-blur-lg"
-          : "border-b border-transparent bg-transparent",
+          ? "border-b border-navy-700/80 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.8)]"
+          : "border-b border-white/[0.06]",
       )}
     >
       {/* Utility strip, as the reference has: contact on the left, the places
@@ -140,7 +144,7 @@ export function Header() {
                      alone, so it still reads without colour perception. */
                   isActive(link.href)
                     ? "border-white bg-white text-navy-950"
-                    : "border-navy-600 text-mist-300 hover:border-accent hover:text-accent",
+                    : "border-white/20 bg-white/[0.04] text-mist-200 hover:border-accent hover:bg-accent/10 hover:text-accent",
                 )}
               >
                 {link.label}

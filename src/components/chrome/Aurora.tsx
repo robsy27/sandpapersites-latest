@@ -38,13 +38,18 @@ type Blob = {
 };
 
 /* Navy, teal and a cooler cyan — the site's own palette, nothing new. */
+/* Alphas are a fraction of what they were. At the old strength the field
+   washed the entire page mid-teal, which read as soft rather than premium
+   and left the nav with nothing to sit against. The reference is nearly
+   black with light used sparingly; this now behaves the same way — pools of
+   colour in the dark, not a tint over everything. */
 const BLOBS: Blob[] = [
-  { x: 0.22, y: 0.18, sx: 0.07, sy: 0.05, phase: 0.0, radius: 0.55, colour: [45, 212, 191], alpha: 0.5 },
-  { x: 0.78, y: 0.28, sx: 0.05, sy: 0.08, phase: 1.7, radius: 0.6, colour: [56, 189, 248], alpha: 0.38 },
-  { x: 0.5, y: 0.72, sx: 0.09, sy: 0.04, phase: 3.1, radius: 0.5, colour: [20, 184, 166], alpha: 0.42 },
-  { x: 0.12, y: 0.82, sx: 0.06, sy: 0.07, phase: 4.6, radius: 0.45, colour: [34, 211, 238], alpha: 0.3 },
-  { x: 0.88, y: 0.85, sx: 0.08, sy: 0.06, phase: 2.2, radius: 0.4, colour: [45, 212, 191], alpha: 0.28 },
-  { x: 0.42, y: 0.08, sx: 0.04, sy: 0.09, phase: 5.4, radius: 0.5, colour: [19, 36, 65], alpha: 0.6 },
+  { x: 0.22, y: 0.18, sx: 0.07, sy: 0.05, phase: 0.0, radius: 0.5, colour: [45, 212, 191], alpha: 0.17 },
+  { x: 0.78, y: 0.28, sx: 0.05, sy: 0.08, phase: 1.7, radius: 0.55, colour: [56, 189, 248], alpha: 0.12 },
+  { x: 0.5, y: 0.72, sx: 0.09, sy: 0.04, phase: 3.1, radius: 0.45, colour: [20, 184, 166], alpha: 0.14 },
+  { x: 0.12, y: 0.82, sx: 0.06, sy: 0.07, phase: 4.6, radius: 0.42, colour: [34, 211, 238], alpha: 0.1 },
+  { x: 0.88, y: 0.85, sx: 0.08, sy: 0.06, phase: 2.2, radius: 0.38, colour: [45, 212, 191], alpha: 0.1 },
+  { x: 0.42, y: 0.08, sx: 0.04, sy: 0.09, phase: 5.4, radius: 0.5, colour: [12, 24, 44], alpha: 0.5 },
 ];
 
 const WIDTH = 200;
@@ -114,7 +119,7 @@ export function Aurora() {
       /* Deep navy ground — the same value as --color-navy-950, so the canvas
          and the CSS behind it are indistinguishable where light does not
          reach. */
-      ctx.fillStyle = "#060f1f";
+      ctx.fillStyle = "#03070e";
       ctx.fillRect(0, 0, w, h);
 
       ctx.globalCompositeOperation = "lighter";
@@ -159,7 +164,7 @@ export function Aurora() {
     <canvas
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10 hidden size-full object-cover opacity-70 blur-[64px] full:block"
+      className="pointer-events-none fixed inset-0 -z-10 hidden size-full object-cover opacity-90 blur-[72px] full:block"
     />
   );
 }
