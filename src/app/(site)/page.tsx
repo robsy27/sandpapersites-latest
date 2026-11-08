@@ -8,16 +8,23 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCta } from "@/components/sections/FinalCta";
 
 /**
- * The brand name is written out in full here on purpose. Next's
- * `title.template` in the root layout applies to *child* segments only, not
- * to the page sharing that segment — so this string is used verbatim and
- * "| Sandpaper Sites" is never appended. Without the brand spelled out, the
- * home page was the one page that never named the business in its title.
+ * The brand name is written out in full here on purpose: without it the
+ * home page would be the one page that never named the business in its
+ * title.
+ *
+ * `absolute` is what stops the root layout's "%s | Sandpaper Sites"
+ * template appending the brand a second time. It was not needed while this
+ * file was app/page.tsx, because a template skips the page sharing its own
+ * segment — but the page now sits in the (site) route group, which makes it
+ * a child segment, and the template started applying. Hence
+ * "Sandpaper Sites | Websites for Shropshire & Cheshire | Sandpaper Sites".
  */
 export const metadata: Metadata = {
   /* Kept near 60 characters: Google truncates beyond that, and at 83 the
      counties — the part doing the local-search work — were being cut off. */
-  title: "Sandpaper Sites | Websites for Shropshire & Cheshire",
+  title: {
+    absolute: "Sandpaper Sites | Websites for Shropshire & Cheshire",
+  },
   description:
     "Affordable custom websites for small businesses across Shropshire and Cheshire. Built, hosted and maintained by one person — a one-off build fee from £495, hosting from £25 a month, and edits quoted before any work starts.",
   alternates: { canonical: "/" },

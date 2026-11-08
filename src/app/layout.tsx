@@ -2,13 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Anton, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { BrandSchema, StructuredData } from "@/components/layout/StructuredData";
-import { SmoothScroll } from "@/components/chrome/SmoothScroll";
-import { Aurora } from "@/components/chrome/Aurora";
-import { Choreography } from "@/components/chrome/Choreography";
-import { ModeWatcher } from "@/components/chrome/ModeWatcher";
 import { MODE_SCRIPT } from "@/lib/mode";
 
 /* Display face for headlines, readable sans for body. `swap` avoids FOIT. */
@@ -102,23 +95,10 @@ export default function RootLayout({
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-5 focus:py-3 focus:font-semibold focus:text-navy-950"
-        >
-          Skip to main content
-        </a>
-        <Aurora />
-        <ModeWatcher />
-        <SmoothScroll />
-        <Choreography />
-
-        <Header />
-        {/* Offsets the fixed header so it never overlaps page content. */}
-        <main id="main" className="pt-header">
-          {children}
-        </main>
-        <Footer />
+        {/* Site chrome — header, footer, aurora, smooth scroll — lives in
+            the (site) route group rather than here, so a route can opt out
+            of all of it by sitting outside that group. */}
+        {children}
 
         {/* Stale-HTML safety net.
             A CDN or browser can hold a page from an earlier build, and a
@@ -151,19 +131,6 @@ export default function RootLayout({
           }}
         />
 
-        {/* Film grain over the whole viewport. soft-light rather than
-            overlay: over a saturated teal, overlay pushed the highlights warm
-            and produced a brown cast along the top of the page. Fixed rather than per-section
-            so the texture is continuous as you scroll, and pointer-events
-            none so it never intercepts a click. Large flat fields of navy
-            look digitally flat without it. */}
-        <div
-          aria-hidden="true"
-          className="bg-grain pointer-events-none fixed inset-0 z-[60] opacity-[0.05] mix-blend-soft-light"
-        />
-
-        <StructuredData />
-        <BrandSchema />
       </body>
     </html>
   );
