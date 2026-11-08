@@ -163,3 +163,57 @@ Recorded so later changes can be measured against something.
 A short update every two to four weeks is enough. A launched site, a before
 and after, a note about a town. Posts expire from the main view after six
 months, so this is maintenance rather than a campaign.
+
+## Citations (directory listings)
+
+The profile has almost no citations — consistent mentions of the name,
+address and phone across the web — and those are a core prominence signal.
+This is the largest untouched lever on Maps ranking.
+
+**Settle the address question first.** Citations only work when every
+listing matches exactly. Publishing the home address across a dozen
+directories spreads it much further than Google alone, and it is far harder
+to retract than a single profile. If the address is going to be hidden,
+hide it before the citations go out, not after — otherwise the listings all
+have to be corrected by hand.
+
+The details below must be entered character for character, identically
+everywhere, or they do more harm than good.
+
+```
+Name:      Sandpaper Sites
+Address:   1 Meadow View Rd, Whitchurch SY13 1JT
+Phone:     07706 261786
+Website:   https://sandpapersites.co.uk
+Email:     contact@sandpapersites.co.uk
+Category:  Website designer
+Hours:     Monday to Friday, 09:00–18:00
+```
+
+Short description (under 200 characters, for directories that cap it):
+
+> Affordable custom websites for small businesses across Shropshire and
+> Cheshire. Built, hosted and maintained by one person. Build fee from £495,
+> hosting from £25 a month.
+
+Where to list, all free:
+
+- Bing Places
+- Apple Business Connect
+- Yell
+- FreeIndex
+- Thomson Local
+- Cylex
+
+Each needs an account, so these have to be done by Tom rather than
+delegated.
+
+## Asking for a review
+
+Google reads review text for keyword matching, which is why listings
+sometimes show "customers mention website design". A review that says what
+the work actually was is worth more than one that says "great service".
+
+So when asking, nudge towards the specifics without scripting it — a
+review that reads as dictated is worse than a vague one, and Google removes
+reviews it believes were written by the business.
