@@ -89,7 +89,7 @@ export function Footer() {
                     href={`/${area.slug}`}
                     className="inline-flex min-h-11 items-center text-body text-mist-300 transition-colors hover:text-accent"
                   >
-                    Websites in {area.county}
+                    Websites in {area.place}
                   </Link>
                 </li>
               ))}

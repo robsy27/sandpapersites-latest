@@ -142,10 +142,20 @@ Cheshire service areas surface. The risk is that an address change can
 trigger re-verification, usually by postcard, during which the profile can
 drop out of results.
 
-**Decision, 8 November 2026: leave it published.** The profile is newly
-built up and has no reviews yet; a verification wobble now would cost more
-than the address exposure. Revisit once there are reviews banked and the
-profile has something holding it up. Do not re-raise before then.
+**Decision, 8 November 2026: it stays published, and this is now settled.**
+
+The first reason was timing — the profile was newly built up with no
+reviews, and a verification wobble would have cost more than the exposure.
+The second reason is the one that decides it: proximity is among the
+heaviest factors in local ranking, and a verified street address feeds it
+directly. Service-area businesses without an address generally rank worse,
+not better. Hiding it is the right shape conceptually and the better answer
+for privacy, but it would cost visibility, and visibility is the thing
+being optimised for.
+
+The consequence, accepted knowingly: the home address goes out across the
+directory citations too. That reaches further than one Google profile and
+is harder to retract, so this should not be reopened casually.
 
 ## Baseline, 8 November 2026
 
@@ -170,14 +180,8 @@ The profile has almost no citations — consistent mentions of the name,
 address and phone across the web — and those are a core prominence signal.
 This is the largest untouched lever on Maps ranking.
 
-**Settle the address question first.** Citations only work when every
-listing matches exactly. Publishing the home address across a dozen
-directories spreads it much further than Google alone, and it is far harder
-to retract than a single profile. If the address is going to be hidden,
-hide it before the citations go out, not after — otherwise the listings all
-have to be corrected by hand.
-
-The details below must be entered character for character, identically
+The address question is settled (see above): it stays, so the citations
+carry it. The details below must be entered character for character, identically
 everywhere, or they do more harm than good.
 
 ```

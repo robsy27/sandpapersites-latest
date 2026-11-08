@@ -1,31 +1,40 @@
 /**
- * Location pages, one per county actually served.
+ * Location pages — the two counties served, plus the home town.
  *
- * These exist to rank for county-level searches ("websites Shropshire"),
+ * These exist to rank for place-level searches ("websites Shropshire"),
  * which the rest of the site cannot do — a page that mentions a place once
  * loses to a page that is genuinely about it.
  *
- * The important constraint: this is NOT a template with the county name
+ * The important constraint: this is NOT a template with the place name
  * swapped. Google classifies near-duplicate location pages as doorway pages
  * and they can earn a penalty rather than a ranking, so every field below is
- * written separately and says something true about that county's economy and
- * the businesses in it. If a third county is ever added, write it — do not
- * copy one of these.
+ * written separately and says something true about that place's economy and
+ * the businesses in it. If another is ever added, write it — do not copy
+ * one of these.
  *
- * Only add a county the work would genuinely be taken on.
+ * Only add a place the work would genuinely be taken on.
  */
 
 export type Area = {
   slug: string;
-  county: string;
-  /** Named on the page and in the structured data's areaServed. */
+  /**
+   * County or town. `kind` decides how it is described on the page and
+   * which schema.org type it is published as — a town announced as an
+   * AdministrativeArea is simply wrong, and search engines read it.
+   */
+  kind: "county" | "town";
+  place: string;
+  /**
+   * Named on the page and in the structured data's areaServed. For a
+   * county these are its towns; for a town, the places around it.
+   */
   towns: string[];
   title: string;
   description: string;
   eyebrow: string;
   heading: string;
   lead: string;
-  /** Two or three paragraphs on the county itself. Distinct per area. */
+  /** Two or three paragraphs on the place itself. Distinct per area. */
   context: string[];
   /** What businesses here tend to need, and why. Distinct per area. */
   needs: { title: string; body: string }[];
@@ -38,7 +47,8 @@ export type Area = {
 export const areas: Area[] = [
   {
     slug: "websites-shropshire",
-    county: "Shropshire",
+    kind: "county",
+    place: "Shropshire",
     video: "/video/shrewsbury.mp4",
     towns: [
       "Shrewsbury",
@@ -84,7 +94,8 @@ export const areas: Area[] = [
   },
   {
     slug: "websites-cheshire",
-    county: "Cheshire",
+    kind: "county",
+    place: "Cheshire",
     video: "/video/chester.mp4",
     towns: [
       "Chester",
@@ -127,6 +138,52 @@ export const areas: Area[] = [
     ],
     close:
       "Same fees across Cheshire — a one-off build fee, a small monthly cost for hosting, and edits quoted before any work starts. Agency standard of work, without the agency overhead paying for it.",
+  },
+  {
+    slug: "websites-whitchurch",
+    kind: "town",
+    place: "Whitchurch",
+    towns: [
+      "Wem",
+      "Prees",
+      "Whixall",
+      "Malpas",
+      "Ellesmere",
+      "Market Drayton",
+      "Audlem",
+      "Wrenbury",
+    ],
+    title: "Website Design in Whitchurch, Shropshire",
+    description:
+      "Website design in Whitchurch, Shropshire, by someone based in the town. Custom-built, hosted and maintained — a one-off build fee from \u00a3495 and hosting from \u00a325 a month.",
+    eyebrow: "Whitchurch",
+    heading: "Website design in Whitchurch, by someone who lives here.",
+    lead: "The town is small enough that I can come and sit in your shop to talk about it. No agency account manager, no travel charge, and no explaining where Whitchurch is.",
+    context: [
+      "Whitchurch is compact, and almost all of its trade sits on a few streets \u2014 High Street, Green End, Bridgewater Street, and the merchants out at Waymills. That concentration is an advantage for a small business, because word still travels here. It is also a limit: only so many people walk past, which is why the ones finding you on a phone matter disproportionately.",
+      "The competition for those searches is not local. Agencies in Shrewsbury, Chester and Crewe advertise into Whitchurch, and the paid results sitting above the map are usually theirs. They are not wrong to \u2014 it is a reasonable town to sell into \u2014 but their prices are set by their overheads, not by what a business on Green End can justify spending.",
+      "Being in the town changes the work. I can look at your actual premises, photograph them properly rather than working from whatever is already on your phone, and sit down with you when something needs changing. That is harder to arrange with someone in Manchester, and it tends to be the difference between a site that gets finished and one that stalls waiting on content.",
+    ],
+    needs: [
+      {
+        title: "Caf\u00e9s, bakeries and independent retail",
+        body: "Green End and the High Street run on footfall and regulars, but people check opening hours and menus on a phone before setting off. Current information, photographed well, loading quickly.",
+      },
+      {
+        title: "Trades working out of Whitchurch",
+        body: "Builders, electricians, plumbers, joiners \u2014 often covering a wide rural patch from a town base. The job is usually proving you are real, nearby and available before someone rings the next name on the list.",
+      },
+      {
+        title: "Salons, therapists and instructors",
+        body: "Appointment-led businesses where booking has to be effortless on a phone, and where how the site looks is read as how the service will feel.",
+      },
+      {
+        title: "Farms and rural businesses on the border",
+        body: "Whitchurch sits where Shropshire meets Cheshire and Wales, and plenty of the businesses around it are agricultural, equestrian or otherwise land-based. Sites that work on a weak signal, because that is where they get opened.",
+      },
+    ],
+    close:
+      "Same fees as anywhere else \u2014 a one-off build fee from \u00a3495, hosting from \u00a325 a month, and edits quoted before any work starts. Being in the town does not cost you extra; it just means I can meet you in person.",
   },
 ];
 

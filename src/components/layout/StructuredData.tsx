@@ -7,14 +7,27 @@ import { plans } from "@/content/pricing";
  * understand what the business is, where it works and what it charges.
  *
  * `areaServed` used to be the bare string "GB", which told Google nothing
- * useful for county-level searches. It now names the counties and their
- * towns, matching the copy on the location pages — the association has to
- * be stated in both places to be believed.
+ * useful for county-level searches. It now names the counties, the home
+ * town and the places around them, matching the copy on the location pages
+ * — the association has to be stated in both places to be believed.
  *
  * No `address` is published: this is a service-area business run from home,
  * and a home address does not belong in public markup. `areaServed` without
  * a street address is the correct shape for that.
  */
+/**
+ * Places can legitimately appear twice in the source data — Whitchurch is
+ * both its own location page and one of Shropshire's towns — and emitting
+ * the same place twice in `areaServed` reads as careless markup rather than
+ * as emphasis. First occurrence wins.
+ */
+function dedupeByName<T extends { name: string }>(entries: T[]): T[] {
+  const seen = new Set<string>();
+  return entries.filter((entry) =>
+    seen.has(entry.name) ? false : (seen.add(entry.name), true),
+  );
+}
+
 export function StructuredData() {
   const data = {
     "@context": "https://schema.org",
@@ -32,16 +45,20 @@ export function StructuredData() {
        that is where the local-search intent is and where I can be on site.
        Listing only the two counties told Google the business was unavailable
        everywhere else, which is not true. */
-    areaServed: [
+    areaServed: dedupeByName([
       { "@type": "Country", name: "United Kingdom" },
       ...areas.flatMap((area) => [
-      {
-        "@type": "AdministrativeArea",
-        name: area.county,
-      },
-      ...area.towns.map((town) => ({ "@type": "City", name: town })),
+        {
+          /* A county is an AdministrativeArea; Whitchurch is a City. Saying
+             otherwise is a factual error in the markup, and areaServed is
+             exactly the field a search engine reads to work out where this
+             business operates. */
+          "@type": area.kind === "county" ? "AdministrativeArea" : "City",
+          name: area.place,
+        },
+        ...area.towns.map((town) => ({ "@type": "City", name: town })),
       ]),
-    ],
+    ]),
     /* The real, published prices — no invented figures. */
     hasOfferCatalog: {
       "@type": "OfferCatalog",

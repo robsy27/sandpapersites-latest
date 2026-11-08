@@ -11,12 +11,16 @@ import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 
 /**
- * County landing pages, at /websites-shropshire and /websites-cheshire.
+ * Location landing pages: the two counties, plus Whitchurch itself.
  *
- * One route, but the content is written separately per county in
+ * One route, but the content is written separately per place in
  * `areas.ts` — near-duplicate location pages are treated as doorway pages
  * by Google and can be penalised rather than ranked. The layout is shared
  * because that is what keeps the site consistent; the words are not.
+ *
+ * The only thing `kind` changes here is how the covered-area section reads:
+ * a county contains towns, a town has places around it, and describing
+ * either as the other reads as though nobody checked.
  */
 
 /**
@@ -73,8 +77,8 @@ export default async function AreaPage({
           about this place rather than a name swap. */}
       <Section tone="deep">
         <SectionHeading
-          eyebrow={`Working in ${area.county}`}
-          title={`What ${area.county} businesses are actually up against.`}
+          eyebrow={`Working in ${area.place}`}
+          title={`What ${area.place} businesses are actually up against.`}
         />
         <div className="mt-10 max-w-3xl space-y-6">
           {area.context.map((paragraph, index) => (
@@ -90,7 +94,7 @@ export default async function AreaPage({
       <Section tone="navy">
         <SectionHeading
           eyebrow="Who this is for"
-          title={`The businesses I build for in ${area.county}.`}
+          title={`The businesses I build for in ${area.place}.`}
           lead="Not an exhaustive list — but if you recognise yourself here, the fit is usually good."
         />
         <ul className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -112,7 +116,11 @@ export default async function AreaPage({
       <Section tone="deep">
         <SectionHeading
           eyebrow="Areas covered"
-          title={`Across ${area.county}, and the towns in it.`}
+          title={
+            area.kind === "county"
+              ? `Across ${area.place}, and the towns in it.`
+              : `${area.place}, and the places around it.`
+          }
           lead={area.close}
         />
         <ul className="mt-10 flex flex-wrap gap-3">
@@ -130,7 +138,7 @@ export default async function AreaPage({
       <PricingTeaser />
 
       <FinalCta
-        title={`Based in ${area.county}? Let's talk.`}
+        title={`Based in ${area.place}? Let's talk.`}
         lead="Tell me what your business does and roughly what you need. You'll get a straight answer on whether I can help, and what it would cost."
       />
     </>
