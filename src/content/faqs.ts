@@ -22,6 +22,11 @@ export const faqs: Faq[] = [
       "Less than you would think. Your logo if you have one, a handful of photos, and a rough idea of your services and prices. I write the words and send you a draft to correct — most people find that far easier than starting from a blank page. No logo or no photos is not a problem; just say so on the call and we will work around it.",
   },
   {
+    question: "Can you update my existing site instead of building a new one?",
+    answer:
+      "Sometimes, and I will tell you straight which way it falls. If the bones are sound and it is only looking tired, updating it is usually the cheaper answer. If it is slow, awkward on a phone, or fights you every time you want something changed, you will spend more patching it than replacing it. Send me the address before you decide anything — I will look at it and tell you honestly, at no cost and with no obligation.",
+  },
+  {
     question: "How long does a site take?",
     answer:
       "Two to three weeks for most builds, from the first call to going live. The main variable is how quickly you can get me your photos and content.",
