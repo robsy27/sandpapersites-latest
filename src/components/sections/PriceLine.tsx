@@ -21,25 +21,32 @@ export function PriceLine() {
   if (!starter) return null;
 
   return (
-    <Section tone="raised" className="py-12 sm:py-14 lg:py-16">
+    /* The one light band on the home page. The page otherwise runs navy
+       from the hero to the footer, and a visitor scrolling six screens of
+       it stops registering where one section ends and the next begins.
+       Price is the right place to break it: it is the thing people slow
+       down to read, and a bright panel says "this is the plain bit" before
+       a word is read. `accent` is a dark-background colour, so the teal
+       here is accent-ink and the text uses the light-surface tokens. */
+    <Section tone="light" className="py-12 sm:py-14 lg:py-16">
       <Reveal>
         <div className="flex flex-col items-start gap-7 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
           <div>
-            <p className="font-display text-xs font-semibold tracking-[0.18em] text-accent uppercase">
+            <p className="font-display text-xs font-semibold tracking-[0.18em] text-accent-ink uppercase">
               What it costs
             </p>
-            <p className="mt-4 font-display text-2xl leading-snug font-bold text-white sm:text-3xl">
+            <p className="mt-4 font-display text-2xl leading-snug font-bold text-navy-900 sm:text-3xl">
               From{" "}
-              <span className="text-accent tabular-nums">
+              <span className="text-accent-ink tabular-nums">
                 {starter.initialFee}
               </span>{" "}
               to build, then{" "}
-              <span className="text-accent tabular-nums">
+              <span className="text-accent-ink tabular-nums">
                 {starter.monthlyFee}
               </span>{" "}
               a month.
             </p>
-            <p className="mt-3 max-w-xl text-body leading-relaxed text-mist-300">
+            <p className="mt-3 max-w-xl text-body leading-relaxed text-mist-700">
               Two packages, three clear fees, and edits quoted before any work
               starts. No retainer, no contract.
             </p>
@@ -48,7 +55,7 @@ export function PriceLine() {
           <ButtonLink
             href="/services"
             size="lg"
-            variant="secondary"
+            variant="light"
             icon="arrowRight"
             className="shrink-0"
           >
