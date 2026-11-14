@@ -163,15 +163,22 @@ export default async function ProjectPage({
           A case study that describes decisions without showing the result
           asks the reader to take the work on trust. These are captures of
           the real site, so the section renders only where they exist, and
-          the page keeps numbering sections in reading order. */}
+          the page keeps numbering sections in reading order.
+
+          This is also the one light panel on the page, deliberately.
+          Screenshots of a site read as work on a bright ground and as
+          decoration on a dark one, and a page that is navy end to end gives
+          the eye nowhere to stop. `accent` is a dark-background colour, so
+          the eyebrow uses accent-ink and the captions use the text tokens
+          meant for light surfaces. */}
       {project.gallery && project.gallery.length > 0 && (
-        <Section tone="navy" ghost="Live" ghostAt="left">
+        <Section tone="light" ghost="Live" ghostAt="left">
           <div className="max-w-3xl">
             <Reveal>
-              <p className="font-display text-xs font-semibold tracking-[0.18em] text-accent uppercase">
+              <p className="font-display text-xs font-semibold tracking-[0.18em] text-accent-ink uppercase">
                 02 — What got built
               </p>
-              <h2 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+              <h2 className="mt-4 font-display text-3xl font-bold text-navy-900 sm:text-4xl">
                 The site itself
               </h2>
             </Reveal>
@@ -180,7 +187,7 @@ export default async function ProjectPage({
             {project.gallery.map((shot, index) => (
               <Reveal key={shot.src} delay={index * 90}>
                 <figure>
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-navy-700">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-navy-900/10 shadow-lg">
                     <Image
                       src={shot.src}
                       alt={shot.alt}
@@ -189,7 +196,7 @@ export default async function ProjectPage({
                       className="object-cover"
                     />
                   </div>
-                  <figcaption className="mt-3 text-body leading-relaxed text-mist-400">
+                  <figcaption className="mt-3 text-body leading-relaxed text-mist-700">
                     {shot.caption}
                   </figcaption>
                 </figure>

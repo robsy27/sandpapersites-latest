@@ -1,13 +1,13 @@
 /**
- * Trust signals shown where testimonials will eventually live.
+ * Trust signals shown where testimonials live.
  *
- * Until there are real, attributable client quotes, the section shows
- * commitments that can actually be stood behind today rather than three
- * cards announcing that nobody has said anything yet. Never publish invented
- * reviews as if they were genuine.
+ * Never publish invented reviews as if they were genuine.
  *
- * When you have real quotes: fill in `testimonials` below and set
- * `hasRealTestimonials` to true. The section swaps over automatically.
+ * There are two displays, because one quote and twenty quotes want
+ * different treatment. Below `GRID_THRESHOLD` the section keeps the
+ * promises and features the quotes above them — a single card stranded in
+ * a three-column grid advertises how few there are. At or above it, the
+ * quotes carry the section on their own.
  */
 
 export type Testimonial = {
@@ -15,12 +15,35 @@ export type Testimonial = {
   name: string;
   role: string;
   initials: string;
+  /**
+   * Where the quote can be read in its original place. A review someone
+   * can go and verify is worth considerably more than one that only
+   * exists on the website of the person it flatters.
+   */
+  sourceUrl?: string;
+  sourceLabel?: string;
 };
 
-/** Real client quotes. Empty until there are some. */
-export const testimonials: Testimonial[] = [];
+/** Real client quotes. Never invented, never edited for flattery. */
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Working with Tom on my new website was an absolute pleasure from start to finish. From our very first conversation, he took the time to truly listen to what I wanted and talked me through every single step of the process. His personal touch and attention to detail made all the difference. He didn't just build a website — he made it great. I couldn't be happier with the end result and would recommend Tom to anyone looking for a developer who genuinely cares.",
+    name: "Bob",
+    role: "Google review",
+    initials: "B",
+    sourceUrl: "https://maps.google.com/?cid=4613831360892109151",
+    sourceLabel: "Read it on Google",
+  },
+];
 
 export const hasRealTestimonials = testimonials.length > 0;
+
+/** Below this many quotes, they are featured above the promises instead
+ *  of replacing them. */
+export const GRID_THRESHOLD = 3;
+
+export const useQuoteGrid = testimonials.length >= GRID_THRESHOLD;
 
 export type Promise_ = {
   icon: "clock" | "wallet" | "refresh" | "shield" | "user" | "check";

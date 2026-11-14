@@ -1,4 +1,4 @@
-import { hasRealTestimonials, promises, testimonials } from "@/content/testimonials";
+import { promises, testimonials, useQuoteGrid } from "@/content/testimonials";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
@@ -15,7 +15,7 @@ import { GlassCard } from "@/components/ui/GlassCard";
  * nothing moving under a screen reader, everything keyboard-reachable.
  */
 export function Testimonials() {
-  if (hasRealTestimonials) {
+  if (useQuoteGrid) {
     return (
       <Section id="testimonials" ghost="Trust" ghostAt="right" tone="deep">
         <SectionHeading
@@ -58,10 +58,57 @@ export function Testimonials() {
 
   return (
     <Section id="testimonials" tone="deep">
+      {/* Featured quotes sit above the promises while there are only a
+          few. The promises are not a placeholder that the first review
+          retires — they are the part a prospect can hold me to, and they
+          keep earning their place alongside the quotes. */}
+      {testimonials.length > 0 && (
+        <ul className="mb-16 grid gap-6 lg:grid-cols-2">
+          {testimonials.map((testimonial, index) => (
+            <Reveal as="li" key={testimonial.name + index} delay={index * 70}>
+              <figure className="h-full">
+                <Card className="flex h-full flex-col">
+                  <Icon name="quote" className="size-8 text-accent/40" />
+                  <blockquote className="mt-5 flex-1 text-lg leading-relaxed text-mist-200">
+                    {testimonial.quote}
+                  </blockquote>
+                  <figcaption className="mt-7 flex items-center gap-3.5 border-t border-navy-700 pt-6">
+                    <span
+                      aria-hidden="true"
+                      className="flex size-10 shrink-0 items-center justify-center rounded-full bg-navy-700 font-display text-sm font-bold text-mist-300"
+                    >
+                      {testimonial.initials}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block truncate font-display text-sm font-semibold text-white">
+                        {testimonial.name}
+                      </span>
+                      <span className="block truncate text-xs text-mist-300">
+                        {testimonial.role}
+                      </span>
+                    </span>
+                    {testimonial.sourceUrl && (
+                      <a
+                        href={testimonial.sourceUrl}
+                        target="_blank"
+                        rel="noopener"
+                        className="ml-auto inline-flex min-h-11 shrink-0 items-center text-xs text-mist-300 underline transition-colors hover:text-accent"
+                      >
+                        {testimonial.sourceLabel ?? "Read the original"}
+                      </a>
+                    )}
+                  </figcaption>
+                </Card>
+              </figure>
+            </Reveal>
+          ))}
+        </ul>
+      )}
+
       <SectionHeading
         eyebrow="What you can count on"
         title="Six things I'll put in writing."
-        lead="I'm early enough that I don't have a wall of client quotes yet, and I'd rather not invent any. So here's what I'll commit to instead — hold me to all of it."
+        lead="One review in so far, and it is a real one you can go and read. Here is what I commit to on top of it — hold me to all of it."
       />
 
       <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
