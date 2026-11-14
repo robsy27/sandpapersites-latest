@@ -105,13 +105,28 @@ export function Header() {
         )}
       >
         <Container>
+          {/* The phone number sits alongside the email because a local
+              trade deciding between two web designers often just rings one,
+              and a number only reachable by scrolling to the footer is a
+              number they do not ring. */}
           <div className="flex h-9 items-center justify-between gap-4">
-            <a
-              href={`mailto:${site.email}`}
-              className="font-mono text-[11px] tracking-[0.12em] text-mist-400 transition-colors hover:text-accent"
-            >
-              Get in touch: {site.email}
-            </a>
+            <div className="flex items-center gap-4">
+              <a
+                href={`mailto:${site.email}`}
+                className="font-mono text-[11px] tracking-[0.12em] text-mist-400 transition-colors hover:text-accent"
+              >
+                {site.email}
+              </a>
+              <span aria-hidden="true" className="text-mist-400/40">
+                ·
+              </span>
+              <a
+                href={`tel:${site.phone}`}
+                className="font-mono text-[11px] tracking-[0.12em] text-mist-400 transition-colors hover:text-accent"
+              >
+                {site.phoneDisplay}
+              </a>
+            </div>
             <p className="font-mono text-[11px] tracking-[0.18em] text-mist-400 uppercase">
               {site.location}
             </p>

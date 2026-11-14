@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { site } from "@/content/site";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -142,6 +143,29 @@ export default function AboutPage() {
           <div className="lg:col-span-5">
             <Reveal delay={100}>
               <div className="lg:sticky lg:top-28">
+                {/* The page sells "you deal with me, directly" and until now
+                    showed no evidence that a "me" exists. A real face beside
+                    the story is the cheapest credibility on the site, and it
+                    is the one thing an agency cannot copy. */}
+                <figure className="mb-8">
+                  <div className="relative aspect-square w-40 overflow-hidden rounded-2xl border border-navy-700">
+                    <Image
+                      src="/images/tom-robinson.jpg"
+                      alt="Tom Robinson, who builds and looks after every Sandpaper Sites website"
+                      fill
+                      sizes="160px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-body text-mist-400">
+                    <span className="font-semibold text-white">
+                      Tom Robinson
+                    </span>
+                    <br />
+                    The person who builds it, hosts it and answers the phone.
+                  </figcaption>
+                </figure>
+
                 <h2 className="mb-4 font-display text-lg font-bold text-white">
                   In short
                 </h2>

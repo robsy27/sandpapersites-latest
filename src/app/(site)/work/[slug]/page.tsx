@@ -159,6 +159,46 @@ export default async function ProjectPage({
         </div>
       </Section>
 
+      {/* Screenshots of the live site.
+          A case study that describes decisions without showing the result
+          asks the reader to take the work on trust. These are captures of
+          the real site, so the section renders only where they exist, and
+          the page keeps numbering sections in reading order. */}
+      {project.gallery && project.gallery.length > 0 && (
+        <Section tone="navy" ghost="Live" ghostAt="left">
+          <div className="max-w-3xl">
+            <Reveal>
+              <p className="font-display text-xs font-semibold tracking-[0.18em] text-accent uppercase">
+                02 — What got built
+              </p>
+              <h2 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+                The site itself
+              </h2>
+            </Reveal>
+          </div>
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+            {project.gallery.map((shot, index) => (
+              <Reveal key={shot.src} delay={index * 90}>
+                <figure>
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-navy-700">
+                    <Image
+                      src={shot.src}
+                      alt={shot.alt}
+                      fill
+                      sizes="(min-width: 1024px) 46vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-body leading-relaxed text-mist-400">
+                    {shot.caption}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      )}
+
       {/* Decisions */}
       <Section tone="navy" ghost="Built" ghostAt="left">
         <Reveal>

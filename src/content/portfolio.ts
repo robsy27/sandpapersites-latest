@@ -23,6 +23,13 @@ export type Project = {
   image?: string;
   /** Describes the photograph for screen readers and when it fails to load. */
   imageAlt?: string;
+  /**
+   * Screenshots of the finished site, shown on the detail page. These are
+   * captures of the live site rather than mock-ups — the whole argument of
+   * this page is that the work is real and you can go and look at it, so
+   * illustrating it with anything invented would undercut it.
+   */
+  gallery?: { src: string; alt: string; caption: string }[];
   summary: string;
   concept: boolean;
   liveUrl?: string;
@@ -47,6 +54,20 @@ export const projects: Project[] = [
       "A Whitchurch breakfast and brunch cafe that people could find, read the menu for, and order from — without ringing to ask.",
     concept: false,
     liveUrl: "https://danscafe.co.uk/",
+    gallery: [
+      {
+        src: "/images/work-dans-cafe-menu.jpg",
+        alt: "The menu section of the Dan's Cafe website, showing four menu cards for all-day breakfast, mains, drinks and the kids' menu",
+        caption:
+          "The full menu on the page itself, split four ways so nobody scrolls past the thing they came for.",
+      },
+      {
+        src: "/images/work-dans-cafe-socials.jpg",
+        alt: "The socials section of the Dan's Cafe website, showing a grid of food photographs from the cafe",
+        caption:
+          "Their own food photography, pulled in as proof rather than stock pictures of somebody else's breakfast.",
+      },
+    ],
     tags: ["Single page", "Menu", "Collection orders", "Local SEO"],
     accent: "text-amber-300",
     brief:

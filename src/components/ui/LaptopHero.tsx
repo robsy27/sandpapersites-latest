@@ -7,14 +7,17 @@ import Image from "next/image";
  * Screen rectangle measured from the photograph's pixels by scanning the
  * luminance profile for the black panel: x 30.41%–70.58%, y 30.0%–72.5%.
  *
- * The screen image (1280x698, aspect 1.83) is wider than the screen opening
- * (aspect ~1.52), so object-contain is used rather than object-cover —
- * cover would crop roughly 8.5% off each side, clipping the logo on the
- * left and the "Start Your Project" button on the right. Contain instead
- * leaves a thin letterbox top and bottom, which is filled with #070F11 —
- * sampled directly from the image's own corner pixels (they read 060E10 to
- * 081013) — so the seam is invisible rather than guessed from a
- * design-system token. Resample this if the screen image is replaced.
+ * The screen shows danscafe.co.uk — a real client site anyone can go and
+ * open. It previously showed an invented portfolio whose navigation read
+ * "Agency & Ioes" and whose service list included "Design Design" and
+ * "Colllin Management": generated-image artefacts, sitting in the largest
+ * picture on the homepage of a web design business. A fake site on the
+ * hero undermines every honest claim the copy makes.
+ *
+ * The screen opening works out at aspect 1.523 — 39.3% of 149.09% width
+ * over 41.5% of 148.36% of a 16/10 box — so the replacement is captured at
+ * exactly that ratio and fills the opening with no letterbox. Recapture at
+ * 1.523 if it is ever swapped again.
  */
 export function LaptopHero() {
   return (
@@ -35,7 +38,7 @@ export function LaptopHero() {
       >
       <Image
         src="/images/hero-laptop.jpg"
-        alt="A laptop on a studio desk at dusk showing a portfolio website built by Sandpaper Sites"
+        alt="A laptop on a studio desk at dusk showing the Dan's Cafe website, built by Sandpaper Sites"
         fill
         priority
         sizes="(min-width: 1024px) 72vw, 145vw"
@@ -60,10 +63,15 @@ export function LaptopHero() {
       >
         <div className="relative size-full overflow-hidden rounded-[1.6cqw] bg-[#070F11]">
           <Image
-            src="/images/home-laptop.jpg"
+            src="/images/hero-screen-danscafe.jpg"
             alt=""
             fill
-            sizes="320px"
+            /* The opening is 58.6% of the frame, and the frame is roughly
+               69vw on desktop and the full column on a phone — so about
+               40vw and 55vw respectively. This was `320px`, which served a
+               320px file into a slot measuring 579px and left the one
+               screenshot of real work on the page visibly soft. */
+            sizes="(min-width: 1024px) 40vw, 55vw"
             className="object-contain"
           />
 
