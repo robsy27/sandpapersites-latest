@@ -108,7 +108,10 @@ export function Testimonials() {
       <SectionHeading
         eyebrow="What you can count on"
         title="Six things I'll put in writing."
-        lead="One review in so far, and it is a real one you can go and read. Here is what I commit to on top of it — hold me to all of it."
+        /* Deliberately not a count. "One review in so far" was accurate for
+           about a week and then quietly wrong, and nobody edits a sentence
+           they have stopped seeing. */
+        lead="Every review above is real and linked to where it was posted. Here is what I commit to on top of them — hold me to all of it."
       />
 
       <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

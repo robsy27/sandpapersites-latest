@@ -101,8 +101,18 @@ export const feeExplainer = [
   },
 ];
 
+/**
+ * Three balanced one-liners under the fee breakdown.
+ *
+ * Keep them to roughly a sentence each. These render as a three-up grid,
+ * and the third used to carry the whole leaving-and-hosting explanation —
+ * three times the length of its neighbours, which left one card towering
+ * over the other two and broke the row. That detail is answered properly
+ * by "What happens if I want to leave?" in the FAQs, which is where
+ * someone asking it will actually look, so it lives there and not here.
+ */
 export const pricingNotes = [
   "Three separate fees, so you only ever pay for what you actually use — no padded retainer covering edits you never ask for.",
   "Every edit is quoted and approved before work begins. Nothing gets billed that you have not agreed to first.",
-  "No contract — cancel any time with 30 days' notice. The domain is registered in your name and released on request, along with the copy and photos you supplied. The site runs on my hosting, so moving it elsewhere means having your own hosting to move it to.",
+  "No contract. The monthly rolls on 30 days' notice, and the domain stays registered in your name throughout.",
 ];

@@ -86,11 +86,18 @@ export default function ServicesPage() {
                   ) : undefined
                 }
               >
-                <ul className="grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
+                {/* Multi-column flow rather than a two-column grid.
+                    Each list holds five items, and a grid lays them out
+                    row by row — (1,2) (3,4) (5,·) — leaving a visible hole
+                    in the bottom right of all three lists. Columns flow
+                    down instead, 3 then 2, which balances itself for any
+                    count and never leaves a gap. break-inside-avoid stops
+                    a bullet being split across the column boundary. */}
+                <ul className="gap-x-8 space-y-3.5 sm:columns-2 sm:space-y-0">
                   {service.details.map((detail) => (
                     <li
                       key={detail}
-                      className="flex gap-3 text-body leading-relaxed text-mist-300"
+                      className="flex break-inside-avoid gap-3 pb-3.5 text-body leading-relaxed text-mist-300"
                     >
                       <Icon
                         name="check"

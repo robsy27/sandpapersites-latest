@@ -37,6 +37,11 @@ export const faqs: Faq[] = [
       "Most are £25 — changing prices, updating opening hours, swapping a photo, adding a staff member. Something larger, like a new page or a new section, is usually £60 to £120 depending on what is involved. Either way you get the exact figure before I start, and you are free to say no.",
   },
   {
+    question: "Can I update the site myself?",
+    answer:
+      "Not directly, and that is deliberate. There is no login to forget, no editor to fight and nothing you can accidentally break at 11pm. You email me what needs changing, I quote it, and it is live once you approve. If you would rather have the keys and do it yourself, I will tell you honestly that a builder like Squarespace suits you better than I do.",
+  },
+  {
     question: "When do I pay the build fee?",
     answer:
       "In full before I start. You get the exact figure on the first call and it does not move, so there is nothing left to settle once the site goes live. The monthly hosting fee only begins when you are live.",

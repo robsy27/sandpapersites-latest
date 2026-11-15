@@ -28,6 +28,18 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
+      "I had Tom build my website. I couldn\u2019t believe how easy it was, he designed the website sent me a draft, I suggested a few changes and he sorted it straight away. Nothing was too much trouble. The whole process was very efficient and very reasonably priced. I couldn\u2019t recommend him enough.",
+    name: "Daniel Benson",
+    /* Named business rather than "Google review": Dan is the client behind
+       the case study, so the quote and the work it refers to can be checked
+       against each other. */
+    role: "Dan\u2019s Cafe, Whitchurch",
+    initials: "DB",
+    sourceUrl: "https://maps.google.com/?cid=4613831360892109151",
+    sourceLabel: "Read it on Google",
+  },
+  {
+    quote:
       "Working with Tom on my new website was an absolute pleasure from start to finish. From our very first conversation, he took the time to truly listen to what I wanted and talked me through every single step of the process. His personal touch and attention to detail made all the difference. He didn't just build a website — he made it great. I couldn't be happier with the end result and would recommend Tom to anyone looking for a developer who genuinely cares.",
     name: "Bob",
     role: "Google review",

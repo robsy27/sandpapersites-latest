@@ -87,6 +87,12 @@ const inShort = [
     detail:
       "The monthly rolls on 30 days\u2019 notice. The domain is registered in your name and released to you whenever you ask.",
   },
+  {
+    term: "Where",
+    headline: "Whitchurch, Shropshire",
+    detail:
+      "Based in the town, working across Shropshire and Cheshire, and happy to take work anywhere in the UK where being local is not the point.",
+  },
 ];
 
 export default function AboutPage() {
@@ -98,10 +104,42 @@ export default function AboutPage() {
         lead="Small local businesses were being quoted thousands by agencies, or left wrestling with a website builder at 11pm. There was nothing sensible in between."
       />
 
-      {/* Story */}
+      {/* Story.
+          Was a 7/5 split with the story on the left and a sticky column of
+          five cards on the right. The story runs out well before the cards
+          do, so the bottom-left of the section was roughly five hundred
+          pixels of nothing. Stacking it fixes that: a compact byline, the
+          prose at a readable measure, then the summary as a full-width grid
+          that divides evenly. */}
       <Section tone="deep">
-        <div className="grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+        <Reveal>
+          {/* The page sells "you deal with me, directly" and until now
+              showed no evidence that a "me" exists. A real face is the
+              cheapest credibility on the site, and the one thing an agency
+              cannot copy. */}
+          <div className="flex items-center gap-5">
+            <div className="relative size-20 shrink-0 overflow-hidden rounded-2xl border border-navy-700">
+              <Image
+                src="/images/tom-robinson.jpg"
+                alt="Tom Robinson, who builds and looks after every Sandpaper Sites website"
+                fill
+                sizes="80px"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <p className="font-display text-base font-bold text-white">
+                Tom Robinson
+              </p>
+              <p className="mt-1 text-body text-mist-400">
+                The person who builds it, hosts it and answers the phone.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+
+        <div className="mt-12">
+          <div className="max-w-3xl">
             <Reveal>
               <div className="space-y-6 text-base leading-relaxed text-mist-300">
                 <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
@@ -140,50 +178,26 @@ export default function AboutPage() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-5">
-            <Reveal delay={100}>
-              <div className="lg:sticky lg:top-28">
-                {/* The page sells "you deal with me, directly" and until now
-                    showed no evidence that a "me" exists. A real face beside
-                    the story is the cheapest credibility on the site, and it
-                    is the one thing an agency cannot copy. */}
-                <figure className="mb-8">
-                  <div className="relative aspect-square w-40 overflow-hidden rounded-2xl border border-navy-700">
-                    <Image
-                      src="/images/tom-robinson.jpg"
-                      alt="Tom Robinson, who builds and looks after every Sandpaper Sites website"
-                      fill
-                      sizes="160px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <figcaption className="mt-3 text-body text-mist-400">
-                    <span className="font-semibold text-white">
-                      Tom Robinson
-                    </span>
-                    <br />
-                    The person who builds it, hosts it and answers the phone.
-                  </figcaption>
-                </figure>
+        </div>
 
-                <h2 className="mb-4 font-display text-lg font-bold text-white">
-                  In short
-                </h2>
-                <div className="space-y-3">
-                  {inShort.map((item) => (
-                    <CollapsibleCard
-                      key={item.term}
-                      eyebrow={item.term}
-                      title={item.headline}
-                    >
-                      <p className="text-body leading-relaxed text-mist-300">
-                        {item.detail}
-                      </p>
-                    </CollapsibleCard>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
+        {/* Six items, so the grid divides evenly at both two and three
+            columns and never leaves a hole in the last row. */}
+        <div className="mt-16">
+          <Reveal>
+            <h2 className="font-display text-lg font-bold text-white">
+              In short
+            </h2>
+          </Reveal>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {inShort.map((item, index) => (
+              <Reveal key={item.term} delay={(index % 3) * 70}>
+                <CollapsibleCard eyebrow={item.term} title={item.headline}>
+                  <p className="text-body leading-relaxed text-mist-300">
+                    {item.detail}
+                  </p>
+                </CollapsibleCard>
+              </Reveal>
+            ))}
           </div>
         </div>
       </Section>
