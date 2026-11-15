@@ -26,6 +26,7 @@ export type IconName =
   | "user"
   | "quote"
   | "external"
+  | "star"
   | "linkedin";
 
 const paths: Record<IconName, React.ReactNode> = {
@@ -119,6 +120,9 @@ const paths: Record<IconName, React.ReactNode> = {
   ),
   quote: (
     <path d="M9 6c-3 1.4-4.5 4-4.5 7.5V19H10v-6H7.2c0-2.2.9-3.8 2.6-4.7L9 6Zm10 0c-3 1.4-4.5 4-4.5 7.5V19H20v-6h-2.8c0-2.2.9-3.8 2.6-4.7L19 6Z" />
+  ),
+  star: (
+    <path d="M12 3.5l2.6 5.3 5.9.86-4.25 4.14 1 5.87L12 16.9l-5.25 2.77 1-5.87L3.5 9.66l5.9-.86L12 3.5Z" />
   ),
   external: (
     <>

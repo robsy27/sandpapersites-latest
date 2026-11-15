@@ -163,6 +163,26 @@ export function Footer() {
                   </a>
                 </li>
               )}
+              {/* The Google Business Profile, linked sitewide and in words.
+                  Two jobs: it gives a visitor who wants to leave a review a
+                  route to the box, and it states the association between
+                  this domain and the profile somewhere a crawler can see it
+                  rather than only inside JSON-LD. The brand query is losing
+                  to abrasive-paper retailers, and every plain-English
+                  "Sandpaper Sites on Google" is a small push against that. */}
+              {site.social.google && (
+                <li>
+                  <a
+                    href={site.social.google}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-2.5 text-body text-mist-300 transition-colors hover:text-accent"
+                  >
+                    <Icon name="star" className="size-4 shrink-0 text-accent" />
+                    Sandpaper Sites on Google
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
