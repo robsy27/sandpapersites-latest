@@ -135,11 +135,24 @@
      are a pair, not independent choices.
 
      Headings and short labels are left out below: justifying two or three
-     words stretches them across the measure with enormous gaps. */
+     words stretches them across the measure with enormous gaps.
+
+     Phones are left ragged-right. Justification needs roughly 45 to 50
+     characters a line before the spaces between words can absorb the
+     slack; measured on this site at 375px, body copy runs 35 to 42, and
+     below that no amount of hyphenation saves it — the gaps open into
+     visible rivers down the paragraph. So it starts at the `sm`
+     breakpoint, where the measure reaches about 70 characters. */
   p {
-    text-align: justify;
+    text-align: left;
     hyphens: auto;
     text-wrap: pretty;
+  }
+
+  @media (width >= 40rem) {
+    p {
+      text-align: justify;
+    }
   }
 
   /* Anything short or deliberately ragged opts out. */
