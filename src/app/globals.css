@@ -129,30 +129,24 @@
 @layer base {
   /* Typesetting, applied once rather than per component.
 
-     Body paragraphs are justified so lines end flush on both edges, which
-     is what was asked for. Justification without hyphenation opens rivers
-     of white space between words, so `hyphens: auto` goes with it — the two
-     are a pair, not independent choices.
+     Ragged right, no hyphenation.
 
-     Headings and short labels are left out below: justifying two or three
-     words stretches them across the measure with enormous gaps.
+     Body copy used to be justified, with `hyphens: auto` alongside it
+     because the two are a pair — justification without hyphenation opens
+     rivers of white space, and hyphenation is what lets the line breaks
+     absorb the slack. The cost is broken words at the right edge:
+     "prop-er", "discov-ery", "chan-ging". On a site selling design work
+     that reads as untidy rather than as typesetting, and it was the first
+     thing noticed about the About page.
 
-     Phones are left ragged-right. Justification needs roughly 45 to 50
-     characters a line before the spaces between words can absorb the
-     slack; measured on this site at 375px, body copy runs 35 to 42, and
-     below that no amount of hyphenation saves it — the gaps open into
-     visible rivers down the paragraph. So it starts at the `sm`
-     breakpoint, where the measure reaches about 70 characters. */
+     Dropping hyphenation alone was not an option, because that is the
+     combination that produces rivers. So both go. A ragged right edge is
+     what almost every screen reads with, it needs no hyphenation to look
+     settled, and it removes the broken words entirely. */
   p {
     text-align: left;
-    hyphens: auto;
+    hyphens: manual;
     text-wrap: pretty;
-  }
-
-  @media (width >= 40rem) {
-    p {
-      text-align: justify;
-    }
   }
 
   /* Anything short or deliberately ragged opts out. */

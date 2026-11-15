@@ -152,10 +152,14 @@ export default function AboutPage() {
                 which is miserable to read. Splitting into two columns gets
                 both: the block ends where the cards end, and each column
                 stays near the 80 characters prose wants.
-                break-inside-avoid keeps a paragraph from being cut in half
-                at the column boundary. */}
+                Paragraphs are allowed to break across the column boundary.
+                With break-inside-avoid the balancer could only split whole
+                paragraphs, and four of uneven length land 2/2 — leaving the
+                right column finishing well short of the left. Letting them
+                break is what lets the two columns end level, which is the
+                whole point of setting it in columns. */}
             <div className="mt-6 space-y-6 text-base leading-relaxed text-mist-300 lg:columns-2 lg:gap-12 lg:space-y-0">
-                <p className="break-inside-avoid lg:mb-6">
+                <p className="lg:mb-6">
                   I kept running into the same thing. A good local business — a
                   proper one, with skilled people and loyal customers — and a
                   website that either didn’t exist or actively worked against
@@ -163,7 +167,7 @@ export default function AboutPage() {
                   number that no longer worked. A layout that fell apart on a
                   phone, which is where nearly everyone was looking at it.
                 </p>
-                <p className="break-inside-avoid lg:mb-6">
+                <p className="lg:mb-6">
                   When they’d looked into fixing it, they got one of two
                   answers. An agency quoted four or five figures and talked
                   about brand discovery workshops. Or they were pointed at a
@@ -172,14 +176,14 @@ export default function AboutPage() {
                   you’re spending your Sunday evening fighting a template
                   instead of running your business.
                 </p>
-                <p className="break-inside-avoid lg:mb-6">
+                <p className="lg:mb-6">
                   So {site.name} does the boring, useful thing in the middle. I
                   build you a proper custom site for a fair one-off fee. I host
                   it, secure it, back it up and keep it online. And when
                   something needs changing, you email me, I tell you exactly
                   what it costs, and it&rsquo;s live as soon as you say yes.
                 </p>
-                <p className="break-inside-avoid lg:mb-6">
+                <p className="lg:mb-6">
                   It’s deliberately unglamorous. There’s no account team, no
                   jargon and no upsell. Just a site that works, looked after by
                   someone you can actually reach.

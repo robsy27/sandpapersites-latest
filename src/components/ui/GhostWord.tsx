@@ -32,8 +32,20 @@ export function GhostWord({
       className={cn(
         "pointer-events-none absolute z-0 font-poster leading-[0.78] whitespace-nowrap select-none uppercase",
         /* Large enough to read as a graphic rather than as text, and low
-           enough in contrast to never compete with the copy over it. */
-        "text-[clamp(7rem,19vw,19rem)] text-white/[0.035]",
+           enough in contrast to never compete with the copy over it.
+
+           Sized down from 19vw. At 19vw a right-anchored ghost reached
+           x=935 on a 1440 viewport while the text column beside it ran to
+           x=952 — seventeen pixels of genuine overlap, widening further up
+           the range. The word is set at the section's vertical centre,
+           which is exactly where the copy is, so there is nowhere to move
+           it to; the size is the only lever.
+
+           12vw cleared it everywhere but left only eleven pixels at 1024,
+           which is not a margin so much as a coincidence. 10vw leaves
+           around fifty there and several hundred higher up the range, and
+           still reads as a graphic rather than as a word. */
+        "text-[clamp(4rem,10vw,14rem)] text-white/[0.035]",
         position === "right" && "top-1/2 -right-10 -translate-y-1/2",
         position === "left" && "top-1/2 -left-10 -translate-y-1/2",
         position === "centre" &&
