@@ -1,6 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    /**
+     * AVIF first, WebP second, original last. Next negotiates per request
+     * from the browser's Accept header, so anything that cannot read AVIF
+     * simply gets the WebP it was already getting.
+     *
+     * AVIF typically lands 20-30% smaller than WebP at the same quality,
+     * and every image on this site is a photograph or a screenshot, which
+     * is exactly where that gap is widest. It costs a little more CPU on
+     * first encode; the result is cached afterwards.
+     */
+    formats: ["image/avif", "image/webp"],
+  },
+
   async headers() {
     /**
      * The immutable rule below is only safe once filenames are

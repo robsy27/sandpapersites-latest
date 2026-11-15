@@ -10,6 +10,7 @@ import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { CollapsibleCard } from "@/components/ui/CollapsibleCard";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
+import { BreadcrumbSchema } from "@/components/layout/StructuredData";
 import { ButtonLink } from "@/components/ui/Button";
 import { FinalCta } from "@/components/sections/FinalCta";
 
@@ -46,6 +47,13 @@ export default async function ProjectPage({
 
   return (
     <>
+      <BreadcrumbSchema
+        trail={[
+          { name: "Work", path: "/work" },
+          { name: project.name, path: `/work/${project.slug}` },
+        ]}
+      />
+
       {/* Header */}
       <section className="relative overflow-hidden bg-navy-900 pt-10 pb-14 sm:pt-12 sm:pb-16">
         <AmbientBackground intensity="soft" />

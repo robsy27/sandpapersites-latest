@@ -118,6 +118,42 @@ export function FaqSchema({
 }
 
 /**
+ * BreadcrumbList for pages that sit below the top level.
+ *
+ * Google replaces the raw URL in a result with the trail when this is
+ * present, so a case study reads "Sandpaper Sites > Work > Dan's Cafe"
+ * rather than a path. It also states the hierarchy explicitly rather than
+ * leaving a crawler to infer it from the URL shape.
+ *
+ * Pass the trail without the home page; it is prepended here so every
+ * breadcrumb on the site starts the same way.
+ */
+export function BreadcrumbSchema({
+  trail,
+}: {
+  trail: { name: string; path: string }[];
+}) {
+  const items = [{ name: "Home", path: "/" }, ...trail];
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${site.url}${item.path === "/" ? "" : item.path}`,
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+/**
  * Organization and WebSite markup, for the brand query specifically.
  *
  * Searching "sandpaper sites" was returning nothing because "sandpaper" is an
@@ -127,9 +163,15 @@ export function FaqSchema({
  * organisation, that these are its alternate spellings, and that this domain
  * is its home.
  *
- * It is necessary but not sufficient: the strongest brand signal is a
- * verified Google Business Profile, which is still outstanding. Add its URL
- * to `sameAs` in site.ts once it exists.
+ * It is necessary but not sufficient. The Business Profile is now verified
+ * and linked from `sameAs` in site.ts, which is the strongest single
+ * signal; the rest is accumulation.
+ *
+ * Tom is a separate Person node rather than an inline founder, linked both
+ * ways. An entity with its own identifier, its own LinkedIn in `sameAs`
+ * and an explicit employment edge is far more use to a search engine
+ * working out that "Sandpaper Sites" names a business than a bare string
+ * nested inside the organisation ever was.
  */
 export function BrandSchema() {
   const data = {
@@ -153,8 +195,22 @@ export function BrandSchema() {
           "@type": "ImageObject",
           url: `${site.url}/icon`,
         },
-        founder: { "@type": "Person", name: "Tom Robinson" },
+        founder: { "@id": `${site.url}/#tom` },
         sameAs: Object.values(site.social).filter(Boolean),
+      },
+      {
+        "@type": "Person",
+        "@id": `${site.url}/#tom`,
+        name: "Tom Robinson",
+        jobTitle: "Web designer",
+        description:
+          "Builds, hosts and maintains websites for small businesses across Shropshire and Cheshire.",
+        url: `${site.url}/about`,
+        image: `${site.url}/images/tom-robinson.jpg`,
+        worksFor: { "@id": `${site.url}/#organization` },
+        /* Only the profiles that are really his — an invented profile URL
+           sends a search engine looking for something that is not there. */
+        sameAs: [site.social.linkedin].filter(Boolean),
       },
       {
         "@type": "WebSite",

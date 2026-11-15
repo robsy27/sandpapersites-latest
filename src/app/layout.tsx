@@ -60,6 +60,16 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  /**
+   * Search Console ownership, via env var so the token is not committed.
+   * Set GOOGLE_SITE_VERIFICATION to the string Google gives you and the
+   * meta tag appears; leave it unset and nothing is rendered. DNS
+   * verification is the sturdier option and needs none of this — this
+   * exists because the meta tag is the quicker of the two to get working.
+   */
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export const viewport: Viewport = {
@@ -108,6 +118,25 @@ export default function RootLayout({
             cache-busting URL to pull fresh HTML. Guarded by sessionStorage so
             it can never loop, and it tidies the marker out of the URL on the
             way back. */}
+        {/* Analytics.
+            Cloudflare Web Analytics: free, sets no cookies and stores no
+            personal data, so it needs no consent banner under PECR — which
+            is the whole reason for choosing it over Google Analytics. A
+            banner on a site this clean would cost more than the numbers are
+            worth.
+
+            Gated on the token so the tag is absent entirely until one is
+            set, rather than loading a broken beacon on every page. */}
+        {process.env.NEXT_PUBLIC_CF_BEACON_TOKEN && (
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({
+              token: process.env.NEXT_PUBLIC_CF_BEACON_TOKEN,
+            })}
+          />
+        )}
+
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{
